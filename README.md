@@ -41,4 +41,4 @@ Please provide screenshots of your changes before & after in Pull Requests.
 1. Increment the version number in `package.json`
 2. `vsce publish`
 
-![Rust in Piece](https://github.com/chapmandu/rust-in-piece-vscode-theme/raw/main/assets/rust-in-piece.png)
+![Rust in Piece](https://github.com/chapmandu/rust-in-piece-vscode-theme/raw/main/assets/Megadeth-RustInPeace.jpg)
