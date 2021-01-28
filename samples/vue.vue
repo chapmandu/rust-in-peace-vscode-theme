@@ -6,7 +6,7 @@
 export default {
     data() {
         return {
-            title: "Rust in Piece"
+            title: "Rust in Peace"
         };
     }
 }
