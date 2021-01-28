@@ -4,6 +4,12 @@ A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rus
 
 ![Screenshot](https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/screenshot.png)
 
+<div style="text-align:center">
+
+![Rust in Peace](https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/Megadeth-RustInPeace.jpg)
+
+</div>
+
 ## Installation
 
 1. Open **Extensions** sidebar panel in VS Code. `View → Extensions`
@@ -40,5 +46,3 @@ Please provide screenshots of your changes before & after in Pull Requests.
 
 1. Increment the version number in `package.json`
 2. `vsce publish`
-
-![Rust in Peace](https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/Megadeth-RustInPeace.jpg)
