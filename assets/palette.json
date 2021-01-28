@@ -4,7 +4,7 @@
 		"dark": "#091388"
 	},
 	"blues": {
-		"white": "#d9e0ff",
+		"foreground": "#d9e0ff",
 		"muted": "#4e7eee",
 		"light": "#1848B4",
 		"actual": "#0E2B9E",
@@ -13,13 +13,12 @@
 		"code": "#5D42C1"
 	},
 	"lightGrey": {
-		"white": "#b4d1e2",
+		"foreground": "#b4d1e2",
 		"lighter": "#B2B8DB",
 		"light": "#949BBA",
 		"actual": "#747C97",
 		"dark": "#525B72",
-		"darker": "#364053",
-		"another": "#8d959d"
+		"darker": "#364053"
 	},
 	"editor": {
 		"lighter": "#1b2451",
@@ -29,6 +28,7 @@
 		"darker": "#0c1024"
 	},
 	"purple": {
+		"foreground": "#B6BFEA",
 		"actual": "#7C50BC"
 	},
 	"green": {
@@ -38,13 +38,14 @@
 		"dark": "#36915B"
 	},
 	"purples": {
-		"white": "#e4d6f1",
+		"foreground": "#e4d6f1",
 		"lighter": "#D98BD7",
 		"light": "#BF77D0",
 		"actual": "#9C5CC6",
 		"dark": "#7F46BE"
 	},
 	"orange": {
+		"bright": "#F39F47",
 		"light": "#F2BA7D",
 		"actual": "#E98E6A",
 		"dark": "#C45F53"
