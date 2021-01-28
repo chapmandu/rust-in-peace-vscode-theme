@@ -1,0 +1,49 @@
+{
+    "name": "rust-in-piece",
+    "displayName": "Rust in Piece",
+    "description": "A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rust in Piece.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.51.0"
+    },
+    "publisher": "chapmandu",
+    "repository": {
+        "type": "git",
+        "name": "https://github.com/chapmandu/rust-in-piece-vscode-theme"
+    },
+    "bugs": {
+        "type": "git",
+        "name": "https://github.com/chapmandu/rust-in-piece-vscode-theme/issues"
+    },
+    "galleryBanner": {
+        "color": "#0D166C",
+        "theme": "dark"
+    },
+    "icon": "assets/logo.png",
+    "categories": [
+        "Themes"
+    ],
+    "keywords": [
+        "Dark Theme",
+        "Megadeth",
+        "Rust in Piece",
+        "Metal",
+        "Hangar 18",
+        "Holy Wars.. The Punishment Due",
+        "Black",
+        "Monokai",
+        "Cobalt2"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Rust in Piece",
+                "uiTheme": "vs-dark",
+                "path": "./themes/rust-in-piece-color-theme.json"
+            }
+        ]
+    },
+    "scripts": {
+        "install": "vsce package && code --install-extension ./rust-in-piece-*.vsix"
+    }
+}

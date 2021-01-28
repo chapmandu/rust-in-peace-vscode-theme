@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+.App {
+	text-align: center;
+	height: 100%;
+}
+body {
+	overflow: hidden;
+}
+.lost {
+	animation: bloody 4s ease infinite alternate;
+	-webkit-animation: bloody 4s ease infinite alternate;
+	-moz-animation: bloody 4s ease infinite alternate;
+	-o-animation: bloody 4s ease infinite alternate;
+}
+.blooddrop:before {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+@keyframes bloody {
+	0% {
+		letter-spacing: -0.025em;
+	}
+	100% {
+		text-shadow: 0px 5px 3px #c8102e;
+	}
+}

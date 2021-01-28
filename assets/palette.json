@@ -1,0 +1,63 @@
+{
+	"blue": {
+		"mid": "#1845AF",
+		"dark": "#091388"
+	},
+	"blues": {
+		"white": "#d9e0ff",
+		"muted": "#4e7eee",
+		"light": "#1848B4",
+		"actual": "#0E2B9E",
+		"dark": "#0F218B",
+		"darker": "#0D166C",
+		"code": "#5D42C1"
+	},
+	"lightGrey": {
+		"white": "#b4d1e2",
+		"lighter": "#B2B8DB",
+		"light": "#949BBA",
+		"actual": "#747C97",
+		"dark": "#525B72",
+		"darker": "#364053",
+		"another": "#8d959d"
+	},
+	"editor": {
+		"lighter": "#1b2451",
+		"light": "#181f46",
+		"actual": "#141a3b",
+		"dark": "#0f142e",
+		"darker": "#0c1024"
+	},
+	"purple": {
+		"actual": "#7C50BC"
+	},
+	"green": {
+		"lighter": "#daeeb4",
+		"light": "#8EC857",
+		"actual": "#68BB52",
+		"dark": "#36915B"
+	},
+	"purples": {
+		"white": "#e4d6f1",
+		"lighter": "#D98BD7",
+		"light": "#BF77D0",
+		"actual": "#9C5CC6",
+		"dark": "#7F46BE"
+	},
+	"orange": {
+		"light": "#F2BA7D",
+		"actual": "#E98E6A",
+		"dark": "#C45F53"
+	},
+	"cyan": {
+		"light": "#97CBE8",
+		"actual": "#5EADEB",
+		"dark": "#3D95DD"
+	},
+	"yellow": {
+		"bright": "#ede064",
+		"light": "#E8D38B",
+		"actual": "#EAB577",
+		"dark": "#CB936A"
+	}
+}
