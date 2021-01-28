@@ -43,3 +43,5 @@ Please provide screenshots of your changes before & after in Pull Requests.
 `npm run install` - Builds and installs the extension locally
 `npm run publish:minor` - Bump and publish
 `npm run publish:patch` - Bump and publish
+
+Also check out the Slayer [Reign in Blood](https://marketplace.visualstudio.com/items?itemName=chapmandu.reign-in-blood) theme.
