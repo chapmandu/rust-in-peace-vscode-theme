@@ -13,7 +13,7 @@ A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rus
 ## Installation
 
 1. Open **Extensions** sidebar panel in VS Code. `View → Extensions`
-2. Search for `Rust`
+2. Search for `Megadeth` (Curse you rust-lang!!!)
 3. Click **Install** to install it.
 4. Code > Preferences > Color Theme > **Rust in Peace**
 
@@ -38,11 +38,8 @@ To work on the theme:
 
 Please provide screenshots of your changes before & after in Pull Requests.
 
-## Building
+## Scripts (Mainly for the publisher's use)
 
-`npm run install` - This will build and install the extension locally
-
-## Publishing a new version
-
-1. Increment the version number in `package.json`
-2. `vsce publish`
+`npm run install` - Builds and installs the extension locally
+`npm run publish:minor` - Bump and publish
+`npm run publish:patch` - Bump and publish
