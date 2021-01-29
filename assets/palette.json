@@ -25,7 +25,8 @@
 		"light": "#181f46",
 		"actual": "#141a3b",
 		"dark": "#0f142e",
-		"darker": "#0c1024"
+		"darker": "#0c1024",
+		"borders": "#1f2a63"
 	},
 	"purple": {
 		"foreground": "#B6BFEA",
