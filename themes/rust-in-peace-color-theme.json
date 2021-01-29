@@ -11,7 +11,7 @@
         "badge.foreground": "#FBFAFF",
         "breadcrumb.activeSelectionForeground": "#b4d1e2",
         "breadcrumb.focusForeground": "#b4d1e2",
-        "breadcrumb.foreground": "#525B72",
+        "breadcrumb.foreground": "#b4d1e293",
         "button.background": "#58A82B",
         "button.foreground": "#FBFAFF",
         "button.hoverBackground": "#58A82Bc9",
@@ -351,10 +351,8 @@
         {
             "scope": [
                 "comment",
-                "comment keyword",
                 "comment markup.underline.link",
                 "comment string",
-                "comment punctuation",
                 "comment text"
             ],
             "settings": {
@@ -366,10 +364,11 @@
         {
             "scope": [
                 "comment storage.type",
-                "comment punctuation.definition"
+                "comment keyword",
+                "comment punctuation"
             ],
             "settings": {
-                "foreground": "#9C5CC6a9",
+                "foreground": "#97cce8a9",
                 "name": "JSDoc storage type"
             }
         },

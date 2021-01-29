@@ -1,8 +1,4 @@
 {
-	"blue": {
-		"mid": "#1845AF",
-		"dark": "#091388"
-	},
 	"blues": {
 		"foreground": "#d9e0ff",
 		"muted": "#4e7eee",
@@ -28,11 +24,11 @@
 		"darker": "#0c1024",
 		"borders": "#1f2a63"
 	},
-	"purple": {
+	"purples": {
 		"foreground": "#B6BFEA",
 		"actual": "#7C50BC"
 	},
-	"green": {
+	"greens": {
 		"lighter": "#daeeb4",
 		"light": "#8EC857",
 		"actual": "#68BB52",
@@ -46,18 +42,18 @@
 		"actual": "#9C5CC6",
 		"dark": "#7F46BE"
 	},
-	"orange": {
+	"oranges": {
 		"bright": "#F39F47",
 		"light": "#F2BA7D",
 		"actual": "#E98E6A",
 		"dark": "#C45F53"
 	},
-	"cyan": {
+	"cyans": {
 		"light": "#97CBE8",
 		"actual": "#5EADEB",
 		"dark": "#3D95DD"
 	},
-	"yellow": {
+	"yellows": {
 		"bright": "#ede064",
 		"light": "#E8D38B",
 		"actual": "#EAB577",
