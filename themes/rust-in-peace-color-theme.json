@@ -1,9 +1,9 @@
 {
     "colors": {
+        "activityBar.activeBorder": "#F39F47",
         "activityBar.background": "#141a3b",
         "activityBar.border": "#1f2a63",
         "activityBar.foreground": "#b4d1e2be",
-        "activityBar.activeBorder": "#F39F47",
         "activityBar.inactiveForeground": "#525B72",
         "activityBarBadge.background": "#58A82B",
         "activityBarBadge.foreground": "#FBFAFF",
@@ -44,9 +44,9 @@
         "descriptionForeground": "#747C97",
         "diffEditor.insertedTextBackground": "#8EC85719",
         "diffEditor.removedTextBackground": "#C45F5319",
-        "dropdown.background": "#141a3b",
-        "dropdown.border": "#1f2a63",
-        "dropdown.foreground": "#747C97",
+        "dropdown.background": "#1b2451",
+        "dropdown.border": "#5e42c17a",
+        "dropdown.foreground": "#b4d1e2",
         "dropdown.listBackground": "#1b2451",
         "editor.background": "#141a3b",
         "editor.findMatchBackground": "#b4d1e226",
@@ -200,8 +200,8 @@
         "notificationsWarningIcon.foreground": "#E98E6A",
         "panel.background": "#1b2451",
         "panel.border": "#222d61",
-        "panelTitle.activeBorder": "#F39F47",
-        "panelTitle.activeForeground": "#E8D38B",
+        "panelTitle.activeBorder": "#E98E6A",
+        "panelTitle.activeForeground": "#ede064",
         "panelTitle.inactiveForeground": "#b4d1e2",
         "peekView.border": "#141a3b",
         "peekViewEditor.background": "#1b2451",
@@ -294,12 +294,12 @@
         "symbolIcon.unitForeground": "#BF77D0",
         "symbolIcon.variableForeground": "#5EADEB",
         "tab.activeBackground": "#141a3b",
-        "tab.activeBorder": "#F39F47",
+        "tab.activeBorder": "#E98E6A",
         "tab.activeForeground": "#E8D38B",
         "tab.activeModifiedBorder": "#f3a04742",
         "tab.border": "#0c1024",
-        "tab.hoverBackground": "#141a3b",
-        "tab.hoverBorder": "#747C97",
+        "tab.hoverBackground": "#1b2451",
+        "tab.hoverBorder": "#949BBA",
         "tab.inactiveBackground": "#141a3b",
         "tab.inactiveForeground": "#747C97",
         "tab.inactiveModifiedBorder": "#f3a04742",
@@ -934,7 +934,8 @@
                 "name": "Markup quote"
             }
         },
-        {            "scope": [
+        {
+            "scope": [
                 "meta.brace.round",
                 "meta.brace.square",
                 "meta.brace.curly",
