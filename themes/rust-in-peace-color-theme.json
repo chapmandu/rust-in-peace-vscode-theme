@@ -144,7 +144,7 @@
         "gitDecoration.stageModifiedResourceForeground": "#F2BA7D",
         "gitDecoration.untrackedResourceForeground": "#36915B",
         "input.background": "#1b2451",
-        "input.border": "#0f142e",
+        "input.border": "#7b50bc86",
         "input.foreground": "#b4d1e2",
         "input.placeholderForeground": "#525B72",
         "inputOption.activeBackground": "#525B72",
