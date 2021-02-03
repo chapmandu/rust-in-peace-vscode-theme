@@ -44,7 +44,7 @@
         ]
     },
     "scripts": {
-        "extension:install": "vsce package && code --install-extension ./rust-in-peace-*.vsix",
+        "extension:install": "rm ./*.vsix && vsce package && code --install-extension ./rust-in-peace-*.vsix",
         "publish:minor": "vsce publish minor",
         "publish:patch": "vsce publish patch"
     }
