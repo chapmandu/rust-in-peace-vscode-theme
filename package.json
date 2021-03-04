@@ -2,7 +2,7 @@
     "name": "rust-in-peace",
     "displayName": "Rust in Peace",
     "description": "A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rust in Peace.",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "engines": {
         "vscode": "^1.51.0"
     },
