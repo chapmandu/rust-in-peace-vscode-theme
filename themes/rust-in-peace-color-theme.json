@@ -166,6 +166,12 @@
 
         "editorSuggestWidget.background": "#0D166C",
         "editorSuggestWidget.border": "#1848B4",
+        "editorSuggestWidget.foreground": "#949BBA",
+        "editorSuggestWidget.highlightForeground": "#949BBA",
+        "editorSuggestWidget.focusHighlightForeground": "#949BBA",
+        "editorSuggestWidget.selectedBackground": "#1847b428",
+        "editorSuggestWidget.selectedForeground": "#cedee7",
+        "editorSuggestWidget.selectedIconForeground": "#F39F47",
 
         "editorWarning.border": "#00000000",
         "editorWarning.foreground": "#E98E6A",
