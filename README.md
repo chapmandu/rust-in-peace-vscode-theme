@@ -40,7 +40,7 @@ Please provide screenshots of your changes before & after in Pull Requests.
 
 ## Scripts (Mainly for the publisher's use)
 
-`npm run install` - Builds and installs the extension locally
+`npm run extension:install` - Builds and installs the extension locally
 
 `npm run publish:minor` - Bump and publish
 
