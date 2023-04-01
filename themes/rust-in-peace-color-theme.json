@@ -16,9 +16,9 @@
         "breadcrumb.focusForeground": "#b4d1e2",
         "breadcrumb.foreground": "#b4d1e293",
 
-        "button.background": "#58A82B",
+        "button.background": "#58A82Bc9",
         "button.foreground": "#FBFAFF",
-        "button.hoverBackground": "#58A82Bc9",
+        "button.hoverBackground": "#58A82B",
 
         "charts.blue": "#5EADEB",
         "charts.foreground": "#b4d1e2",
@@ -115,6 +115,13 @@
         "editorInfo.border": "#1f2a63",
         "editorInfo.foreground": "#5EADEB",
 
+        "editorInlayHint.background": "#141a3b",
+        "editorInlayHint.foreground": "#525B72",
+        "editorInlayHint.parameterBackground": "#141a3b",
+        "editorInlayHint.parameterForeground": "#525B72",
+        "editorInlayHint.typeBackground": "#141a3b",
+        "editorInlayHint.typeForeground": "#525B72",
+
         "editorLightBulb.foreground": "#ede064",
         "editorLightBulbAutoFix.foreground": "#8EC857",
 
@@ -159,9 +166,6 @@
 
         "editorSuggestWidget.background": "#0D166C",
         "editorSuggestWidget.border": "#1848B4",
-        "editorSuggestWidget.foreground": "#b4d1e2",
-        "editorSuggestWidget.highlightForeground": "#b4d1e2",
-        "editorSuggestWidget.selectedBackground": "#1848B43b",
 
         "editorWarning.border": "#00000000",
         "editorWarning.foreground": "#E98E6A",
@@ -208,7 +212,7 @@
         "list.activeSelectionForeground": "#b4d1e2",
         "list.dropBackground": "#141a3bbf",
         "list.errorForeground": "#C45F53",
-        "quickInput.list.focusBackground": "#4e7eee4f",
+        "quickInputList.focusBackground": "#4e7eee4f",
         "list.focusForeground": "#b4d1e2",
         "list.highlightForeground": "#b4d1e2",
         "list.hoverBackground": "#4e7eee2f",
@@ -411,9 +415,6 @@
         "titleBar.inactiveForeground": "#525B72",
 
         "walkThrough.embeddedEditorBackground": "#141a3b",
-
-        "welcomePage.buttonBackground": "#0D166C",
-        "welcomePage.buttonHoverBackground": "#0F218B",
 
         "widget.shadow": "#0f142e"
     },
