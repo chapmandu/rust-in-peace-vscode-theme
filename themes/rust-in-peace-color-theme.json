@@ -1025,7 +1025,6 @@
         {
             "scope": [
                 "support.type.primitive.cfml",
-                "support.type.python",
                 "entity.name.type.rust"
             ],
             "settings": {

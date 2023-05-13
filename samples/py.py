@@ -20,6 +20,10 @@ def multiply(x, y):
 def divide(x: float, y: float) -> float:
     return x / y
 
+def search_for_vowels(word: str) -> set[str]:
+    """Return any vowels contained in the word"""
+    vowels = set("aeiou")
+    return vowels.intersection(set(word))
 
 r: set[str] = search_for_vowels("Raining Blood")
 

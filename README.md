@@ -23,6 +23,7 @@ See [assets/palette.json](https://github.com/chapmandu/rust-in-peace-vscode-them
 
 ## TODO
 
+- Python static type annotations
 - Palette image
 - Screenshots of code samples
 
