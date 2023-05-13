@@ -23,7 +23,6 @@ See [assets/palette.json](https://github.com/chapmandu/rust-in-peace-vscode-them
 
 ## TODO
 
-- CSS attributes & pseudo elements
 - Palette image
 - Screenshots of code samples
 
@@ -34,7 +33,8 @@ To work on the theme:
 1. Clone this repo and open in VS Code
 2. Open run `View → Run`
 3. Click `Launch Extension`. This will open up another VS Code Editor
-4. Make changes to `rust-in-peace-color-theme.json`. You will see changes reflected in the other editor that opened in step 3.
+4. Target scopes using the "Developer: Inspection Editor Tokens and Scopes" command
+5. Make changes to `rust-in-peace-color-theme.json`. You will see changes reflected in the other editor that opened in step 3.
 
 Please provide screenshots of your changes before & after in Pull Requests.
 

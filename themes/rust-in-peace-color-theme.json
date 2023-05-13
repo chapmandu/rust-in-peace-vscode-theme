@@ -753,12 +753,13 @@
         {
             "scope": [
                 "entity.other.attribute-name.pseudo-class.css",
+                "entity.other.attribute-name.pseudo-element.css",
                 "entity.other.pseudo-class.css",
                 "entity.other.pseudo-element.css"
             ],
             "settings": {
                 "fontStyle": "italic",
-                "foreground": "#5EADEB",
+                "foreground": "#E98E6A",
                 "name": "CSS pseudo class"
             }
         },
@@ -1010,6 +1011,26 @@
             "settings": {
                 "fontStyle": "italic",
                 "name": "Markup quote"
+            }
+        },
+        {
+            "scope": [
+                "variable.language.scope.cfml"
+            ],
+            "settings": {
+                "foreground": "#949BBA",
+                "name": "Scopes"
+            }
+        },
+        {
+            "scope": [
+                "support.type.primitive.cfml",
+                "support.type.python",
+                "entity.name.type.rust"
+            ],
+            "settings": {
+                "foreground": "#747C97",
+                "name": "Types"
             }
         },
         {
@@ -1431,7 +1452,7 @@
             "scope": "storage.type",
             "settings": {
                 "fontStyle": "italic",
-                "foreground": "#5EADEB",
+                "foreground": "#747C97",
                 "name": "Types and definition / declaration keywords should use the following scope. Examples include int, bool, char, func, function, class and def. Depending on the language and semantics, const may be this or storage.modifier."
             }
         },
@@ -1443,9 +1464,16 @@
             }
         },
         {
+            "scope": "storage.type.function",
+            "settings": {
+                "foreground": "#5EADEB",
+                "name": "Functions"
+            }
+        },
+        {
             "scope": "storage.type.function.arrow",
             "settings": {
-                "foreground": "#C45F53",
+                "foreground": "#747C97",
                 "name": "Fat arrow function"
             }
         },
@@ -1458,6 +1486,16 @@
                 "fontStyle": "italic",
                 "foreground": "#C45F53",
                 "name": "Keywords that affect the storage of a variable, function or data structure should use the following scope. Examples include static, inline, const, public and private."
+            }
+        },
+        {
+            "scope": [
+                "storage.modifier.import"
+            ],
+            "settings": {
+                "fontStyle": "italic",
+                "foreground": "#E98E6A",
+                "name": "Imports"
             }
         },
         {

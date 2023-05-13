@@ -25,3 +25,7 @@ body {
 		text-shadow: 0px 5px 3px #c8102e;
 	}
 }
+article p:first-child::first-line {
+  font-size: 120%;
+  font-weight: bold;
+}
