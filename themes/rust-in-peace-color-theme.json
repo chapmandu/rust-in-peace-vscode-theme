@@ -1456,6 +1456,13 @@
             }
         },
         {
+            "scope": "storage.type.class",
+            "settings": {
+                "foreground": "#E98E6A",
+                "name": "Class"
+            }
+        },
+        {
             "scope": "storage.type.extends",
             "settings": {
                 "foreground": "#C45F53",
