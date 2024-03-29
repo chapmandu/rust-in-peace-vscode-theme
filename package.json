@@ -1,12 +1,17 @@
 {
     "name": "rust-in-peace",
     "displayName": "Rust in Peace",
+    "homepage": "https://github.com/chapmandu/rust-in-peace-vscode-theme",
     "description": "A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rust in Peace.",
-    "version": "1.7.2",
+    "version": "2.0.0",
     "engines": {
         "vscode": "^1.78.2"
     },
-    "publisher": "chapmandu",
+    "publisher": "Adam Chapman",
+    "license": "MIT",
+    "maintainers": [
+        "Adam Chapman"
+    ],
     "repository": {
         "type": "git",
         "name": "https://github.com/chapmandu/rust-in-peace-vscode-theme"
@@ -39,7 +44,12 @@
             {
                 "label": "Rust in Peace",
                 "uiTheme": "vs-dark",
-                "path": "./themes/rust-in-peace-color-theme.json"
+                "path": "./theme/rust-in-peace.json"
+            },
+            {
+                "label": "Rust in Peace Soft",
+                "uiTheme": "vs-dark",
+                "path": "./theme/rust-in-peace-soft.json"
             }
         ]
     },
@@ -47,6 +57,17 @@
         "dependencies:install": "npm install -g @vscode/vsce",
         "extension:install": "rm -f ./*.vsix && vsce package && code --install-extension ./rust-in-peace-*.vsix",
         "publish:minor": "vsce publish minor",
-        "publish:patch": "vsce publish patch"
+        "publish:patch": "vsce publish patch",
+        "build": "node ./scripts/build.js",
+        "lint": "node ./scripts/lint.js",
+        "package": "vsce package -o ./bin/rust-in-peace.vsix",
+        "vscode:prepublish": "npm run build",
+        "vsce-publish": "vsce publish"
+    },
+    "devDependencies": {
+        "js-yaml": "^4.1.0",
+        "prettier": "^3.0.0",
+        "tinycolor2": "^1.6.0",
+        "@vscode/vsce": "^2.15.0"
     }
 }

@@ -35,7 +35,7 @@ To work on the theme:
 2. Open run `View → Run`
 3. Click `Launch Extension`. This will open up another VS Code Editor
 4. Target scopes using the "Developer: Inspection Editor Tokens and Scopes" command
-5. Make changes to `rust-in-peace-color-theme.json`. You will see changes reflected in the other editor that opened in step 3.
+5. Make changes to `src/rust-in-peace.yaml`, and run `npm run build`. You will see changes reflected in the other editor that opened in step 3.
 
 Please provide screenshots of your changes before & after in Pull Requests.
 
