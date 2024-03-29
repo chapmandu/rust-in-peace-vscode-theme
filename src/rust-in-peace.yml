@@ -7,23 +7,23 @@ semanticClass: theme.rustInPeace
 semanticHighlighting: true
 rustInPeace:
   base:
-    - &BG        '#141a3b'
+    - &BG        '#161d3b'
     - &FG        '#d9e0ff'
     - &SELECTION '#225d3a'
-    - &COMMENT   '#7776a1'
+    - &COMMENT   '#525B72'
     - &CYAN      '#5EADEB'
     - &BLUE      '#1848B4'
-    - &GREEN     '#b2f75f'
+    - &GREEN     '#8EC857'
     - &ORANGE    '#E98E6A'
     - &PINK      '#4e7eee'
     - &PURPLE    '#BF77D0'
     - &RED       '#C45F53'
-    - &YELLOW    '#ede064'
+    - &YELLOW    '#E8D38B'
   ansi:
     - &COLOR0        '#21222C'
     - &COLOR1        '#C45F53'
-    - &COLOR2        '#b2f75f'
-    - &COLOR3        '#ede064'
+    - &COLOR2        '#8EC857'
+    - &COLOR3        '#E8D38B'
     - &COLOR4        '#BF77D0'
     - &COLOR5        '#D98BD7'
     - &COLOR6        '#5EADEB'
@@ -38,7 +38,7 @@ rustInPeace:
     - &COLOR15       '#FFFFFF'
   brightOther:
     # Temporary (awaiting fix)
-    - &TEMP_QUOTES          '#ede064'
+    - &TEMP_QUOTES          '#E8D38B'
     - &TEMP_PROPERTY_QUOTES '#97CBE8'
   other:
     - &LineHighlight '#44475A75'
