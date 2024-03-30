@@ -55,14 +55,13 @@
     },
     "scripts": {
         "dependencies:install": "npm install -g @vscode/vsce",
-        "extension:install": "rm -f ./*.vsix && vsce package && code --install-extension ./rust-in-peace-*.vsix",
-        "publish:minor": "vsce publish minor",
-        "publish:patch": "vsce publish patch",
+        "extension:install": "npm run package && code --install-extension ./rust-in-peace-*.vsix",
         "build": "node ./scripts/build.js",
         "lint": "node ./scripts/lint.js",
-        "package": "vsce package -o ./bin/rust-in-peace.vsix",
-        "vscode:prepublish": "npm run build",
-        "vsce-publish": "vsce publish"
+        "publish": "vsce publish",
+        "publish:minor": "vsce publish minor",
+        "publish:patch": "vsce publish patch",
+        "package": "vsce package -o ./bin/rust-in-peace.vsix"
     },
     "devDependencies": {
         "js-yaml": "^4.1.0",
