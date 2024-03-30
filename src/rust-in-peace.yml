@@ -126,8 +126,8 @@ colors:
   scrollbarSlider.hoverBackground:                                              # Slider background color when hovering
 
   # Badge
-  badge.foreground: *FG                                                      # Badge foreground color
-  badge.background: *BLUE                                                         # Badge background color
+  badge.foreground: *BG                                                      # Badge foreground color
+  badge.background: *CYAN                                                         # Badge background color
 
   # Progress Bar
   progressBar.background: *GREEN                                                # Background color of the progress bar shown for long running operations
