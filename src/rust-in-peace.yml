@@ -8,8 +8,8 @@ semanticHighlighting: true
 rustInPeace:
   base:
     - &BG        '#161d3b'
-    - &FG        '#d9e0ff'
-    - &SELECTION '#225d3a'
+    - &FG        '#b4d1e2'
+    - &SELECTION '#3f035c'
     - &COMMENT   '#715c9d'
     - &CYAN      '#5EADEB'
     - &BLUE      '#1848B4'
@@ -35,16 +35,17 @@ rustInPeace:
     - &COLOR12       '#D6ACFF'
     - &COLOR13       '#FF92DF'
     - &COLOR14       '#A4FFFF'
-    - &COLOR15       '#FFFFFF'
+    - &COLOR15       '#b4d1e2'
   brightOther:
     # Temporary (awaiting fix)
     - &TEMP_QUOTES          '#E8D38B'
-    - &TEMP_PROPERTY_QUOTES '#97CBE8'
+    - &TEMP_PROPERTY_QUOTES '#b4d1e2'
   other:
     - &LineHighlight '#44475A75'
     - &NonText       '#FFFFFF1A'
     - &WHITE         '#FFFFFF'
     - &TAB_DROP_BG   '#44475A70'
+    - &BUTTON_BG     '#00863e'
     # UI Variants
     - &BGLighter     '#1b2451'
     - &BGLight       '#181f46' # HSV (230   , 25.71, 27.45)
@@ -86,7 +87,7 @@ colors:
   errorForeground: *RED                                                         # Overall foreground color for error messages (this color is only used if not overridden by a component)
 
   # Button Control
-  button.background: *SELECTION                                                 # Button background color
+  button.background: *BUTTON_BG                                                     # Button background color
   button.foreground: *FG                                                        # Button foreground color
   button.border:                                                                # Button border color
   button.hoverBackground:                                                       # Button background color when hovering
@@ -123,11 +124,11 @@ colors:
   scrollbarSlider.hoverBackground:                                              # Slider background color when hovering
 
   # Badge
-  badge.foreground: *FG                                                         # Badge foreground color
-  badge.background: *SELECTION                                                  # Badge background color
+  badge.foreground: *GREEN                                                      # Badge foreground color
+  badge.background: *BG                                                         # Badge background color
 
   # Progress Bar
-  progressBar.background: *GREEN                                                 # Background color of the progress bar shown for long running operations
+  progressBar.background: *GREEN                                                # Background color of the progress bar shown for long running operations
 
   # List & Trees
   list.activeSelectionBackground: *SELECTION                                    # List/Tree background color for the selected item when the list/tree is active
@@ -322,18 +323,18 @@ colors:
   panelTitle.inactiveForeground: *COMMENT                                       # Title color for the inactive panel
 
   # Status Bar Colors
-  statusBar.background: !alpha [ *PURPLE, 90 ]                                               # Standard Status Bar background color
+  statusBar.background: *SELECTION                                               # Standard Status Bar background color
   statusBar.foreground: *FG                                                     # Status Bar foreground color
   statusBar.debuggingBackground: *RED                                           # Status Bar background color when a program is being debugged
-  statusBar.debuggingForeground: !alpha [ *PURPLE, 90 ]                                      # Status Bar foreground color when a program is being debugged
-  statusBar.noFolderBackground: !alpha [ *PURPLE, 90 ]                                       # Status Bar foreground color when no folder is opened
+  statusBar.debuggingForeground: *SELECTION                                      # Status Bar foreground color when a program is being debugged
+  statusBar.noFolderBackground: *SELECTION                                       # Status Bar foreground color when no folder is opened
   statusBar.noFolderForeground: *FG                                             # Status Bar background color when no folder is opened
   statusBarItem.activeBackground:                                               # Status Bar item background color when clicking
   statusBarItem.hoverBackground:                                                # Status Bar item background color when hovering
   statusBarItem.prominentBackground: *RED                                       # Status Bar prominent items background color. Prominent items stand out from other Status Bar entries to indicate importance
   statusBarItem.prominentHoverBackground: *ORANGE                               # Status Bar prominent items background color when hovering. Prominent items stand out from other Status Bar entries to indicate importance
   statusBarItem.remoteForeground: *BG                                           # Background color for the remote indicator on the status bar
-  statusBarItem.remoteBackground: !alpha [ *PURPLE, 90 ]                                       # Foreground color for the remote indicator on the status bar
+  statusBarItem.remoteBackground: *SELECTION                                       # Foreground color for the remote indicator on the status bar
   statusBar.border:
 
   # Title Bar Colors (MacOS Only)
@@ -344,8 +345,8 @@ colors:
 
   # Extensions
   extensionButton.prominentForeground: *FG                                      # Extension view button foreground color (for example Install button)
-  extensionButton.prominentBackground: !alpha [ *GREEN, 90 ]                    # Extension view button background color
-  extensionButton.prominentHoverBackground: !alpha [ *GREEN, 60 ]               # Extension view button background hover color
+  extensionButton.prominentBackground: *BUTTON_BG                    # Extension view button background color
+  extensionButton.prominentHoverBackground: !alpha [ *BUTTON_BG, 90 ]               # Extension view button background hover color
 
   # Quick Picker
   pickerGroup.border: *PURPLE                                                   # Quick picker (Quick Open) color for grouping borders
