@@ -3,7 +3,7 @@
     "displayName": "Rust in Peace",
     "homepage": "https://github.com/chapmandu/rust-in-peace-vscode-theme",
     "description": "A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rust in Peace.",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "engines": {
         "vscode": "^1.78.2"
     },
