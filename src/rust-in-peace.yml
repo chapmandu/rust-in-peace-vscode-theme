@@ -46,6 +46,7 @@ rustInPeace:
     - &WHITE         '#FFFFFF'
     - &TAB_DROP_BG   '#44475A70'
     - &BUTTON_BG     '#00863e'
+    - &BUTTON_FG     '#e4ff96'
     - &STATUS_BAR_BG '#49006e'
     # UI Variants
     - &BGLighter     '#1b2451'
@@ -89,7 +90,7 @@ colors:
 
   # Button Control
   button.background: *BUTTON_BG                                                     # Button background color
-  button.foreground: *FG                                                        # Button foreground color
+  button.foreground: *BUTTON_FG                                                        # Button foreground color
   button.border:                                                                # Button border color
   button.hoverBackground:                                                       # Button background color when hovering
   button.secondaryBackground: *BG                                               # Secondary button background color.
@@ -126,7 +127,7 @@ colors:
 
   # Badge
   badge.foreground: *BUTTON_BG                                                      # Badge foreground color
-  badge.background: *BG                                                         # Badge background color
+  badge.background: *BUTTON_FG                                                         # Badge background color
 
   # Progress Bar
   progressBar.background: *GREEN                                                # Background color of the progress bar shown for long running operations
@@ -154,7 +155,7 @@ colors:
   activityBar.activeBorder: !alpha [*GREEN, 80]                                  # Activity Bar indicator color
   activityBar.activeBackground: !alpha [*YELLOW, 10]                            # Activity Bar indicator background color
   activityBarBadge.background: *BUTTON_BG                                            # Activity notification badge background color
-  activityBarBadge.foreground: *BG                                              # Activity notification badge foreground color
+  activityBarBadge.foreground: *BUTTON_FG                                              # Activity notification badge foreground color
 
   # Side Bar
   sideBar.background: *BGDark                                                   # Side Bar background color
@@ -345,12 +346,12 @@ colors:
   titleBar.inactiveForeground: *COMMENT                                         # Title Bar foreground when the window is inactive
 
   # Extensions
-  extensionButton.prominentForeground: *FG                                      # Extension view button foreground color (for example Install button)
   extensionButton.prominentBackground: *BUTTON_BG                    # Extension view button background color
+  extensionButton.prominentForeground: *BUTTON_FG                                      # Extension view button foreground color (for example Install button)
   extensionButton.prominentHoverBackground: !alpha [ *BUTTON_BG, 90 ]               # Extension view button background hover color
 
   # Quick Picker
-  pickerGroup.border: *PURPLE                                                   # Quick picker (Quick Open) color for grouping borders
+  pickerGroup.border: *SELECTION                                                   # Quick picker (Quick Open) color for grouping borders
   pickerGroup.foreground: *CYAN                                                 # Quick picker (Quick Open) color for grouping labels
 
   # Debug
