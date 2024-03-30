@@ -17,10 +17,10 @@ module.exports = async () => {
             path.join(THEME_DIR, 'rust-in-peace.json'),
             JSON.stringify(base, null, 4)
         ),
-        fs.promises.writeFile(
-            path.join(THEME_DIR, 'rust-in-peace-soft.json'),
-            JSON.stringify(soft, null, 4)
-        ),
+        // fs.promises.writeFile(
+        //     path.join(THEME_DIR, 'rust-in-peace-soft.json'),
+        //     JSON.stringify(soft, null, 4)
+        // ),
     ]);
 };
 

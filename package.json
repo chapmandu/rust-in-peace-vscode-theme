@@ -45,11 +45,6 @@
                 "label": "Rust in Peace",
                 "uiTheme": "vs-dark",
                 "path": "./theme/rust-in-peace.json"
-            },
-            {
-                "label": "Rust in Peace Soft",
-                "uiTheme": "vs-dark",
-                "path": "./theme/rust-in-peace-soft.json"
             }
         ]
     },
