@@ -13,6 +13,7 @@ jobs:
           node-version: lts/*
           cache: npm
       - run: npm install && mkdir -p ./bin
+      - run: npm run build
       - run: npm run package
       - uses: actions/create-release@v1
         id: create_release
