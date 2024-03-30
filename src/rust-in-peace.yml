@@ -1,6 +1,6 @@
 $schema: vscode://schemas/color-theme
 name: Rust in Peace
-author: Adam Chapman
+author: chapmandu
 maintainers:
   - Adam Chapman <adam.p.chapman@gmail.com>
 semanticClass: theme.rustInPeace
