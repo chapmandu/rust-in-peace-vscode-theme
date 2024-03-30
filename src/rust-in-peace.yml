@@ -10,15 +10,15 @@ rustInPeace:
     - &BG        '#161d3b'
     - &FG        '#d9e0ff'
     - &SELECTION '#225d3a'
-    - &COMMENT   '#525B72'
+    - &COMMENT   '#715c9d'
     - &CYAN      '#5EADEB'
     - &BLUE      '#1848B4'
-    - &GREEN     '#8EC857'
-    - &ORANGE    '#E98E6A'
     - &TEAL      '#4e7eee'
-    - &PURPLE    '#BF77D0'
-    - &RED       '#C45F53'
+    - &GREEN     '#8EC857'
     - &YELLOW    '#E8D38B'
+    - &ORANGE    '#E98E6A'
+    - &RED       '#C45F53'
+    - &PURPLE    '#BF77D0'
   ansi:
     - &COLOR0        '#21222C'
     - &COLOR1        '#C45F53'
@@ -144,7 +144,7 @@ colors:
   list.focusForeground:                                                         # List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not
 
   # Activity Bar
-  activityBar.background: *BGLight                                              # Activity Bar background color
+  activityBar.background: *BG                                                   # Activity Bar background color
   activityBar.inactiveForeground: *COMMENT                                      # Activity bar item foreground color when it is inactive
   activityBar.dropBackground:                                                   # Drag and drop feedback color for the Activity Bar items
   activityBar.foreground: *FG                                                   # Activity bar foreground color (for example used for the icons)
@@ -165,7 +165,7 @@ colors:
 
   # Editor Group & Tabs
   editorGroup.background:                                                       # Background color of an editor group. The background color shows up when dragging editor groups around
-  editorGroup.border: *BLUE                                                   # Color to separate multiple editor groups from each other
+  editorGroup.border: *SELECTION                                                   # Color to separate multiple editor groups from each other
   editorGroup.dropBackground: *TAB_DROP_BG                                      # Background color when dragging editors around
   editorGroupHeader.noTabsBackground:                                           # Background color of the editor group title header when Tabs are disabled
   editorGroupHeader.tabsBackground: *BGDarker                                   # Background color of the Tabs container
@@ -173,11 +173,11 @@ colors:
   tab.activeBackground: *BG                                                     # Active Tab background color
   tab.activeForeground: *FG                                                     # Active Tab foreground color in an active group
   tab.border: *BGDarker                                                         # Border to separate Tabs from each other
-  tab.activeBorderTop: !alpha [*GREEN, 80]                                       # A border drawn to the top of the active tab
+  tab.activeBorderTop: *GREEN                                       # A border drawn to the top of the active tab
   tab.activeBorder:                                                             # A border drawn to the bottom of the active tab
   tab.unfocusedActiveBorder:                                                    # A border drawn to the bottom of the active tab in an editor group that is not focused
   tab.inactiveBackground: *BGDark                                               # Inactive Tab background color
-  tab.inactiveForeground: *COMMENT                                              # Inactive Tab foreground color in an active group
+  tab.inactiveForeground: *ORANGE                                              # Inactive Tab foreground color in an active group
   tab.unfocusedActiveForeground:                                                # Active tab foreground color in an inactive editor group
   tab.unfocusedInactiveForeground:                                              # Inactive tab foreground color in an inactive editor group
 
@@ -316,24 +316,24 @@ colors:
 
   # Panel Colors
   panel.background: *BG                                                         # Panel background color
-  panel.border: *BLUE                                                         # Panel border color on the top separating to the editor
+  panel.border: *SELECTION                                                         # Panel border color on the top separating to the editor
   panelTitle.activeBorder: *GREEN                                                # Border color for the active panel title
   panelTitle.activeForeground: *FG                                              # Title color for the active panel
   panelTitle.inactiveForeground: *COMMENT                                       # Title color for the inactive panel
 
   # Status Bar Colors
-  statusBar.background: *PURPLE                                               # Standard Status Bar background color
+  statusBar.background: !alpha [ *PURPLE, 90 ]                                               # Standard Status Bar background color
   statusBar.foreground: *FG                                                     # Status Bar foreground color
   statusBar.debuggingBackground: *RED                                           # Status Bar background color when a program is being debugged
-  statusBar.debuggingForeground: !alpha [ *PURPLE, 80 ]                                      # Status Bar foreground color when a program is being debugged
-  statusBar.noFolderBackground: !alpha [ *PURPLE, 80 ]                                       # Status Bar foreground color when no folder is opened
+  statusBar.debuggingForeground: !alpha [ *PURPLE, 90 ]                                      # Status Bar foreground color when a program is being debugged
+  statusBar.noFolderBackground: !alpha [ *PURPLE, 90 ]                                       # Status Bar foreground color when no folder is opened
   statusBar.noFolderForeground: *FG                                             # Status Bar background color when no folder is opened
   statusBarItem.activeBackground:                                               # Status Bar item background color when clicking
   statusBarItem.hoverBackground:                                                # Status Bar item background color when hovering
   statusBarItem.prominentBackground: *RED                                       # Status Bar prominent items background color. Prominent items stand out from other Status Bar entries to indicate importance
   statusBarItem.prominentHoverBackground: *ORANGE                               # Status Bar prominent items background color when hovering. Prominent items stand out from other Status Bar entries to indicate importance
   statusBarItem.remoteForeground: *BG                                           # Background color for the remote indicator on the status bar
-  statusBarItem.remoteBackground: !alpha [ *PURPLE, 80 ]                                       # Foreground color for the remote indicator on the status bar
+  statusBarItem.remoteBackground: !alpha [ *PURPLE, 90 ]                                       # Foreground color for the remote indicator on the status bar
   statusBar.border:
 
   # Title Bar Colors (MacOS Only)
