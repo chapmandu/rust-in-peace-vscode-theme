@@ -25,16 +25,16 @@ rustInPeace:
     - &COLOR2        '#8EC857'
     - &COLOR3        '#F1FA8C'
     - &COLOR4        '#BF77D0'
-    - &COLOR5        '#5EADEB'
-    - &COLOR6        '#f073c8'
+    - &COLOR5        '#f073c8'
+    - &COLOR6        '#5EADEB'
     - &COLOR7        '#b4d1e2'
     - &COLOR8        '#6272A4'
     - &COLOR9        '#C45F53'
     - &COLOR10       '#8EC857'
     - &COLOR11       '#FFFFA5'
     - &COLOR12       '#BF77D0'
-    - &COLOR13       '#5EADEB'
-    - &COLOR14       '#f073c8'
+    - &COLOR13       '#f073c8'
+    - &COLOR14       '#5EADEB'
     - &COLOR15       '#FFFFFF'
   brightOther:
     # Temporary (awaiting fix)
@@ -47,7 +47,7 @@ rustInPeace:
     - &TAB_DROP_BG   '#44475A70'
     - &BUTTON_BG     '#00863e'
     - &BUTTON_FG     '#e4ff96'
-    - &STATUS_BAR_BG '#49006e'
+    - &STATUS_BAR_BG '#493283'
     # UI Variants
     - &BGLighter     '#1b2451'
     - &BGLight       '#181f46' # HSV (230   , 25.71, 27.45)
