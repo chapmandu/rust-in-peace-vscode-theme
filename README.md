@@ -47,4 +47,16 @@ Please provide screenshots of your changes before & after in Pull Requests.
 
 `npm run publish:patch` - Bump and publish
 
+### Manual Publishing
+
+1. Bump the version in `package.json`
+2. `git commit -m 'Fire'` Commit the changes
+3. `git tag v2.0.666` Tag the commit with the version number
+4. `git push origin --tags` Push the tag
+5. `git push` Push the changes
+6. Create a [release](https://github.com/chapmandu/rust-in-peace-vscode-theme/releases) in Github with the same version number
+7. Github actions will publish the extension to the marketplace
+8. Profit!
+
+
 Also check out the Slayer [Reign in Blood](https://marketplace.visualstudio.com/items?itemName=chapmandu.reign-in-blood) theme.
