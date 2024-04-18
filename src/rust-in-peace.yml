@@ -8,10 +8,10 @@ semanticHighlighting: true
 rustInPeace:
   base:
     - &BG        '#161d3b'
-    - &FG        '#b4d1e2'
+    - &FG        '#d7e6f9'
     - &SELECTION '#1d2656'
     - &COMMENT   '#585d9d'
-    - &CYAN      '#5EADEB'
+    - &CYAN      '#66bfff'
     - &BLUE      '#1848B4'
     - &TEAL      '#4e7eee'
     - &GREEN     '#8EC857'
