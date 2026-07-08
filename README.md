@@ -21,12 +21,6 @@ A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rus
 
 See [assets/palette.json](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/assets/palette.json)
 
-## TODO
-
-- Python static type annotations
-- Palette image
-- Screenshots of code samples
-
 ## Contributing
 
 To work on the theme:
