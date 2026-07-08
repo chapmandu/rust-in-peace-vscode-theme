@@ -1,62 +1,56 @@
 {
-	"blues": {
-		"foreground": "#d9e0ff",
-		"muted": "#4e7eee",
-		"light": "#1848B4",
-		"actual": "#0E2B9E",
-		"dark": "#0F218B",
-		"darker": "#0D166C",
-		"code": "#5D42C1"
-	},
-	"lightGrey": {
-		"foreground": "#b4d1e2",
-		"lighter": "#B2B8DB",
-		"light": "#949BBA",
-		"actual": "#747C97",
-		"dark": "#525B72",
-		"darker": "#364053"
-	},
 	"editor": {
-		"lighter": "#1b2451",
-		"light": "#181f46",
-		"actual": "#141a3b",
-		"dark": "#0f142e",
-		"darker": "#0c1024",
-		"borders": "#1f2a63"
+		"border": "#070a1a",
+		"menu": "#0a0e22",
+		"background": "#101530",
+		"selection": "#17204a",
+		"surface": "#1c2547",
+		"focus": "#202a58"
 	},
-	"violets": {
-		"foreground": "#B6BFEA",
-		"actual": "#7C50BC"
+	"text": {
+		"foreground": "#d3e0f0",
+		"muted": "#aebfda",
+		"comment": "#6570a8"
+	},
+	"blues": {
+		"keyword": "#5e9fe0",
+		"builtin": "#99c5f0",
+		"info": "#84bef5",
+		"button": "#2a5ca8"
 	},
 	"greens": {
-		"lighter": "#daeeb4",
-		"light": "#8EC857",
-		"actual": "#68BB52",
-		"another": "#58A82B",
-		"dark": "#36915B"
+		"function": "#95de73",
+		"bright": "#b0e696"
 	},
-	"purples": {
-		"foreground": "#e4d6f1",
-		"lighter": "#D98BD7",
-		"light": "#BF77D0",
-		"actual": "#9C5CC6",
-		"dark": "#7F46BE"
+	"golds": {
+		"string": "#e8e274",
+		"type": "#f2c074"
 	},
-	"oranges": {
-		"bright": "#F39F47",
-		"light": "#F2BA7D",
-		"actual": "#E98E6A",
-		"dark": "#C45F53"
+	"rusts": {
+		"error": "#eb8667"
 	},
-	"cyans": {
-		"light": "#97CBE8",
-		"actual": "#5EADEB",
-		"dark": "#3D95DD"
+	"violets": {
+		"constant": "#9a63de"
 	},
-	"yellows": {
-		"bright": "#ede064",
-		"light": "#E8D38B",
-		"actual": "#EAB577",
-		"dark": "#CB936A"
+	"pinks": {
+		"magenta": "#eb8db7"
+	},
+	"ansi": {
+		"black": "#1c2547",
+		"red": "#eb8667",
+		"green": "#95de73",
+		"yellow": "#e8e274",
+		"blue": "#9a63de",
+		"magenta": "#eb8db7",
+		"cyan": "#84bef5",
+		"white": "#d3e0f0",
+		"brightBlack": "#6570a8",
+		"brightRed": "#f0a48d",
+		"brightGreen": "#b0e696",
+		"brightYellow": "#ede893",
+		"brightBlue": "#b085e5",
+		"brightMagenta": "#f0aac9",
+		"brightCyan": "#a3cef8",
+		"brightWhite": "#eef4fb"
 	}
 }
