@@ -6,7 +6,7 @@ A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rus
 
 <div style="text-align:center">
 
-![Rust in Peace](https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/Megadeth-RustInPeace.jpg)
+![Rust in Peace](https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/swatch.png)
 
 </div>
 
