@@ -1,31 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-.App {
-	text-align: center;
-	height: 100%;
+/* Polaris — the hangar containment console.
+   Deep hangar blues, a glowing green pod, gold warnings. */
+
+:root {
+	--hangar-bg: #101530;
+	--hangar-surface: #1c2547;
+	--pod-glow: #9a63de;
+	--tube-blue: #5e9fe0;
+	--warning-gold: #e8e274;
+	--rust: #eb8667;
 }
-body {
-	overflow: hidden;
+
+.console {
+	background: var(--hangar-bg);
+	color: #d3e0f0;
+	font-family: "Cascadia Code", ui-monospace, monospace;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 1rem;
+	padding: 2rem;
 }
-.lost {
-	animation: bloody 4s ease infinite alternate;
-	-webkit-animation: bloody 4s ease infinite alternate;
-	-moz-animation: bloody 4s ease infinite alternate;
-	-o-animation: bloody 4s ease infinite alternate;
+
+.bay {
+	background: var(--hangar-surface);
+	border: 1px solid color-mix(in srgb, var(--tube-blue) 40%, transparent);
+	border-radius: 6px;
+	padding: 0.75rem 1rem;
 }
-.blooddrop:before {
-	position: absolute;
-	width: 0;
-	height: 0;
+
+.bay[data-status="imminent"] {
+	border-color: var(--rust);
+	animation: pulse 1.5s ease-in-out infinite alternate;
 }
-@keyframes bloody {
-	0% {
-		letter-spacing: -0.025em;
-	}
-	100% {
-		text-shadow: 0px 5px 3px #c8102e;
-	}
+
+.bay .megatons::after {
+	content: " Mt";
+	color: var(--warning-gold);
 }
-article p:first-child::first-line {
-  font-size: 120%;
-  font-weight: bold;
+
+@keyframes pulse {
+	from { box-shadow: 0 0 4px var(--pod-glow); }
+	to   { box-shadow: 0 0 18px var(--pod-glow); }
+}
+
+@media (max-width: 640px) {
+	.console { grid-template-columns: 1fr; }
 }

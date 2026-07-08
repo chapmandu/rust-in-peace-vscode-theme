@@ -1,28 +1,34 @@
-#!/bin/bash
-# Counting the number of lines in a list of files
-# function version
+#!/usr/bin/env bash
+# Polaris — decommission every warhead in the hangar.
+# Each one rusts in peace, on its own schedule.
+set -euo pipefail
 
-count_lines() {
-  local f=$1
-  # this is the return value, i.e. non local
-  l=$(wc -l $f | sed 's/^\([0-9]*\).*$/\1/')
+readonly CONTAINMENT_MODEL="polaris-mk-iii"
+readonly MAX_BAYS=18 # Hangar 18
+readonly MANIFEST="${1:-./hangar.manifest}"
+
+decommission() {
+  local label="$1" megatons="$2"
+  # disarm, then log it as rusting in peace
+  printf 'stand down %-18s (%.1f Mt)\n' "$label" "$megatons"
 }
 
-if [ $# -lt 1 ]; then
-  echo "Usage: $0 file ..."
+if [[ ! -f "$MANIFEST" ]]; then
+  echo "usage: $0 <manifest>" >&2
   exit 1
 fi
 
-echo "$0 counts the lines of code"
-l=0
-n=0
-s=0
-while [ "$*" != "" ]; do
-  count_lines $1
-  echo "$1: $l"
-  n=$(($n + 1))
-  s=$(($s + $l))
-  shift
-done
+count=0
+total=0.0
+while IFS=',' read -r label megatons; do
+  [[ "$label" =~ ^# ]] && continue
+  if (( count >= MAX_BAYS )); then
+    echo "$CONTAINMENT_MODEL: all $MAX_BAYS bays accounted for" >&2
+    break
+  fi
+  decommission "$label" "$megatons"
+  count=$(( count + 1 ))
+  total=$(echo "$total + $megatons" | bc -l)
+done < "$MANIFEST"
 
-echo "$n files in total, with $s lines in total"
+echo "decommissioned $count warheads, ${total} Mt now resting"

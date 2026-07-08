@@ -1,33 +1,30 @@
 {
-	"data": [
+	"containmentModel": "polaris-mk-iii",
+	"hangar": "18",
+	"maxBays": 18,
+	"dangerLevel": 6.6,
+	"warheads": [
 		{
-			"attributes": {
-				"body": "The shortest article. Ever.",
-				"created": "2015-05-22T14:56:29.000Z",
-				"title": "JSON:API paints my bikeshed!",
-				"updated": "2015-05-22T14:56:28.000Z"
-			},
-			"id": "1",
-			"relationships": {
-				"author": {
-					"data": {
-						"id": "42",
-						"type": "people"
-					}
-				}
-			},
-			"type": "articles"
+			"label": "Holy Wars",
+			"megatons": 4.2,
+			"armed": false,
+			"status": "rusting",
+			"halfLife": 24100
+		},
+		{
+			"label": "Tornado of Souls",
+			"megatons": 1.5,
+			"armed": false,
+			"status": "stable",
+			"halfLife": null
+		},
+		{
+			"label": "Lucretia",
+			"megatons": 0.9,
+			"armed": true,
+			"status": "imminent",
+			"halfLife": 87
 		}
 	],
-	"included": [
-		{
-			"attributes": {
-				"age": 80,
-				"gender": "male",
-				"name": "John"
-			},
-			"id": "42",
-			"type": "people"
-		}
-	]
+	"decommissioned": ["Five Magics", "Poison Was the Cure", "Dawn Patrol"]
 }

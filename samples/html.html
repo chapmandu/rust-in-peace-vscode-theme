@@ -1,18 +1,33 @@
 <!doctype html>
-
+<!-- Polaris — the hangar containment console. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>The HTML5 Herald</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hangar 18 &mdash; Containment Status</title>
+  <meta name="description" content="Every warhead rusts in peace.">
+  <link rel="stylesheet" href="css.css">
 </head>
 
-<body>
-  <script src="index.js"></script>
+<body data-model="polaris-mk-iii">
+  <header class="masthead">
+    <h1>Hangar&nbsp;18</h1>
+    <p class="tagline">Containment holding at <strong data-danger>6.6</strong>&nbsp;Mt</p>
+  </header>
+
+  <main class="console">
+    <article class="bay" data-status="rusting">
+      <h2>Holy Wars</h2>
+      <p class="megatons">4.2</p>
+      <p>half-life <time datetime="P24100Y">24,100 y</time></p>
+    </article>
+    <article class="bay" data-status="imminent">
+      <h2>Lucretia</h2>
+      <p class="megatons">0.9</p>
+      <button type="button" onclick="decommission('Lucretia')">Decommission</button>
+    </article>
+  </main>
+
+  <script src="js.js"></script>
 </body>
 </html>

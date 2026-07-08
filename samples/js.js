@@ -1,26 +1,48 @@
-// Require our dependencies.
-var Backing = require('backing');
-var Realm = require('../').Realm;
+// Polaris — the hangar's containment ledger.
+// Every warhead rusts in peace, each on its own schedule.
 
-// Define our backing store.
-// Realms need somewhere to store their data
-var backing = new Backing({
-  name: 'example-counter',
-  arenaSize: 1024 * 1024,
-  arenaSource: {
-    type: 'mmap',
-    dirname: __dirname + '/../data'
+const CONTAINMENT_MODEL = "polaris-mk-iii";
+const MAX_BAYS = 18; // Hangar 18
+const DECAY_FLOOR = 0.0;
+
+class Warhead {
+  constructor(label, megatons) {
+    this.label = label;
+    this.megatons = megatons;
+    this.armed = false;
+    this.status = "stable";
   }
-});
 
-// Define our realm.
-var realm = new Realm(backing);
-realm.init().then(function () {
-  var count = realm.get('numberOfRuns') || 0;
-  console.log('Number of runs:', count);
-  realm.set('numberOfRuns', count + 1);
-});
+  // Let it rust in peace — disarm and mark it done.
+  decommission() {
+    this.armed = false;
+    this.status = "decommissioned";
+    return this.status;
+  }
+}
 
-// Export some variables for REPL convenience:
-exports.realm = realm;
-exports.backing = backing;
+class Hangar {
+  #bays = new Map();
+  #dangerLevel = DECAY_FLOOR;
+
+  store(warhead) {
+    if (this.#bays.size >= MAX_BAYS) {
+      throw new Error(`${CONTAINMENT_MODEL}: all ${MAX_BAYS} bays full`);
+    }
+    this.#dangerLevel = Math.max(this.#dangerLevel + warhead.megatons * 0.5, DECAY_FLOOR);
+    this.#bays.set(warhead.label, warhead);
+  }
+
+  get level() {
+    return this.#dangerLevel;
+  }
+}
+
+const hangar = new Hangar();
+for (const [name, megatons] of [["Holy Wars", 4.2], ["Lucretia", 0.9]]) {
+  hangar.store(new Warhead(name, megatons));
+  console.log(`stored ${name}`);
+}
+console.log(`danger level holding at ${hangar.level.toFixed(1)}`);
+
+export { Warhead, Hangar };
