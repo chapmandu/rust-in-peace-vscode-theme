@@ -7,10 +7,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+from typing import Final
 
-CONTAINMENT_MODEL = "polaris-mk-iii"
-MAX_BAYS = 18  # Hangar 18
-DECAY_FLOOR = 0.0
+CONTAINMENT_MODEL: Final[str] = "polaris-mk-iii"
+MAX_BAYS: Final[int] = 18  # Hangar 18
+DECAY_FLOOR: Final[float] = 0.0
 
 
 class Status(Enum):
@@ -47,8 +48,9 @@ class Hangar:
 
 
 if __name__ == "__main__":
-    hangar = Hangar()
-    for name, megatons in [("Holy Wars", 4.2), ("Tornado of Souls", 1.5), ("Lucretia", 0.9)]:
+    hangar: Hangar = Hangar()
+    stock: list[tuple[str, float]] = [("Holy Wars", 4.2), ("Tornado of Souls", 1.5), ("Lucretia", 0.9)]
+    for name, megatons in stock:
         hangar.store(Warhead(name, megatons))
         print(f"stored {name}")
     print(f"danger level holding at {hangar.danger_level:.1f}")
