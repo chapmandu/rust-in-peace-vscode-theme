@@ -7,5 +7,4 @@ src/**
 tests/**
 .editorconfig
 .prettierrc.toml
-generate.js
-jsconfig.json
+tsconfig.json

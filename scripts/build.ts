@@ -1,17 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-const generate = require('./generate');
+import * as fs from 'fs';
+import * as path from 'path';
+import generate from './generate';
 
 const THEME_DIR = path.join(__dirname, '..', 'theme');
 
-if (!fs.existsSync(THEME_DIR)) {
-    fs.mkdirSync(THEME_DIR);
-}
+const build = async (): Promise<void> => {
+    if (!fs.existsSync(THEME_DIR)) {
+        fs.mkdirSync(THEME_DIR);
+    }
 
-module.exports = async () => {
-    const { base, soft } = await generate();
+    const { base } = await generate();
 
-    return Promise.all([
+    await Promise.all([
         fs.promises.writeFile(
             path.join(THEME_DIR, 'rust-in-peace.json'),
             JSON.stringify(base, null, 4)
@@ -23,6 +23,7 @@ module.exports = async () => {
     ]);
 };
 
-if (require.main === module) {
-    module.exports();
-}
+build().catch(error => {
+    console.error(error);
+    process.exitCode = 1;
+});

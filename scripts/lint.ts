@@ -1,5 +1,5 @@
-const https = require('https');
-const generate = require('./generate');
+import * as https from 'https';
+import generate from './generate';
 
 const THEME_COLOR_REFERENCE_URL =
     'https://code.visualstudio.com/api/references/theme-color';
@@ -9,7 +9,7 @@ const NOT_THEME_KEYS = [
     'editor.tokenColorCustomizations',
 ];
 
-const get = url =>
+const get = (url: string): Promise<string> =>
     new Promise((resolve, reject) => {
         https.get(url, res => {
             let body = '';
@@ -20,7 +20,7 @@ const get = url =>
         });
     });
 
-async function scrapeThemeAvailableKeys() {
+async function scrapeThemeAvailableKeys(): Promise<string[]> {
     const data = await get(THEME_COLOR_REFERENCE_URL);
 
     const matches = data.match(new RegExp('<code>.+?</code>', 'g'));
