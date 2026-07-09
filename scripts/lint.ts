@@ -42,17 +42,33 @@ const scrapeThemeAvailableKeys = async (): Promise<string[]> => {
         .sort();
 };
 
-/** Warn for every key present in `keys` but absent from `reference`. */
-const warnKeysNotIn = (
-    keys: Iterable<string>,
-    reference: Set<string>,
-    message: (key: string) => string
-): void => {
+const LEVEL_COLORS = {
+    INFO: '\x1b[36m', // cyan
+    WARN: '\x1b[33m', // yellow
+    ERROR: '\x1b[31m', // red
+} as const;
+const RESET = '\x1b[0m';
+
+const log = (level: keyof typeof LEVEL_COLORS, message: string): void => {
+    const line = `${LEVEL_COLORS[level]}${level}${RESET}: ${message}`;
+    if (level === 'ERROR') {
+        console.error(line);
+    } else if (level === 'WARN') {
+        console.warn(line);
+    } else {
+        console.info(line);
+    }
+};
+
+/** Return every key present in `keys` but absent from `reference`. */
+const keysNotIn = (keys: Iterable<string>, reference: Set<string>): string[] => {
+    const absent: string[] = [];
     for (const key of keys) {
         if (!reference.has(key)) {
-            console.warn(message(key));
+            absent.push(key);
         }
     }
+    return absent;
 };
 
 const lint = async (): Promise<void> => {
@@ -60,8 +76,21 @@ const lint = async (): Promise<void> => {
     const { base } = await generate();
     const themeKeys = new Set(Object.keys(base.colors));
 
-    warnKeysNotIn(themeKeys, supportedKeys, key => `Unsupported key "${key}", probably deprecated?`);
-    warnKeysNotIn(supportedKeys, themeKeys, key => `Missing key "${key}" in theme`);
+    // Keys the theme leaves to VS Code's defaults — informational only.
+    for (const key of keysNotIn(supportedKeys, themeKeys)) {
+        log('INFO', `"${key}" not set; using VS Code's default`);
+    }
+
+    // Keys the theme sets that the reference no longer lists — a hard failure.
+    const unsupportedKeys = keysNotIn(themeKeys, supportedKeys);
+    for (const key of unsupportedKeys) {
+        log('WARN', `"${key}" is unsupported, probably deprecated`);
+    }
+
+    if (unsupportedKeys.length > 0) {
+        log('ERROR', `${unsupportedKeys.length} unsupported theme key(s); see warnings above`);
+        process.exitCode = 1;
+    }
 };
 
 lint().catch((error: unknown) => {
