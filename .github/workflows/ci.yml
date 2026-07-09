@@ -15,11 +15,11 @@ jobs:
       - run: npm ci
       - run: npm run eslint
       - run: npm run typecheck
+      # Informational: warns on missing/deprecated VS Code theme keys (network-dependent).
+      - run: npm run lint
       - run: npm run build
       # Fail if the committed theme is stale relative to its YAML source.
       - run: git diff --exit-code theme/
-      # Informational: warns on missing/deprecated VS Code theme keys (network-dependent).
-      - run: npm run lint
 
   fallow:
     # Fallow audit scopes to changed files against the PR base.
