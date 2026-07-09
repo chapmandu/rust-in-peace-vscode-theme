@@ -29,7 +29,7 @@ lint:
 # Audit for unused code and dependencies (needs the fallow CLI — https://fallow.dev)
 [group('code quality')]
 fallow:
-    fallow audit
+    npx fallow audit
 
 # Run the full code-quality suite
 [group('code quality')]
