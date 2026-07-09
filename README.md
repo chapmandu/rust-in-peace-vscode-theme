@@ -26,8 +26,6 @@ Install straight from the [**Visual Studio Marketplace**](https://marketplace.vi
 3. Click **Install**
 4. `Code → Preferences → Color Theme → ` **Rust in Peace**
 
-
-
 ## Contributing
 
 To work on the theme:
@@ -43,15 +41,22 @@ To work on the theme:
 <details>
 <summary><strong>Maintainer & publishing notes</strong></summary>
 
-### Scripts
+### Recipes
 
-| Script                      | Purpose                                   |
-| --------------------------- | ----------------------------------------- |
-| `npm run extension:install` | Builds and installs the extension locally |
-| `npm run publish:minor`     | Bump the minor version and publish        |
-| `npm run publish:patch`     | Bump the patch version and publish        |
+Local tasks run through [`just`](https://github.com/casey/just) — run `just` to list them all.
+
+| Recipe               | Purpose                                                      |
+| -------------------- | ------------------------------------------------------------ |
+| `just check`         | Run the full code-quality suite (eslint, typecheck, lint)    |
+| `just fallow`        | Audit for unused code and dependencies                       |
+| `just build`         | Regenerate the theme JSON from the YAML source               |
+| `just install`       | Build, package, and install the extension into local VS Code |
+| `just publish-patch` | Bump the patch version, tag, and push to publish             |
+| `just publish-minor` | Bump the minor version, tag, and push to publish             |
 
 ### Manual publishing
+
+`just publish-patch` / `just publish-minor` cover steps 1–5 below; run them by hand if you'd rather not use `just`.
 
 1. Bump the version in `package.json`
 2. `git commit -m 'Fire'` — commit the changes

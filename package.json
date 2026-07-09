@@ -49,15 +49,12 @@
     ]
   },
   "scripts": {
-    "dependencies:install": "npm install -g @vscode/vsce",
-    "extension:install": "npm run build && npm run package && code --install-extension ./bin/rust-in-peace.vsix",
     "build": "tsx ./scripts/build.ts",
     "lint": "tsx ./scripts/lint.ts",
     "eslint": "eslint scripts",
     "typecheck": "tsc --noEmit",
     "package": "vsce package -o ./bin/rust-in-peace.vsix",
-    "vscode:prepublish": "npm run build",
-    "vsce-publish": "vsce publish"
+    "vscode:prepublish": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
