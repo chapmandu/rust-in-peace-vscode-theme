@@ -42,21 +42,26 @@ const scrapeThemeAvailableKeys = async (): Promise<string[]> => {
         .sort();
 };
 
+/** Warn for every key present in `keys` but absent from `reference`. */
+const warnKeysNotIn = (
+    keys: Iterable<string>,
+    reference: Set<string>,
+    message: (key: string) => string
+): void => {
+    for (const key of keys) {
+        if (!reference.has(key)) {
+            console.warn(message(key));
+        }
+    }
+};
+
 const lint = async (): Promise<void> => {
-    const availableKeys = await scrapeThemeAvailableKeys();
+    const supportedKeys = new Set(await scrapeThemeAvailableKeys());
     const { base } = await generate();
+    const themeKeys = new Set(Object.keys(base.colors));
 
-    for (const key of Object.keys(base.colors)) {
-        if (!availableKeys.includes(key)) {
-            console.warn(`Unsupported key "${key}", probably deprecated?`);
-        }
-    }
-
-    for (const key of availableKeys) {
-        if (!Object.keys(base.colors).includes(key)) {
-            console.warn(`Missing key "${key}" in theme`);
-        }
-    }
+    warnKeysNotIn(themeKeys, supportedKeys, key => `Unsupported key "${key}", probably deprecated?`);
+    warnKeysNotIn(supportedKeys, themeKeys, key => `Missing key "${key}" in theme`);
 };
 
 lint().catch((error: unknown) => {
