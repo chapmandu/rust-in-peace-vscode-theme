@@ -1,5 +1,7 @@
 # Rust in Peace Theme for VS Code
 
+[![CI](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml)
+
 A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rust in Peace.
 
 ![Screenshot](https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/screenshot.png)

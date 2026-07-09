@@ -1,0 +1,34 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
+      - run: npm run eslint
+      - run: npm run typecheck
+      # Checks theme keys against the VS Code reference; fails on network error (network-dependent).
+      - run: npm run lint
+      - run: npm run build
+      # Fail if the committed theme is stale relative to its YAML source.
+      - run: git diff --exit-code theme/
+
+  fallow:
+    # Fallow audit scopes to changed files against the PR base.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: fallow-rs/fallow@v3
+        with:
+          command: audit
