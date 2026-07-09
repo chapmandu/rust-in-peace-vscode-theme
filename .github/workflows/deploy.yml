@@ -8,11 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
       - uses: actions/setup-node@v6
         with: 
           node-version: lts/*
           cache: npm
+
       - run: npm install
-      - env:
-          VSCE_PUBLISHER_TOKEN: ${{ secrets.VSCE_PUBLISHER_TOKEN }}
-        run: npm run vsce-publish -- -p $VSCE_PUBLISHER_TOKEN
+
+      - run: npx @vscode/vsce publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
