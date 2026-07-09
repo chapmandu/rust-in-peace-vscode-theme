@@ -8,3 +8,4 @@ tests/**
 .editorconfig
 .prettierrc.toml
 tsconfig.json
+eslint.config.mjs
