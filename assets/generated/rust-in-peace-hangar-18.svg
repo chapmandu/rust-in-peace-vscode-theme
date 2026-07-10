@@ -3,7 +3,7 @@
 <g clip-path="url(#window)" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">
 <rect width="640" height="400" fill="#0e1430"/>
 <rect y="36" width="640" height="276" fill="#141b3d"/>
-<rect y="368" width="640" height="32" fill="#422e5b"/>
+<rect y="368" width="640" height="32" fill="#401d6c"/>
 <circle cx="20" cy="18" r="5" fill="#e2876b" opacity="0.75"/>
 <circle cx="38" cy="18" r="5" fill="#e0db77" opacity="0.75"/>
 <circle cx="56" cy="18" r="5" fill="#95d776" opacity="0.75"/>
