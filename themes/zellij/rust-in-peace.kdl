@@ -1,12 +1,12 @@
 // rust-in-peace — generated from src/palette.json. Do not edit by hand.
-// Megadeth "Rust in Peace" cover palette. The active accent is the cover's
-// electric tube blue rather than green, so pane frames and the selected tab
-// stay calm.
+// Megadeth "Rust in Peace" cover palette. Chrome follows VS Code: tabs and
+// mode pills wear the deep skull-violet status bar, the selected one pops in
+// the cover's bright violet, and the focused frame is the keyword tube blue.
 themes {
     rust-in-peace {
         text_unselected {
             base 211 224 240
-            background 28 37 71
+            background 10 14 34
             emphasis_0 242 192 116
             emphasis_1 132 190 245
             emphasis_2 149 222 115
@@ -14,7 +14,7 @@ themes {
         }
         text_selected {
             base 211 224 240
-            background 28 37 71
+            background 23 32 74
             emphasis_0 242 192 116
             emphasis_1 132 190 245
             emphasis_2 149 222 115
@@ -22,18 +22,18 @@ themes {
         }
         ribbon_selected {
             base 16 21 48
-            background 132 190 245
+            background 154 99 222
             emphasis_0 235 134 103
             emphasis_1 242 192 116
-            emphasis_2 154 99 222
+            emphasis_2 232 226 116
             emphasis_3 101 112 168
         }
         ribbon_unselected {
-            base 16 21 48
-            background 154 99 222
-            emphasis_0 235 134 103
-            emphasis_1 16 21 48
-            emphasis_2 101 112 168
+            base 211 224 240
+            background 59 38 84
+            emphasis_0 232 226 116
+            emphasis_1 211 224 240
+            emphasis_2 174 191 218
             emphasis_3 132 190 245
         }
         table_title {
@@ -46,7 +46,7 @@ themes {
         }
         table_cell_selected {
             base 211 224 240
-            background 28 37 71
+            background 23 32 74
             emphasis_0 242 192 116
             emphasis_1 132 190 245
             emphasis_2 149 222 115
@@ -54,7 +54,7 @@ themes {
         }
         table_cell_unselected {
             base 211 224 240
-            background 28 37 71
+            background 10 14 34
             emphasis_0 242 192 116
             emphasis_1 132 190 245
             emphasis_2 149 222 115
@@ -62,7 +62,7 @@ themes {
         }
         list_selected {
             base 211 224 240
-            background 28 37 71
+            background 23 32 74
             emphasis_0 242 192 116
             emphasis_1 132 190 245
             emphasis_2 149 222 115
@@ -70,14 +70,14 @@ themes {
         }
         list_unselected {
             base 211 224 240
-            background 28 37 71
+            background 10 14 34
             emphasis_0 242 192 116
             emphasis_1 132 190 245
             emphasis_2 149 222 115
             emphasis_3 154 99 222
         }
         frame_selected {
-            base 132 190 245
+            base 94 159 224
             background 0
             emphasis_0 242 192 116
             emphasis_1 132 190 245

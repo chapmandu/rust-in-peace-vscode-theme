@@ -18,41 +18,46 @@ type Style = {
 };
 
 /**
- * The common text style: primary foreground on a raised surface, with the four
- * emphasis accents in type / info / function / constant order. Shared by every
- * plain text, table-cell and list component.
+ * The common text style: primary foreground on the sunken bar chrome (as VS
+ * Code's tab strip), with the four emphasis accents in type / info / function /
+ * constant order. Shared by every plain text, table-cell and list component.
  */
 const TEXT: Style = {
     base: 'fg.base',
-    background: 'bg.surface',
+    background: 'bg.sunken',
     emphasis_0: 'syntax.type',
     emphasis_1: 'syntax.info',
     emphasis_2: 'syntax.function',
     emphasis_3: 'syntax.constant',
 };
 
+/** Selected rows: TEXT lifted onto the VS Code list-selection surface. */
+const SELECTED: Style = {
+    ...TEXT,
+    background: 'bg.selection',
+};
+
 /**
- * UI-component styles, in file order. The active accent is the cover's electric
- * tube blue (`syntax.info`) so selected tabs and pane frames stay calm rather
- * than going green.
+ * UI-component styles, in file order. Tabs and mode pills wear VS Code's deep
+ * skull-violet status bar; the selected one pops in the cover's bright violet.
  */
 const COMPONENTS: Record<string, Style> = {
     text_unselected: TEXT,
-    text_selected: TEXT,
+    text_selected: SELECTED,
     ribbon_selected: {
-        base: 'bg.base',
-        background: 'syntax.info',
-        emphasis_0: 'syntax.error',
-        emphasis_1: 'syntax.type',
-        emphasis_2: 'syntax.constant',
-        emphasis_3: 'fg.comment',
-    },
-    ribbon_unselected: {
         base: 'bg.base',
         background: 'syntax.constant',
         emphasis_0: 'syntax.error',
-        emphasis_1: 'bg.base',
-        emphasis_2: 'fg.comment',
+        emphasis_1: 'syntax.type',
+        emphasis_2: 'syntax.string',
+        emphasis_3: 'fg.comment',
+    },
+    ribbon_unselected: {
+        base: 'fg.base',
+        background: 'ui.statusBar',
+        emphasis_0: 'syntax.string',
+        emphasis_1: 'fg.base',
+        emphasis_2: 'fg.muted',
         emphasis_3: 'syntax.info',
     },
     table_title: {
@@ -63,12 +68,12 @@ const COMPONENTS: Record<string, Style> = {
         emphasis_2: 'syntax.function',
         emphasis_3: 'syntax.constant',
     },
-    table_cell_selected: TEXT,
+    table_cell_selected: SELECTED,
     table_cell_unselected: TEXT,
-    list_selected: TEXT,
+    list_selected: SELECTED,
     list_unselected: TEXT,
     frame_selected: {
-        base: 'syntax.info',
+        base: 'syntax.keyword',
         background: 0,
         emphasis_0: 'syntax.type',
         emphasis_1: 'syntax.info',
@@ -133,9 +138,9 @@ const render = (palette: Palette, ref: Ref): string => {
 };
 
 const HEADER = `// rust-in-peace — generated from src/palette.json. Do not edit by hand.
-// Megadeth "Rust in Peace" cover palette. The active accent is the cover's
-// electric tube blue rather than green, so pane frames and the selected tab
-// stay calm.`;
+// Megadeth "Rust in Peace" cover palette. Chrome follows VS Code: tabs and
+// mode pills wear the deep skull-violet status bar, the selected one pops in
+// the cover's bright violet, and the focused frame is the keyword tube blue.`;
 
 /** Generate the Zellij KDL theme from the palette. */
 export default (palette: Palette): string => {
