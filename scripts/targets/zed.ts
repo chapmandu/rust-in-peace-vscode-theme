@@ -107,7 +107,8 @@ export default (palette: Palette): string => {
     const bg = col('bg.base'); //           editor & primary background
     const chrome = col('bg.sunken'); //     panels, tabs, status/title bars, terminal
     const elevated = col('bg.border'); //   elevated surfaces / overlays (darkest)
-    const border = col('bg.border');
+    const border = col('bg.selection'); //  visible structural seams (as VS Code's editorGroup.border)
+    const borderSubtle = col('bg.border'); // recessed lines: wrap guides, scrollbar track
     const active = col('bg.overlay'); //    active line, active element, drop target
     const selection = col('bg.selection');
     const muted = col('fg.comment'); //     hover/selected elements, dim UI
@@ -140,11 +141,11 @@ export default (palette: Palette): string => {
         accents: ACCENTS.map(path => col(path, '66')),
         'background.appearance': 'opaque',
         border,
-        'border.variant': border,
+        'border.variant': borderSubtle,
         'border.focused': col('fg.comment', '33'),
         'border.selected': border,
-        'border.transparent': border,
-        'border.disabled': border,
+        'border.transparent': borderSubtle,
+        'border.disabled': borderSubtle,
         'elevated_surface.background': elevated,
         'surface.background': chrome,
         background: bg,
@@ -189,7 +190,7 @@ export default (palette: Palette): string => {
         'scrollbar.thumb.hover_background': muted,
         'scrollbar.thumb.border': muted,
         'scrollbar.track.background': col('bg.base', '80'),
-        'scrollbar.track.border': border,
+        'scrollbar.track.border': borderSubtle,
         'editor.foreground': fg,
         'editor.background': bg,
         'editor.gutter.background': bg,
@@ -199,8 +200,8 @@ export default (palette: Palette): string => {
         'editor.line_number': muted,
         'editor.active_line_number': fg,
         'editor.invisible': null,
-        'editor.wrap_guide': border,
-        'editor.active_wrap_guide': border,
+        'editor.wrap_guide': borderSubtle,
+        'editor.active_wrap_guide': borderSubtle,
         'editor.document_highlight.read_background': active,
         'editor.document_highlight.write_background': active,
         'editor.document_highlight.bracket_background': selection,
