@@ -8,18 +8,18 @@
       "appearance": "dark",
       "style": {
         "accents": [
-          "#9a63de66",
-          "#84bef566",
           "#95de7366",
-          "#99c5f066",
-          "#e8e27466",
           "#f2c07466",
-          "#eb866766"
+          "#e8e27466",
+          "#99c5f066",
+          "#9a63de66",
+          "#eb866766",
+          "#84bef566"
         ],
         "background.appearance": "opaque",
         "border": "#070a1a",
         "border.variant": "#070a1a",
-        "border.focused": "#5e9fe033",
+        "border.focused": "#6570a833",
         "border.selected": "#070a1a",
         "border.transparent": "#070a1a",
         "border.disabled": "#070a1a",
@@ -41,19 +41,19 @@
         "text.muted": "#aebfda",
         "text.placeholder": "#6570a8",
         "text.disabled": "#6570a8",
-        "text.accent": "#84bef5",
+        "text.accent": "#95de73",
         "icon": "#aebfda",
         "icon.muted": "#6570a8",
         "icon.disabled": "#6570a8",
         "icon.placeholder": "#6570a8",
-        "icon.accent": "#84bef5",
+        "icon.accent": "#95de73",
         "status_bar.background": "#3b2654",
         "title_bar.background": "#0a0e22",
         "title_bar.inactive_background": "#0a0e22",
         "toolbar.background": "#0a0e22",
         "tab_bar.background": "#0a0e22",
         "tab.inactive_background": "#0a0e22",
-        "tab.active_background": "#202a58",
+        "tab.active_background": "#101530",
         "search.match_background": "#202a58",
         "panel.background": "#0a0e22",
         "panel.focused_border": null,
@@ -113,7 +113,7 @@
         "terminal.ansi.white": "#d3e0f0",
         "terminal.ansi.bright_white": "#eef4fb",
         "terminal.ansi.dim_white": null,
-        "link_text.hover": "#84bef5",
+        "link_text.hover": "#99c5f0",
         "conflict": "#9a63de",
         "conflict.background": "#101530",
         "conflict.border": "#202a58",
@@ -168,9 +168,9 @@
         "version_control.renamed": "#84bef5",
         "players": [
           {
-            "cursor": "#84bef5",
-            "background": "#84bef5",
-            "selection": "#84bef53d"
+            "cursor": "#95de73",
+            "background": "#95de73",
+            "selection": "#5e9fe03d"
           }
         ],
         "syntax": {

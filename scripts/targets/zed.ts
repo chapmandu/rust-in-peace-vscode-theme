@@ -93,10 +93,10 @@ const SYNTAX: SyntaxGroup[] = [
     { color: 'syntax.constant', font_weight: 700, scopes: ['title'] },
 ];
 
-/** The seven translucent editor accents, in Tokyo Night's accent order. */
+/** The translucent editor accents, led by green — the VS Code active accent. */
 const ACCENTS = [
-    'syntax.constant', 'syntax.info', 'syntax.function', 'syntax.builtin',
-    'syntax.string', 'syntax.type', 'syntax.error',
+    'syntax.function', 'syntax.type', 'syntax.string', 'syntax.builtin',
+    'syntax.constant', 'syntax.error', 'syntax.info',
 ];
 
 /** Generate the Zed theme JSON from the palette. */
@@ -113,7 +113,8 @@ export default (palette: Palette): string => {
     const muted = col('fg.comment'); //     hover/selected elements, dim UI
     const fg = col('fg.base');
     const subtext = col('fg.muted');
-    const accent = col('syntax.info'); //   accent text/icons, links
+    const accent = col('syntax.function'); // active UI accent — green, as in VS Code
+    const link = col('syntax.builtin'); //  links & highlights — cyan, as in VS Code
     const gitBorder = active; //            border around git-status callouts
 
     const syntax: Record<string, { color: string; font_style: string | null; font_weight: number | null }> = {};
@@ -140,7 +141,7 @@ export default (palette: Palette): string => {
         'background.appearance': 'opaque',
         border,
         'border.variant': border,
-        'border.focused': col('syntax.keyword', '33'),
+        'border.focused': col('fg.comment', '33'),
         'border.selected': border,
         'border.transparent': border,
         'border.disabled': border,
@@ -174,7 +175,7 @@ export default (palette: Palette): string => {
         'toolbar.background': chrome,
         'tab_bar.background': chrome,
         'tab.inactive_background': chrome,
-        'tab.active_background': active,
+        'tab.active_background': bg,
         'search.match_background': active,
         'panel.background': chrome,
         'panel.focused_border': null,
@@ -234,7 +235,7 @@ export default (palette: Palette): string => {
         'terminal.ansi.white': col('ansi.white'),
         'terminal.ansi.bright_white': col('ansi.brightWhite'),
         'terminal.ansi.dim_white': null,
-        'link_text.hover': accent,
+        'link_text.hover': link,
         ...statusEntries('conflict', 'syntax.constant'),
         ...statusEntries('created', 'syntax.function'),
         ...statusEntries('deleted', 'syntax.error'),
@@ -263,7 +264,7 @@ export default (palette: Palette): string => {
             {
                 cursor: accent,
                 background: accent,
-                selection: col('syntax.info', '3d'),
+                selection: col('syntax.keyword', '3d'), // teal wash, matching VS Code's selection
             },
         ],
         syntax,
