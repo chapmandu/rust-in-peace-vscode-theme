@@ -3,6 +3,7 @@ import { join } from 'path';
 import { defineSequenceTag, CORE_SCHEMA, load } from 'js-yaml';
 import tinycolor from 'tinycolor2';
 import { Palette, loadPalette, resolvePalettePath } from './palette';
+import { VARIANTS, VariantSpec, transformPalette } from './variants';
 
 /** Textmate token settings. `fontStyle` is a space-separated list of `italic`, `bold`, `underline`. */
 interface TokenSettings {
@@ -23,6 +24,8 @@ interface TokenColor {
 
 /** Parsed theme object. */
 interface Theme {
+    /** Theme display name. */
+    name: string;
     /** Rust in Peace color variables. */
     rustInPeace: Record<'base' | 'ansi' | 'brightOther' | 'other', string[]>;
     /** VSCode color mapping. */
@@ -77,23 +80,41 @@ const transformSoft: ThemeTransform = theme => {
     return soft;
 };
 
-export default async (): Promise<{ base: Theme; soft: Theme }> => {
+/** Substitute a palette into the YAML source and parse it into a theme. */
+const buildTheme = (yamlFile: string, palette: Palette): Theme => {
+    const theme = load(applyPalette(yamlFile, palette), { schema }) as Theme;
+
+    // Remove nulls and other falsey values from colors
+    for (const key of Object.keys(theme.colors)) {
+        if (!theme.colors[key]) {
+            delete theme.colors[key];
+        }
+    }
+
+    return theme;
+};
+
+export default async (): Promise<{
+    base: Theme;
+    variants: Array<{ spec: VariantSpec; theme: Theme }>;
+    soft: Theme;
+}> => {
     const [yamlFile, palette] = await Promise.all([
         readFile(join(__dirname, '..', 'src', 'rust-in-peace.yml'), 'utf-8'),
         loadPalette(),
     ]);
 
-    const base = load(applyPalette(yamlFile, palette), { schema }) as Theme;
+    const base = buildTheme(yamlFile, palette);
 
-    // Remove nulls and other falsey values from colors
-    for (const key of Object.keys(base.colors)) {
-        if (!base.colors[key]) {
-            delete base.colors[key];
-        }
-    }
+    const variants = VARIANTS.map(spec => {
+        const theme = buildTheme(yamlFile, transformPalette(palette, spec));
+        theme.name = spec.label;
+        return { spec, theme };
+    });
 
     return {
         base,
+        variants,
         soft: transformSoft(base),
     };
 };

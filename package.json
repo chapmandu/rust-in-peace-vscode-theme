@@ -45,6 +45,16 @@
         "label": "Rust in Peace",
         "uiTheme": "vs-dark",
         "path": "./theme/rust-in-peace.json"
+      },
+      {
+        "label": "Rust in Peace Hangar 18",
+        "uiTheme": "vs-dark",
+        "path": "./theme/rust-in-peace-hangar-18.json"
+      },
+      {
+        "label": "Rust in Peace Polaris",
+        "uiTheme": "vs-dark",
+        "path": "./theme/rust-in-peace-polaris.json"
       }
     ]
   },
