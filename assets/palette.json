@@ -30,7 +30,8 @@
 		"error": "#eb8667"
 	},
 	"violets": {
-		"constant": "#9a63de"
+		"constant": "#9a63de",
+		"statusBar": "#3b2654"
 	},
 	"pinks": {
 		"magenta": "#eb8db7"

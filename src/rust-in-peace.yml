@@ -49,7 +49,9 @@ rustInPeace:
     # Documented in assets/palette.json as blues.button.
     - &BUTTON_BG     '#2a5ca8'
     - &BUTTON_FG     '#eef4fb'
-    - &STATUS_BAR_BG '#202a58'
+    # Deep skull-violet — the violet accent (#9a63de) darkened to background depth.
+    # Documented in assets/palette.json as violets.statusBar.
+    - &STATUS_BAR_BG '#3b2654'
     # UI Variants
     - &BGLighter     '#202a58'
     - &BGLight       '#1c2547'
