@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="280" viewBox="0 0 1280 280" role="img" aria-label="Rust in Peace — a dark theme for VS Code">
+<defs>
+<linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0e22"/><stop offset="1" stop-color="#101530"/></linearGradient>
+<clipPath id="banner"><rect width="1280" height="280" rx="12"/></clipPath>
+</defs>
+<g clip-path="url(#banner)" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">
+<rect width="1280" height="280" fill="url(#field)"/>
+<text x="88" y="104" font-size="12" letter-spacing="6" fill="#aebfda" textLength="380" lengthAdjust="spacingAndGlyphs">A DARK THEME FOR VS CODE</text>
+<text x="86" y="172" font-size="68" font-weight="bold" letter-spacing="8" fill="#d3e0f0" textLength="640" lengthAdjust="spacingAndGlyphs">RUST IN PEACE</text>
+<text x="88" y="232" font-size="13" letter-spacing="4" fill="#6570a8" textLength="400" lengthAdjust="spacingAndGlyphs">ONE PALETTE · THREE THEMES</text>
+<rect x="88" y="196" width="80" height="3" fill="#5e9fe0"/>
+<rect x="168" y="196" width="80" height="3" fill="#99c5f0"/>
+<rect x="248" y="196" width="80" height="3" fill="#84bef5"/>
+<rect x="328" y="196" width="80" height="3" fill="#95de73"/>
+<rect x="408" y="196" width="80" height="3" fill="#e8e274"/>
+<rect x="488" y="196" width="80" height="3" fill="#f2c074"/>
+<rect x="568" y="196" width="80" height="3" fill="#9a63de"/>
+<rect x="648" y="196" width="80" height="3" fill="#eb8667"/>
+</g>
+<rect x="0.5" y="0.5" width="1279" height="279" rx="12" fill="none" stroke="#070a1a"/>
+</svg>

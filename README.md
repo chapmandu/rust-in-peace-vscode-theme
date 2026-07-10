@@ -1,16 +1,18 @@
+<!-- GENERATED HERO START (npm run build — do not edit by hand) -->
 <div align="center">
 
-<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/logo.png" alt="Rust in Peace logo" width="120" />
-
-# Rust in Peace
+<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/banner.svg" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
 
 **A dark theme for VS Code, inspired by the album art of Megadeth's 1990 metal masterpiece, _Rust in Peace_.**
 
-![Screenshot](https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/screenshot.png)
-
-## Colour Palette
+[![CI](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml)
+[![Marketplace](https://flat.badgen.net/vs-marketplace/v/chapmandu.rust-in-peace?label=marketplace&labelColor=0a0e22&color=2a5ca8)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
+[![Installs](https://flat.badgen.net/vs-marketplace/i/chapmandu.rust-in-peace?label=installs&labelColor=0a0e22&color=3b2654)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
 
 </div>
+<!-- GENERATED HERO END -->
+
+## Colour Palette
 
 The complete palette, including ANSI terminal colours, lives in [`src/palette.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/src/palette.json) — the single source of truth the VS Code theme, its lighter variants, and everything below are generated from at build time.
 
@@ -21,62 +23,16 @@ The complete palette, including ANSI terminal colours, lives in [`src/palette.js
 
 _Hand-picked from the record's rusted, cobalt-blue cover art._
 
-<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/swatches/rust-in-peace.svg" alt="Rust in Peace" width="720"/>
+<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace.svg" alt="Rust in Peace" width="720"/>
 
 <table>
 <tr>
-<td align="center"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/swatches/rust-in-peace-hangar-18.svg" alt="Rust in Peace Hangar 18" width="400"/></td>
-<td align="center"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/swatches/rust-in-peace-polaris.svg" alt="Rust in Peace Polaris" width="400"/></td>
+<td align="center"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-hangar-18.svg" alt="Rust in Peace Hangar 18" width="400"/></td>
+<td align="center"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-polaris.svg" alt="Rust in Peace Polaris" width="400"/></td>
 </tr>
 </table>
 
 </div>
-
-| Colour | Rust in Peace | Hangar 18 | Polaris |
-| --- | --- | --- | --- |
-| `bg.base` | `#101530` | `#141b3d` | `#1a224e` |
-| `bg.surface` | `#1c2547` | `#202b52` | `#263361` |
-| `bg.overlay` | `#202a58` | `#242f63` | `#293671` |
-| `bg.selection` | `#17204a` | `#1b2556` | `#202c66` |
-| `bg.sunken` | `#0a0e22` | `#0e1430` | `#141c43` |
-| `bg.border` | `#070a1a` | `#0b1028` | `#10173d` |
-| `fg.base` | `#d3e0f0` | `#d3e0f0` | `#d3e0f0` |
-| `fg.muted` | `#aebfda` | `#b0c0db` | `#afc0db` |
-| `fg.comment` | `#6570a8` | `#6a75ab` | `#707aae` |
-| `syntax.keyword` | `#5e9fe0` | `#639dd8` | `#699ccf` |
-| `syntax.builtin` | `#99c5f0` | `#98c1ea` | `#98bee2` |
-| `syntax.info` | `#84bef5` | `#85bbed` | `#87b7e5` |
-| `syntax.function` | `#95de73` | `#95d776` | `#95cf79` |
-| `syntax.string` | `#e8e274` | `#e0db77` | `#d8d37a` |
-| `syntax.type` | `#f2c074` | `#eabc77` | `#e1b87a` |
-| `syntax.constant` | `#9a63de` | `#9f70d8` | `#a179d0` |
-| `syntax.error` | `#eb8667` | `#e2876b` | `#d98970` |
-| `ui.button` | `#2a5ca8` | `#3462a8` | `#3f6aaa` |
-| `ui.statusBar` | `#3b2654` | `#422e5b` | `#4c3864` |
-
-<details>
-<summary><strong>ANSI terminal colours</strong></summary>
-
-| Colour | Rust in Peace | Hangar 18 | Polaris |
-| --- | --- | --- | --- |
-| `ansi.black` | `#1c2547` | `#202b52` | `#263361` |
-| `ansi.red` | `#eb8667` | `#e2876b` | `#d98970` |
-| `ansi.green` | `#95de73` | `#95d776` | `#95cf79` |
-| `ansi.yellow` | `#e8e274` | `#e0db77` | `#d8d37a` |
-| `ansi.blue` | `#9a63de` | `#9f70d8` | `#a179d0` |
-| `ansi.magenta` | `#eb8db7` | `#e48db4` | `#dd8eb1` |
-| `ansi.cyan` | `#84bef5` | `#85bbed` | `#87b7e5` |
-| `ansi.white` | `#d3e0f0` | `#d3e0f0` | `#d3e0f0` |
-| `ansi.brightBlack` | `#6570a8` | `#6a75ab` | `#707aae` |
-| `ansi.brightRed` | `#f0a48d` | `#e9a38d` | `#e1a28e` |
-| `ansi.brightGreen` | `#b0e696` | `#aee096` | `#acd996` |
-| `ansi.brightYellow` | `#ede893` | `#e6e293` | `#dfdb93` |
-| `ansi.brightBlue` | `#b085e5` | `#ae86de` | `#ab88d7` |
-| `ansi.brightMagenta` | `#f0aac9` | `#eaa8c5` | `#e4a6c1` |
-| `ansi.brightCyan` | `#a3cef8` | `#a1caf2` | `#a0c6eb` |
-| `ansi.brightWhite` | `#eef4fb` | `#eef4fb` | `#eef4fb` |
-
-</details>
 <!-- GENERATED PALETTE END -->
 
 ## Installation
@@ -151,12 +107,6 @@ Local tasks run through [`just`](https://github.com/casey/just) — run `just` t
 8. Profit!
 
 </details>
-
-<div align="center">
-
-[![CI](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml)
-
-</div>
 
 ---
 

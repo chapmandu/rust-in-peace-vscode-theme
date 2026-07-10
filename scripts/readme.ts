@@ -1,11 +1,12 @@
-import { mkdir, readFile, writeFile } from 'fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'fs/promises';
 import { join } from 'path';
 import { Palette, loadPalette, resolvePalettePath } from './palette';
 import { VARIANTS, transformPalette } from './variants';
 
-const REPO_RAW = 'https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main';
-const START_MARKER = '<!-- GENERATED PALETTE START (npm run build — do not edit by hand) -->';
-const END_MARKER = '<!-- GENERATED PALETTE END -->';
+const REPO = 'https://github.com/chapmandu/rust-in-peace-vscode-theme';
+const REPO_RAW = `${REPO}/raw/main`;
+const MARKETPLACE_URL =
+    'https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace';
 
 /** A theme rendered into the README: the base palette or a variant of it. */
 interface ReadmeTheme {
@@ -228,29 +229,97 @@ const renderWindow = (palette: Palette, label: string): string => {
     return `${parts.join('\n')}\n`;
 };
 
-/** Markdown table of hex codes for the given palette groups, per theme. */
-const hexTable = (themes: ReadmeTheme[], groups: string[]): string => {
-    const header = `| Colour | ${themes.map(t => t.label.replace('Rust in Peace ', '')).join(' | ')} |`;
-    const divider = `| --- | ${themes.map(() => '---').join(' | ')} |`;
-    const rows: string[] = [];
-    for (const group of groups) {
-        for (const key of Object.keys(themes[0].palette[group] as Palette)) {
-            const path = `${group}.${key}`;
-            const cells = themes.map(t => `\`${resolvePalettePath(t.palette, path)}\``);
-            rows.push(`| \`${path}\` | ${cells.join(' | ')} |`);
-        }
-    }
-    return [header, divider, ...rows].join('\n');
+// Banner geometry.
+const BANNER_W = 1280;
+const BANNER_H = 280;
+
+/**
+ * The masthead: a near-flat cobalt field with a left-aligned type lockup and
+ * one accent — a thin rule of the eight syntax colours. Nothing else.
+ */
+const renderBanner = (palette: Palette): string => {
+    const colour = (path: string): string => resolvePalettePath(palette, path);
+    const parts: string[] = [];
+
+    parts.push(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${BANNER_W}" height="${BANNER_H}" viewBox="0 0 ${BANNER_W} ${BANNER_H}" role="img" aria-label="Rust in Peace — a dark theme for VS Code">`,
+        '<defs>',
+        `<linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${colour('bg.sunken')}"/><stop offset="1" stop-color="${colour('bg.base')}"/></linearGradient>`,
+        `<clipPath id="banner"><rect width="${BANNER_W}" height="${BANNER_H}" rx="12"/></clipPath>`,
+        '</defs>',
+        `<g clip-path="url(#banner)" font-family="${MONO}">`,
+        `<rect width="${BANNER_W}" height="${BANNER_H}" fill="url(#field)"/>`
+    );
+
+    // Type lockup.
+    parts.push(
+        `<text x="88" y="104" font-size="12" letter-spacing="6" fill="${colour('fg.muted')}" textLength="380" lengthAdjust="spacingAndGlyphs">A DARK THEME FOR VS CODE</text>`,
+        `<text x="86" y="172" font-size="68" font-weight="bold" letter-spacing="8" fill="${colour('fg.base')}" textLength="640" lengthAdjust="spacingAndGlyphs">RUST IN PEACE</text>`,
+        `<text x="88" y="232" font-size="13" letter-spacing="4" fill="${colour('fg.comment')}" textLength="400" lengthAdjust="spacingAndGlyphs">ONE PALETTE · THREE THEMES</text>`
+    );
+
+    // The accent: a contiguous spectrum rule of the eight syntax colours.
+    const syntaxKeys = Object.keys(palette['syntax'] as Palette);
+    const ruleWidth = 640;
+    const segment = ruleWidth / syntaxKeys.length;
+    syntaxKeys.forEach((key, index) => {
+        parts.push(
+            `<rect x="${fmt(88 + index * segment)}" y="196" width="${fmt(segment)}" height="3" fill="${colour(`syntax.${key}`)}"/>`
+        );
+    });
+
+    parts.push(
+        '</g>',
+        `<rect x="0.5" y="0.5" width="${BANNER_W - 1}" height="${BANNER_H - 1}" rx="12" fill="none" stroke="${colour('bg.border')}"/>`,
+        '</svg>'
+    );
+    return `${parts.join('\n')}\n`;
 };
 
 /**
- * The full generated README block between the markers. The Marketplace
- * refuses SVG images in READMEs, so `withSvg: false` renders the same block
- * without the editor-window swatches for the packaged README.
+ * CI and marketplace badges, tinted from the palette. shields.io retired its
+ * visual-studio-marketplace service; badgen.net still serves it live and is
+ * on vsce's trusted-badge list.
  */
-const renderBlock = (themes: ReadmeTheme[], withSvg: boolean): string => {
+const badges = (palette: Palette): string => {
+    const tint = (path: string): string => resolvePalettePath(palette, path).slice(1);
+    const badgen = (kind: string, label: string, color: string): string =>
+        `[![${label}](https://flat.badgen.net/vs-marketplace/${kind}/chapmandu.rust-in-peace?label=${label.toLowerCase()}&labelColor=${tint('bg.sunken')}&color=${color})](${MARKETPLACE_URL})`;
+    return [
+        `[![CI](${REPO}/actions/workflows/ci.yml/badge.svg)](${REPO}/actions/workflows/ci.yml)`,
+        badgen('v', 'Marketplace', tint('ui.button')),
+        badgen('i', 'Installs', tint('ui.statusBar')),
+    ].join('\n');
+};
+
+/** GitHub hero: the generated banner. The Marketplace variant keeps the logo and a real screenshot, since it refuses SVG imagery. */
+const heroBlock = (palette: Palette, withSvg: boolean): string => {
+    const masthead = withSvg
+        ? `<img src="${REPO_RAW}/assets/generated/banner.svg" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>`
+        : `<img src="${REPO_RAW}/assets/logo.png" alt="Rust in Peace logo" width="120"/>
+
+# Rust in Peace
+
+![Screenshot](${REPO_RAW}/assets/screenshot.png)`;
+
+    return `<div align="center">
+
+${masthead}
+
+**A dark theme for VS Code, inspired by the album art of Megadeth's 1990 metal masterpiece, _Rust in Peace_.**
+
+${badges(palette)}
+
+</div>`;
+};
+
+/**
+ * The palette section. The Marketplace refuses SVG images in READMEs, so
+ * `withSvg: false` renders it without the editor-window swatches.
+ */
+const paletteBlock = (themes: ReadmeTheme[], withSvg: boolean): string => {
     const [base, ...variants] = themes;
-    const swatchUrl = (slug: string): string => `${REPO_RAW}/assets/swatches/${slug}.svg`;
+    const swatchUrl = (slug: string): string => `${REPO_RAW}/assets/generated/${slug}.svg`;
     const shortName = (theme: ReadmeTheme): string => theme.label.replace('Rust in Peace ', '');
 
     const variantCells = variants
@@ -270,7 +339,9 @@ const renderBlock = (themes: ReadmeTheme[], withSvg: boolean): string => {
 ${variantCells}
 </tr>
 </table>`
-        : '';
+        : `
+
+![Screenshot](${REPO_RAW}/assets/screenshot.png)`;
 
     return `<div align="center">
 
@@ -278,29 +349,22 @@ ${variantCells}
 
 _Hand-picked from the record's rusted, cobalt-blue cover art._${swatches}
 
-</div>
-
-${hexTable(themes, ['bg', 'fg', 'syntax', 'ui'])}
-
-<details>
-<summary><strong>ANSI terminal colours</strong></summary>
-
-${hexTable(themes, ['ansi'])}
-
-</details>`;
+</div>`;
 };
 
-/** Splice a generated block between the README markers. */
-const inject = (readme: string, block: string): string => {
-    const start = readme.indexOf(START_MARKER);
-    const end = readme.indexOf(END_MARKER);
+/** Splice a generated block into the named marker region. */
+const inject = (source: string, region: string, block: string): string => {
+    const startMarker = `<!-- GENERATED ${region} START (npm run build — do not edit by hand) -->`;
+    const endMarker = `<!-- GENERATED ${region} END -->`;
+    const start = source.indexOf(startMarker);
+    const end = source.indexOf(endMarker);
     if (start === -1 || end === -1 || end < start) {
-        throw new Error(`README.md is missing the "${START_MARKER}" / "${END_MARKER}" markers`);
+        throw new Error(`README.md is missing the "${startMarker}" / "${endMarker}" markers`);
     }
-    return readme.slice(0, start + START_MARKER.length) + `\n${block}\n` + readme.slice(end);
+    return source.slice(0, start + startMarker.length) + `\n${block}\n` + source.slice(end);
 };
 
-/** Regenerate the swatch SVGs and the README's generated palette section. */
+/** Regenerate the banner/swatch SVGs and the READMEs' generated sections. */
 export const buildReadme = async (): Promise<void> => {
     const palette = await loadPalette();
     const themes: ReadmeTheme[] = [
@@ -312,25 +376,37 @@ export const buildReadme = async (): Promise<void> => {
         })),
     ];
 
-    const swatchDir = join(__dirname, '..', 'assets', 'swatches');
-    await mkdir(swatchDir, { recursive: true });
-    await Promise.all(
-        themes.map(theme =>
-            writeFile(join(swatchDir, `${theme.slug}.svg`), renderWindow(theme.palette, theme.label))
-        )
-    );
+    const generatedDir = join(__dirname, '..', 'assets', 'generated');
+    await rm(generatedDir, { recursive: true, force: true });
+    await mkdir(generatedDir, { recursive: true });
+    await Promise.all([
+        writeFile(join(generatedDir, 'banner.svg'), renderBanner(palette)),
+        ...themes.map(theme =>
+            writeFile(join(generatedDir, `${theme.slug}.svg`), renderWindow(theme.palette, theme.label))
+        ),
+    ]);
 
     const readmePath = join(__dirname, '..', 'README.md');
     const readme = await readFile(readmePath, 'utf-8');
 
-    const updated = inject(readme, renderBlock(themes, true));
-    if (updated !== readme) {
-        await writeFile(readmePath, updated);
+    const regions: Record<string, { github: string; marketplace: string }> = {
+        HERO: { github: heroBlock(palette, true), marketplace: heroBlock(palette, false) },
+        PALETTE: {
+            github: paletteBlock(themes, true),
+            marketplace: paletteBlock(themes, false),
+        },
+    };
+
+    let github = readme;
+    let marketplace = readme;
+    for (const [region, blocks] of Object.entries(regions)) {
+        github = inject(github, region, blocks.github);
+        marketplace = inject(marketplace, region, blocks.marketplace);
     }
 
+    if (github !== readme) {
+        await writeFile(readmePath, github);
+    }
     // The Marketplace build packages this SVG-free copy via --readme-path.
-    await writeFile(
-        join(__dirname, '..', 'README.marketplace.md'),
-        inject(readme, renderBlock(themes, false))
-    );
+    await writeFile(join(__dirname, '..', 'README.marketplace.md'), marketplace);
 };

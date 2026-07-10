@@ -1,6 +1,6 @@
 .github/**
 .vscode/**
-assets/swatches/**
+assets/generated/**
 README.md
 bin/**
 node_modules/**

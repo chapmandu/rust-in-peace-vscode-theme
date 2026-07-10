@@ -20,7 +20,7 @@ jobs:
       - run: npm run build
       # Fail if the committed theme or generated README section is stale
       # relative to the palette/YAML sources.
-      - run: git diff --exit-code theme/ README.md assets/swatches/
+      - run: git diff --exit-code theme/ README.md assets/generated/
 
   fallow:
     # Fallow audit scopes to changed files against the PR base.

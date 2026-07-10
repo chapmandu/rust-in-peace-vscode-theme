@@ -35,7 +35,7 @@ fallow:
 [group('code quality')]
 check: eslint typecheck lint fallow
 
-# Generate the theme JSONs, README palette section, and swatch SVGs
+# Generate the theme JSONs, README sections, and their SVG artwork
 [group('build')]
 build:
     npm run build
