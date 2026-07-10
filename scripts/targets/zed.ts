@@ -110,8 +110,9 @@ export default (palette: Palette): string => {
     const border = col('bg.selection'); //  visible structural seams (as VS Code's editorGroup.border)
     const borderSubtle = col('bg.border'); // recessed lines: wrap guides, scrollbar track
     const active = col('bg.overlay'); //    active line, active element, drop target
-    const selection = col('bg.selection');
-    const muted = col('fg.comment'); //     hover/selected elements, dim UI
+    const selection = col('bg.selection'); // solid list selection (VS Code list.activeSelectionBackground)
+    const hover = col('bg.selection', '80'); // subtle dark list hover (VS Code list.hoverBackground)
+    const muted = col('fg.comment'); //     dim text/icons, scrollbar hover
     const fg = col('fg.base');
     const subtext = col('fg.muted');
     const accent = col('syntax.function'); // active UI accent — green, as in VS Code
@@ -150,15 +151,15 @@ export default (palette: Palette): string => {
         'surface.background': chrome,
         background: bg,
         'element.background': bg,
-        'element.hover': muted,
+        'element.hover': hover,
         'element.active': active,
-        'element.selected': muted,
+        'element.selected': selection,
         'element.disabled': active,
         'drop_target.background': selection,
         'ghost_element.background': col('bg.base', '00'), // transparent, so status-bar buttons show the bar behind them
-        'ghost_element.hover': muted,
+        'ghost_element.hover': hover,
         'ghost_element.active': active,
-        'ghost_element.selected': muted,
+        'ghost_element.selected': selection,
         'ghost_element.disabled': active,
         text: fg,
         'text.muted': subtext,
@@ -186,9 +187,9 @@ export default (palette: Palette): string => {
         'panel.overlay_background': elevated,
         'pane.focused_border': null,
         'pane_group.border': border,
-        'scrollbar.thumb.background': col('fg.comment', '80'),
+        'scrollbar.thumb.background': col('bg.overlay'),
         'scrollbar.thumb.hover_background': muted,
-        'scrollbar.thumb.border': muted,
+        'scrollbar.thumb.border': col('bg.overlay'),
         'scrollbar.track.background': col('bg.base', '80'),
         'scrollbar.track.border': borderSubtle,
         'editor.foreground': fg,
