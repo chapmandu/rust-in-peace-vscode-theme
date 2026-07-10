@@ -34,6 +34,7 @@ The VS Code theme isn't the only target. [`src/palette.json`](https://github.com
 | -------------------------------------------------- | ------------------------------------- |
 | [Helix](https://helix-editor.com/)                 | `themes/helix/rust-in-peace.toml`     |
 | [Herdr](https://herdr.dev/)                        | `themes/herdr/rust-in-peace.toml`     |
+| [Zed](https://zed.dev/)                            | `themes/zed/rust-in-peace.json`       |
 | [Zellij](https://zellij.dev/)                      | `themes/zellij/rust-in-peace.kdl`     |
 | [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) | `themes/ptyxis/rust-in-peace.palette` |
 
@@ -69,7 +70,7 @@ Local tasks run through [`just`](https://github.com/casey/just) — run `just` t
 | `just check`         | Run the full code-quality suite (eslint, typecheck, lint)    |
 | `just fallow`        | Audit for unused code and dependencies                       |
 | `just build`         | Regenerate the theme JSON from the YAML source               |
-| `just build-themes`  | Regenerate the companion themes (Helix, Herdr, Zellij, Ptyxis) |
+| `just build-themes`  | Regenerate the companion themes (Helix, Herdr, Zed, Zellij, Ptyxis) |
 | `just install`       | Build, package, and install the extension into local VS Code |
 | `just publish-patch` | Bump the patch version, tag, and push to publish             |
 | `just publish-minor` | Bump the minor version, tag, and push to publish             |

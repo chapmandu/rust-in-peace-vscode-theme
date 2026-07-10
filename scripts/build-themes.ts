@@ -4,6 +4,7 @@ import { loadPalette } from './palette';
 import helix from './targets/helix';
 import herdr from './targets/herdr';
 import ptyxis from './targets/ptyxis';
+import zed from './targets/zed';
 import zellij from './targets/zellij';
 
 /** A downstream theme target derived from the shared palette. */
@@ -22,6 +23,7 @@ const targets: Target[] = [
     { name: 'Helix', file: 'helix/rust-in-peace.toml', generate: helix },
     { name: 'Herdr', file: 'herdr/rust-in-peace.toml', generate: herdr },
     { name: 'Ptyxis', file: 'ptyxis/rust-in-peace.palette', generate: ptyxis },
+    { name: 'Zed', file: 'zed/rust-in-peace.json', generate: zed },
     { name: 'Zellij', file: 'zellij/rust-in-peace.kdl', generate: zellij },
 ];
 
