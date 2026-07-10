@@ -168,7 +168,7 @@ export default (palette: Palette): string => {
         'icon.disabled': muted,
         'icon.placeholder': muted,
         'icon.accent': accent,
-        'status_bar.background': chrome,
+        'status_bar.background': col('ui.statusBar'), // deep skull-violet, matching VS Code
         'title_bar.background': chrome,
         'title_bar.inactive_background': chrome,
         'toolbar.background': chrome,
