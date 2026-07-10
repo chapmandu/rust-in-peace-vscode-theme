@@ -1,0 +1,26 @@
+# rust-in-peace for herdr — generated from src/palette.json. Do not edit by hand.
+# Merge this into your herdr config: https://herdr.dev/docs/configuration/#theme
+# Recolours the catppuccin base theme to the album palette. Any token not
+# overridden here falls through to catppuccin.
+# Tip: set panel_bg = "reset" to let panels follow your terminal background.
+
+[theme]
+name = "catppuccin"
+
+[theme.custom]
+accent      = "#84bef5" # primary accent — electric tube blue
+panel_bg    = "#101530" # main panel background
+surface0    = "#1c2547" # raised surface
+surface1    = "#202a58" # higher surface
+surface_dim = "#0a0e22" # dimmed surface
+overlay0    = "#6570a8" # muted UI lines, borders
+overlay1    = "#aebfda" # brighter UI lines
+text        = "#d3e0f0" # primary text
+subtext0    = "#aebfda" # secondary text
+mauve       = "#9a63de" # softened violet — constants
+green       = "#95de73" # glowing hand green
+yellow      = "#e8e274" # logo gold
+red         = "#eb8667" # rust / logo-edge red
+blue        = "#84bef5" # bright tube blue
+teal        = "#99c5f0" # sky cyan
+peach       = "#f2c074" # logo orange

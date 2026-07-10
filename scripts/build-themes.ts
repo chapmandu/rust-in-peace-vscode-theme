@@ -2,6 +2,7 @@ import { mkdir, writeFile } from 'fs/promises';
 import { dirname, join } from 'path';
 import { loadPalette } from './palette';
 import helix from './targets/helix';
+import herdr from './targets/herdr';
 import ptyxis from './targets/ptyxis';
 import zellij from './targets/zellij';
 
@@ -19,6 +20,7 @@ const THEMES_DIR = join(__dirname, '..', 'themes');
 
 const targets: Target[] = [
     { name: 'Helix', file: 'helix/rust-in-peace.toml', generate: helix },
+    { name: 'Herdr', file: 'herdr/rust-in-peace.toml', generate: herdr },
     { name: 'Ptyxis', file: 'ptyxis/rust-in-peace.palette', generate: ptyxis },
     { name: 'Zellij', file: 'zellij/rust-in-peace.kdl', generate: zellij },
 ];
