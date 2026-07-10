@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
 import generate from './generate';
+import { buildReadme } from './readme';
 
 const THEME_DIR = join(__dirname, '..', 'theme');
 
@@ -25,6 +26,8 @@ const build = async (): Promise<void> => {
         //     JSON.stringify(soft, null, 4)
         // ),
     ]);
+
+    await buildReadme();
 };
 
 build().catch((error: unknown) => {

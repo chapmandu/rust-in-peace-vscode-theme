@@ -18,8 +18,9 @@ jobs:
       # Checks theme keys against the VS Code reference; fails on network error (network-dependent).
       - run: npm run lint
       - run: npm run build
-      # Fail if the committed theme is stale relative to its YAML source.
-      - run: git diff --exit-code theme/
+      # Fail if the committed theme or generated README section is stale
+      # relative to the palette/YAML sources.
+      - run: git diff --exit-code theme/ README.md assets/swatches/
 
   fallow:
     # Fallow audit scopes to changed files against the PR base.

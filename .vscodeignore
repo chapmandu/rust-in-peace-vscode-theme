@@ -1,5 +1,7 @@
 .github/**
 .vscode/**
+assets/swatches/**
+README.md
 bin/**
 node_modules/**
 scripts/**

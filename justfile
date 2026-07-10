@@ -35,7 +35,7 @@ fallow:
 [group('code quality')]
 check: eslint typecheck lint fallow
 
-# Generate theme/rust-in-peace.json from the YAML source
+# Generate the theme JSONs, README palette section, and swatch SVGs
 [group('build')]
 build:
     npm run build
