@@ -274,19 +274,44 @@ const renderBanner = (palette: Palette, logoDataUri: string): string => {
     );
 
     // Centred type lockup; only the title decays.
+    const runWidth = (text: string, fontSize: number, letterSpacing: number): string =>
+        fmt(text.length * fontSize * 0.6 + (text.length - 1) * letterSpacing);
+    const lockup = (text: string, y: number, fontSize: number, letterSpacing: number, attrs: string): string =>
+        `<text x="${cx}" y="${y}" text-anchor="middle" font-size="${fontSize}" letter-spacing="${letterSpacing}" ${attrs} textLength="${runWidth(text, fontSize, letterSpacing)}" lengthAdjust="spacingAndGlyphs">${escapeXml(text)}</text>`;
+    // The title's words are pinned individually so the word gaps can be
+    // tighter than a monospace space would allow. The font size is derived
+    // so the title spans exactly the spectrum rule's width.
+    const RULE_WIDTH = 640;
+    const TITLE_LS = 8;
+    const TITLE_GAP = 24;
+    const words = ['RUST', 'IN', 'PEACE'];
+    const glyphCount = words.join('').length;
+    const trackedGaps = glyphCount - words.length;
+    const TITLE_FONT =
+        (RULE_WIDTH - trackedGaps * TITLE_LS - (words.length - 1) * TITLE_GAP) /
+        (glyphCount * 0.6);
+    const wordWidths = words.map(w => w.length * TITLE_FONT * 0.6 + (w.length - 1) * TITLE_LS);
+    let wordX = cx - (wordWidths.reduce((a, b) => a + b, 0) + TITLE_GAP * (words.length - 1)) / 2;
+    const titleSpans = words
+        .map((word, i) => {
+            const span = `<tspan x="${fmt(wordX)}" textLength="${fmt(wordWidths[i])}" lengthAdjust="spacingAndGlyphs">${word}</tspan>`;
+            wordX += wordWidths[i] + TITLE_GAP;
+            return span;
+        })
+        .join('');
     parts.push(
-        `<text x="${cx}" y="96" text-anchor="middle" font-size="12" letter-spacing="6" fill="${colour('fg.muted')}" textLength="380" lengthAdjust="spacingAndGlyphs">A DARK THEME FOR VS CODE</text>`,
-        `<text x="${cx}" y="170" text-anchor="middle" font-size="68" font-weight="bold" letter-spacing="8" fill="url(#steel)" filter="url(#decay)" textLength="640" lengthAdjust="spacingAndGlyphs">RUST IN PEACE</text>`,
-        `<text x="${cx}" y="232" text-anchor="middle" font-size="13" letter-spacing="4" fill="${colour('fg.comment')}" textLength="400" lengthAdjust="spacingAndGlyphs">ONE PALETTE · THREE THEMES</text>`
+        lockup('DARK THEMES', 96, 12, 6, `fill="${colour('fg.muted')}"`),
+        `<text y="172" font-size="${fmt(TITLE_FONT)}" font-weight="bold" letter-spacing="${TITLE_LS}" fill="url(#steel)" filter="url(#decay)">${titleSpans}</text>`,
+        lockup("WHAT THEY FOUND IS STILL INSIDE", 232, 13, 4, `fill="${colour('fg.comment')}"`)
     );
 
-    // The accent: a contiguous spectrum rule of the eight syntax colours.
+    // The accent: a contiguous spectrum rule of the eight syntax colours,
+    // exactly as wide as the title above it.
     const syntaxKeys = Object.keys(palette['syntax'] as Palette);
-    const ruleWidth = 640;
-    const segment = ruleWidth / syntaxKeys.length;
+    const segment = RULE_WIDTH / syntaxKeys.length;
     syntaxKeys.forEach((key, index) => {
         parts.push(
-            `<rect x="${fmt(cx - ruleWidth / 2 + index * segment)}" y="192" width="${fmt(segment)}" height="3" fill="${colour(`syntax.${key}`)}"/>`
+            `<rect x="${fmt(cx - RULE_WIDTH / 2 + index * segment)}" y="194" width="${fmt(segment)}" height="3" fill="${colour(`syntax.${key}`)}"/>`
         );
     });
 
@@ -328,9 +353,13 @@ const heroBlock = (palette: Palette, withSvg: boolean): string => {
 
 ${masthead}
 
+<br/>
+
 **A dark theme for VS Code, inspired by the album art of Megadeth's 1990 metal masterpiece, _Rust in Peace_.**
 
 ${badges(palette)}
+
+<br/>
 
 </div>`;
 };
@@ -344,27 +373,32 @@ const paletteBlock = (themes: ReadmeTheme[], withSvg: boolean): string => {
     const cell = (theme: ReadmeTheme): string =>
         `<td align="center" width="50%"><strong>${theme.label.replace('Rust in Peace ', '')}</strong><br/><img src="${swatchUrl(theme.slug)}" alt="${theme.label}" width="400"/></td>`;
 
-    // All themes at equal size, reading dark to light.
+    // All themes at equal size, reading dark to light. One single-row table
+    // per pair, with a spacer between, so the grid rows get breathing room.
     const rows: string[] = [];
     for (let i = 0; i < themes.length; i += 2) {
-        rows.push(`<tr>\n${themes.slice(i, i + 2).map(cell).join('\n')}\n</tr>`);
+        rows.push(`<table>\n<tr>\n${themes.slice(i, i + 2).map(cell).join('\n')}\n</tr>\n</table>`);
     }
 
     const swatches = withSvg
         ? `
 
-<table>
-${rows.join('\n')}
-</table>`
+${rows.join('\n\n<br/>\n\n')}`
         : `
 
 ![Screenshot](${REPO_RAW}/assets/screenshot.png)`;
 
     return `<div align="center">
 
+<br/>
+
 <img src="${REPO_RAW}/assets/Megadeth-RustInPeace.jpg" alt="Rust in Peace album cover" width="260"/>
 
-_Hand-picked from the record's rusted, cobalt-blue cover art._${swatches}
+_Hand-picked from the record's rusted, cobalt-blue cover art._
+
+<br/>${swatches}
+
+<br/>
 
 </div>`;
 };

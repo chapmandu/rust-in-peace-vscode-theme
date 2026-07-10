@@ -3,14 +3,20 @@
 
 <img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/banner.svg" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
 
+<br/>
+
 **A dark theme for VS Code, inspired by the album art of Megadeth's 1990 metal masterpiece, _Rust in Peace_.**
 
 [![CI](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml)
 [![Marketplace](https://flat.badgen.net/vs-marketplace/v/chapmandu.rust-in-peace?label=marketplace&labelColor=0a0e22&color=2a5ca8)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
 [![Installs](https://flat.badgen.net/vs-marketplace/i/chapmandu.rust-in-peace?label=installs&labelColor=0a0e22&color=391565)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
 
+<br/>
+
 </div>
 <!-- GENERATED HERO END -->
+
+<br/>
 
 ## Colour Palette
 
@@ -19,23 +25,36 @@ The complete palette, including ANSI terminal colours, lives in [`src/palette.js
 <!-- GENERATED PALETTE START (npm run build — do not edit by hand) -->
 <div align="center">
 
+<br/>
+
 <img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/Megadeth-RustInPeace.jpg" alt="Rust in Peace album cover" width="260"/>
 
 _Hand-picked from the record's rusted, cobalt-blue cover art._
+
+<br/>
 
 <table>
 <tr>
 <td align="center" width="50%"><strong>Rust in Peace</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace.svg" alt="Rust in Peace" width="400"/></td>
 <td align="center" width="50%"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-hangar-18.svg" alt="Rust in Peace Hangar 18" width="400"/></td>
 </tr>
+</table>
+
+<br/>
+
+<table>
 <tr>
 <td align="center" width="50%"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-polaris.svg" alt="Rust in Peace Polaris" width="400"/></td>
 <td align="center" width="50%"><strong>Dawn Patrol</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-dawn-patrol.svg" alt="Rust in Peace Dawn Patrol" width="400"/></td>
 </tr>
 </table>
 
+<br/>
+
 </div>
 <!-- GENERATED PALETTE END -->
+
+<br/>
 
 ## Installation
 
@@ -45,6 +64,8 @@ Install straight from the [**Visual Studio Marketplace**](https://marketplace.vi
 2. Search for `Megadeth` _(curse you, rust-lang!!!)_
 3. Click **Install**
 4. `Code → Preferences → Color Theme → ` **Rust in Peace** — or one of its lighter variants, **Hangar 18** (a subtle lift) and **Polaris** (lighter still), or **Dawn Patrol**, the light theme
+
+<br/>
 
 ## Companion themes
 
@@ -63,6 +84,8 @@ Copy the relevant file into your tool's theme directory, then select `rust-in-pe
 > Herdr has no standalone theme files — its file is a config fragment to merge into `~/.config/herdr/config.toml`, recolouring the `catppuccin` base theme.
 
 To add another target, drop a generator in `scripts/targets/` and register it in `scripts/build-themes.ts`; it reuses the shared palette loader and resolver in `scripts/palette.ts`.
+
+<br/>
 
 ## Contributing
 
@@ -109,6 +132,8 @@ Local tasks run through [`just`](https://github.com/casey/just) — run `just` t
 8. Profit!
 
 </details>
+
+<br/>
 
 ---
 

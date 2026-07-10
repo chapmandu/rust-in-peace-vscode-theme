@@ -16,17 +16,17 @@
 <rect width="1280" height="280" fill="url(#field)"/>
 <use href="#logo" x="96" y="76"/>
 <use href="#logo" x="1056" y="76"/>
-<text x="640" y="96" text-anchor="middle" font-size="12" letter-spacing="6" fill="#aebfda" textLength="380" lengthAdjust="spacingAndGlyphs">A DARK THEME FOR VS CODE</text>
-<text x="640" y="170" text-anchor="middle" font-size="68" font-weight="bold" letter-spacing="8" fill="url(#steel)" filter="url(#decay)" textLength="640" lengthAdjust="spacingAndGlyphs">RUST IN PEACE</text>
-<text x="640" y="232" text-anchor="middle" font-size="13" letter-spacing="4" fill="#6570a8" textLength="400" lengthAdjust="spacingAndGlyphs">ONE PALETTE · THREE THEMES</text>
-<rect x="320" y="192" width="80" height="3" fill="#5e9fe0"/>
-<rect x="400" y="192" width="80" height="3" fill="#99c5f0"/>
-<rect x="480" y="192" width="80" height="3" fill="#84bef5"/>
-<rect x="560" y="192" width="80" height="3" fill="#95de73"/>
-<rect x="640" y="192" width="80" height="3" fill="#e8e274"/>
-<rect x="720" y="192" width="80" height="3" fill="#f2c074"/>
-<rect x="800" y="192" width="80" height="3" fill="#9a63de"/>
-<rect x="880" y="192" width="80" height="3" fill="#eb8667"/>
+<text x="640" y="96" text-anchor="middle" font-size="12" letter-spacing="6" fill="#aebfda" textLength="139.2" lengthAdjust="spacingAndGlyphs">DARK THEMES</text>
+<text y="172" font-size="80" font-weight="bold" letter-spacing="8" fill="url(#steel)" filter="url(#decay)"><tspan x="320" textLength="216" lengthAdjust="spacingAndGlyphs">RUST</tspan><tspan x="560" textLength="104" lengthAdjust="spacingAndGlyphs">IN</tspan><tspan x="688" textLength="272" lengthAdjust="spacingAndGlyphs">PEACE</tspan></text>
+<text x="640" y="232" text-anchor="middle" font-size="13" letter-spacing="4" fill="#6570a8" textLength="361.8" lengthAdjust="spacingAndGlyphs">WHAT THEY FOUND IS STILL INSIDE</text>
+<rect x="320" y="194" width="80" height="3" fill="#5e9fe0"/>
+<rect x="400" y="194" width="80" height="3" fill="#99c5f0"/>
+<rect x="480" y="194" width="80" height="3" fill="#84bef5"/>
+<rect x="560" y="194" width="80" height="3" fill="#95de73"/>
+<rect x="640" y="194" width="80" height="3" fill="#e8e274"/>
+<rect x="720" y="194" width="80" height="3" fill="#f2c074"/>
+<rect x="800" y="194" width="80" height="3" fill="#9a63de"/>
+<rect x="880" y="194" width="80" height="3" fill="#eb8667"/>
 </g>
 <rect x="0.5" y="0.5" width="1279" height="279" rx="12" fill="none" stroke="#070a1a"/>
 </svg>
