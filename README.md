@@ -7,7 +7,7 @@
 
 [![CI](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml)
 [![Marketplace](https://flat.badgen.net/vs-marketplace/v/chapmandu.rust-in-peace?label=marketplace&labelColor=0a0e22&color=2a5ca8)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
-[![Installs](https://flat.badgen.net/vs-marketplace/i/chapmandu.rust-in-peace?label=installs&labelColor=0a0e22&color=3b2654)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
+[![Installs](https://flat.badgen.net/vs-marketplace/i/chapmandu.rust-in-peace?label=installs&labelColor=0a0e22&color=391565)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
 
 </div>
 <!-- GENERATED HERO END -->

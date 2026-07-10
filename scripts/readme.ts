@@ -234,28 +234,50 @@ const BANNER_W = 1280;
 const BANNER_H = 280;
 
 /**
- * The masthead: a near-flat cobalt field with a left-aligned type lockup and
- * one accent — a thin rule of the eight syntax colours. Nothing else.
+ * The masthead: a near-flat cobalt field, a centred type lockup with a
+ * corroded title (fixed-seed turbulence erosion and displacement, rust
+ * creeping up from below), the radioactive logo at each end, and a thin rule
+ * of the eight syntax colours.
  */
-const renderBanner = (palette: Palette): string => {
+const renderBanner = (palette: Palette, logoDataUri: string): string => {
     const colour = (path: string): string => resolvePalettePath(palette, path);
+    const cx = BANNER_W / 2;
     const parts: string[] = [];
 
     parts.push(
         `<svg xmlns="http://www.w3.org/2000/svg" width="${BANNER_W}" height="${BANNER_H}" viewBox="0 0 ${BANNER_W} ${BANNER_H}" role="img" aria-label="Rust in Peace — a dark theme for VS Code">`,
         '<defs>',
         `<linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${colour('bg.sunken')}"/><stop offset="1" stop-color="${colour('bg.base')}"/></linearGradient>`,
+        // Steel plate rusting from the bottom edge up.
+        `<linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${colour('fg.base')}"/><stop offset="0.62" stop-color="${colour('fg.base')}"/><stop offset="0.8" stop-color="${colour('fg.muted')}"/><stop offset="0.9" stop-color="${colour('syntax.type')}"/><stop offset="1" stop-color="${colour('syntax.error')}"/></linearGradient>`,
+        // Decay: speckle-erode the glyph alpha, then warp the edges.
+        // Fixed seeds keep the output byte-stable.
+        '<filter id="decay" x="-10%" y="-30%" width="120%" height="160%">',
+        '<feTurbulence type="fractalNoise" baseFrequency="0.18 0.2" numOctaves="3" seed="1990" result="spots"/>',
+        '<feColorMatrix in="spots" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 5 -1.1" result="mask"/>',
+        '<feComposite in="SourceGraphic" in2="mask" operator="in" result="eroded"/>',
+        '<feTurbulence type="fractalNoise" baseFrequency="0.03 0.14" numOctaves="3" seed="18" result="warp"/>',
+        '<feDisplacementMap in="eroded" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G"/>',
+        '</filter>',
+        `<image id="logo" width="128" height="128" href="${logoDataUri}"/>`,
         `<clipPath id="banner"><rect width="${BANNER_W}" height="${BANNER_H}" rx="12"/></clipPath>`,
         '</defs>',
         `<g clip-path="url(#banner)" font-family="${MONO}">`,
         `<rect width="${BANNER_W}" height="${BANNER_H}" fill="url(#field)"/>`
     );
 
-    // Type lockup.
+    // The radioactive logo, anchoring each end.
+    const logoY = (BANNER_H - 128) / 2;
     parts.push(
-        `<text x="88" y="104" font-size="12" letter-spacing="6" fill="${colour('fg.muted')}" textLength="380" lengthAdjust="spacingAndGlyphs">A DARK THEME FOR VS CODE</text>`,
-        `<text x="86" y="172" font-size="68" font-weight="bold" letter-spacing="8" fill="${colour('fg.base')}" textLength="640" lengthAdjust="spacingAndGlyphs">RUST IN PEACE</text>`,
-        `<text x="88" y="232" font-size="13" letter-spacing="4" fill="${colour('fg.comment')}" textLength="400" lengthAdjust="spacingAndGlyphs">ONE PALETTE · THREE THEMES</text>`
+        `<use href="#logo" x="96" y="${fmt(logoY)}"/>`,
+        `<use href="#logo" x="${BANNER_W - 96 - 128}" y="${fmt(logoY)}"/>`
+    );
+
+    // Centred type lockup; only the title decays.
+    parts.push(
+        `<text x="${cx}" y="96" text-anchor="middle" font-size="12" letter-spacing="6" fill="${colour('fg.muted')}" textLength="380" lengthAdjust="spacingAndGlyphs">A DARK THEME FOR VS CODE</text>`,
+        `<text x="${cx}" y="170" text-anchor="middle" font-size="68" font-weight="bold" letter-spacing="8" fill="url(#steel)" filter="url(#decay)" textLength="640" lengthAdjust="spacingAndGlyphs">RUST IN PEACE</text>`,
+        `<text x="${cx}" y="232" text-anchor="middle" font-size="13" letter-spacing="4" fill="${colour('fg.comment')}" textLength="400" lengthAdjust="spacingAndGlyphs">ONE PALETTE · THREE THEMES</text>`
     );
 
     // The accent: a contiguous spectrum rule of the eight syntax colours.
@@ -264,7 +286,7 @@ const renderBanner = (palette: Palette): string => {
     const segment = ruleWidth / syntaxKeys.length;
     syntaxKeys.forEach((key, index) => {
         parts.push(
-            `<rect x="${fmt(88 + index * segment)}" y="196" width="${fmt(segment)}" height="3" fill="${colour(`syntax.${key}`)}"/>`
+            `<rect x="${fmt(cx - ruleWidth / 2 + index * segment)}" y="192" width="${fmt(segment)}" height="3" fill="${colour(`syntax.${key}`)}"/>`
         );
     });
 
@@ -379,11 +401,16 @@ export const buildReadme = async (): Promise<void> => {
         palette: lightPalette,
     };
 
+    // Embedded as a data URI: GitHub serves the SVG through <img>, which
+    // blocks external resource loads.
+    const logo = await readFile(join(__dirname, '..', 'assets', 'logo.png'));
+    const logoDataUri = `data:image/png;base64,${logo.toString('base64')}`;
+
     const generatedDir = join(__dirname, '..', 'assets', 'generated');
     await rm(generatedDir, { recursive: true, force: true });
     await mkdir(generatedDir, { recursive: true });
     await Promise.all([
-        writeFile(join(generatedDir, 'banner.svg'), renderBanner(palette)),
+        writeFile(join(generatedDir, 'banner.svg'), renderBanner(palette, logoDataUri)),
         ...[...themes, light].map(theme =>
             writeFile(join(generatedDir, `${theme.slug}.svg`), renderWindow(theme.palette, theme.label))
         ),
