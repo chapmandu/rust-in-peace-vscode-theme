@@ -15,7 +15,7 @@
 </div>
 
 Hand-picked from the record's rusted, cobalt-blue cover art.
-The complete palette, including ANSI terminal colours, lives in [`assets/palette.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/assets/palette.json).
+The complete palette, including ANSI terminal colours, lives in [`src/palette.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/src/palette.json) — the single source of truth the VS Code theme is generated from.
 
 ## Installation
 

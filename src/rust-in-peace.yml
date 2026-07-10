@@ -5,58 +5,60 @@ maintainers:
   - Adam Chapman <adam.p.chapman@gmail.com>
 semanticClass: theme.rustInPeace
 semanticHighlighting: true
+# Colours resolve from the single source of truth in src/palette.json via
+# double-brace "group.key" placeholders (see scripts/generate.ts). An optional
+# 2-hex suffix appends an alpha channel. Anchors below stay app-agnostic; this
+# file is just the VS Code target's mapping of the palette onto VS Code keys.
 rustInPeace:
   base:
-    - &BG        '#101530'
-    - &FG        '#d3e0f0'
-    - &SELECTION '#17204a'
-    - &COMMENT   '#6570a8'
-    - &CYAN      '#99c5f0'
-    - &BLUE      '#84bef5'
-    - &TEAL      '#5e9fe0'
-    - &GREEN     '#95de73'
-    - &YELLOW    '#e8e274'
-    - &ORANGE    '#f2c074'
-    - &RED       '#eb8667'
-    - &PURPLE    '#9a63de'
+    - &BG        '{{bg.base}}'
+    - &FG        '{{fg.base}}'
+    - &SELECTION '{{bg.selection}}'
+    - &COMMENT   '{{fg.comment}}'
+    - &CYAN      '{{syntax.builtin}}'
+    - &BLUE      '{{syntax.info}}'
+    - &TEAL      '{{syntax.keyword}}'
+    - &GREEN     '{{syntax.function}}'
+    - &YELLOW    '{{syntax.string}}'
+    - &ORANGE    '{{syntax.type}}'
+    - &RED       '{{syntax.error}}'
+    - &PURPLE    '{{syntax.constant}}'
   ansi:
-    - &COLOR0        '#1c2547'
-    - &COLOR1        '#eb8667'
-    - &COLOR2        '#95de73'
-    - &COLOR3        '#e8e274'
-    - &COLOR4        '#9a63de'
-    - &COLOR5        '#eb8db7'
-    - &COLOR6        '#84bef5'
-    - &COLOR7        '#d3e0f0'
-    - &COLOR8        '#6570a8'
-    - &COLOR9        '#f0a48d'
-    - &COLOR10       '#b0e696'
-    - &COLOR11       '#ede893'
-    - &COLOR12       '#b085e5'
-    - &COLOR13       '#f0aac9'
-    - &COLOR14       '#a3cef8'
-    - &COLOR15       '#eef4fb'
+    - &COLOR0        '{{ansi.black}}'
+    - &COLOR1        '{{ansi.red}}'
+    - &COLOR2        '{{ansi.green}}'
+    - &COLOR3        '{{ansi.yellow}}'
+    - &COLOR4        '{{ansi.blue}}'
+    - &COLOR5        '{{ansi.magenta}}'
+    - &COLOR6        '{{ansi.cyan}}'
+    - &COLOR7        '{{ansi.white}}'
+    - &COLOR8        '{{ansi.brightBlack}}'
+    - &COLOR9        '{{ansi.brightRed}}'
+    - &COLOR10       '{{ansi.brightGreen}}'
+    - &COLOR11       '{{ansi.brightYellow}}'
+    - &COLOR12       '{{ansi.brightBlue}}'
+    - &COLOR13       '{{ansi.brightMagenta}}'
+    - &COLOR14       '{{ansi.brightCyan}}'
+    - &COLOR15       '{{ansi.brightWhite}}'
   brightOther:
     # Temporary (awaiting fix)
-    - &TEMP_QUOTES          '#e8e274'
-    - &TEMP_PROPERTY_QUOTES '#aebfda'
+    - &TEMP_QUOTES          '{{syntax.string}}'
+    - &TEMP_PROPERTY_QUOTES '{{fg.muted}}'
   other:
-    - &LineHighlight '#17204a80'
-    - &NonText       '#FFFFFF1A'
-    - &WHITE         '#FFFFFF'
-    - &TAB_DROP_BG   '#17204a70'
+    - &LineHighlight '{{bg.selection}}80'
+    - &NonText       '#FFFFFF1A'                 # structural white overlay, not a palette colour
+    - &WHITE         '#FFFFFF'                   # structural white overlay, not a palette colour
+    - &TAB_DROP_BG   '{{bg.selection}}70'
     # Deep tube blue — a saturated hangar blue dark enough for white button text.
-    # Documented in assets/palette.json as blues.button.
-    - &BUTTON_BG     '#2a5ca8'
-    - &BUTTON_FG     '#eef4fb'
-    # Deep skull-violet — the violet accent (#9a63de) darkened to background depth.
-    # Documented in assets/palette.json as violets.statusBar.
-    - &STATUS_BAR_BG '#3b2654'
+    - &BUTTON_BG     '{{ui.button}}'
+    - &BUTTON_FG     '{{ansi.brightWhite}}'
+    # Deep skull-violet — the violet accent darkened to background depth.
+    - &STATUS_BAR_BG '{{ui.statusBar}}'
     # UI Variants
-    - &BGLighter     '#202a58'
-    - &BGLight       '#1c2547'
-    - &BGDark        '#0a0e22'
-    - &BGDarker      '#070a1a'
+    - &BGLighter     '{{bg.overlay}}'
+    - &BGLight       '{{bg.surface}}'
+    - &BGDark        '{{bg.sunken}}'
+    - &BGDarker      '{{bg.border}}'
 
 # User Interface (more info: https://code.visualstudio.com/docs/getstarted/theme-color-reference)
 colors:

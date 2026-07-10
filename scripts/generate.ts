@@ -47,6 +47,30 @@ const withAlphaType = defineSequenceTag('!alpha', {
 
 const schema = CORE_SCHEMA.withTags(withAlphaType);
 
+/** Nested palette of semantic colour groups (the single source of truth). */
+type Palette = { [key: string]: string | Palette };
+
+/** Resolve a dotted path such as `editor.background` to a colour in the palette. */
+const resolvePalettePath = (palette: Palette, path: string): string => {
+    const value = path.split('.').reduce<string | Palette | undefined>(
+        (node, key) => (typeof node === 'object' ? node[key] : undefined),
+        palette
+    );
+    if (typeof value !== 'string') {
+        throw new Error(`palette.json has no colour at path "${path}"`);
+    }
+    return value;
+};
+
+/**
+ * Substitute `{{group.key}}` placeholders in the YAML source with palette
+ * colours. Any trailing characters (e.g. a 2-hex alpha suffix) are preserved.
+ */
+const applyPalette = (yaml: string, palette: Palette): string =>
+    yaml.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_match, path: string) =>
+        resolvePalettePath(palette, path)
+    );
+
 /** Soft variant transform. */
 const transformSoft: ThemeTransform = theme => {
     const soft: Theme = JSON.parse(JSON.stringify(theme));
@@ -68,12 +92,13 @@ const transformSoft: ThemeTransform = theme => {
 };
 
 export default async (): Promise<{ base: Theme; soft: Theme }> => {
-    const yamlFile = await readFile(
-        join(__dirname, '..', 'src', 'rust-in-peace.yml'),
-        'utf-8'
-    );
+    const [yamlFile, paletteFile] = await Promise.all([
+        readFile(join(__dirname, '..', 'src', 'rust-in-peace.yml'), 'utf-8'),
+        readFile(join(__dirname, '..', 'src', 'palette.json'), 'utf-8'),
+    ]);
 
-    const base = load(yamlFile, { schema }) as Theme;
+    const palette = JSON.parse(paletteFile) as Palette;
+    const base = load(applyPalette(yamlFile, palette), { schema }) as Theme;
 
     // Remove nulls and other falsey values from colors
     for (const key of Object.keys(base.colors)) {

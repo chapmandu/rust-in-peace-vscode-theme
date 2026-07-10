@@ -1,40 +1,30 @@
 {
-	"editor": {
-		"border": "#070a1a",
-		"menu": "#0a0e22",
-		"background": "#101530",
-		"selection": "#17204a",
+	"bg": {
+		"base": "#101530",
 		"surface": "#1c2547",
-		"focus": "#202a58"
+		"overlay": "#202a58",
+		"selection": "#17204a",
+		"sunken": "#0a0e22",
+		"border": "#070a1a"
 	},
-	"text": {
-		"foreground": "#d3e0f0",
+	"fg": {
+		"base": "#d3e0f0",
 		"muted": "#aebfda",
 		"comment": "#6570a8"
 	},
-	"blues": {
+	"syntax": {
 		"keyword": "#5e9fe0",
 		"builtin": "#99c5f0",
 		"info": "#84bef5",
-		"button": "#2a5ca8"
-	},
-	"greens": {
 		"function": "#95de73",
-		"bright": "#b0e696"
-	},
-	"golds": {
 		"string": "#e8e274",
-		"type": "#f2c074"
-	},
-	"rusts": {
+		"type": "#f2c074",
+		"constant": "#9a63de",
 		"error": "#eb8667"
 	},
-	"violets": {
-		"constant": "#9a63de",
+	"ui": {
+		"button": "#2a5ca8",
 		"statusBar": "#3b2654"
-	},
-	"pinks": {
-		"magenta": "#eb8db7"
 	},
 	"ansi": {
 		"black": "#1c2547",
