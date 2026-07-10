@@ -15,9 +15,9 @@ interface Token {
 const TOKENS: Token[] = [
     { name: 'accent', ref: 'syntax.info', comment: 'primary accent — electric tube blue' },
     { name: 'panel_bg', ref: 'bg.base', comment: 'main panel background' },
-    { name: 'surface0', ref: 'bg.surface', comment: 'raised surface' },
+    { name: 'surface0', ref: 'bg.surface', comment: 'raised surface — selected rows, tabs' },
     { name: 'surface1', ref: 'bg.overlay', comment: 'higher surface' },
-    { name: 'surface_dim', ref: 'bg.sunken', comment: 'dimmed surface' },
+    { name: 'surface_dim', ref: 'bg.selection', comment: 'base surface — dividers, seams, tracks; sits just above panel_bg so they stay visible' },
     { name: 'overlay0', ref: 'fg.comment', comment: 'muted UI lines, borders' },
     { name: 'overlay1', ref: 'fg.muted', comment: 'brighter UI lines' },
     { name: 'text', ref: 'fg.base', comment: 'primary text' },
