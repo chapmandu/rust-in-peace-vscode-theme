@@ -50,6 +50,7 @@
   },
   "scripts": {
     "build": "tsx ./scripts/build.ts",
+    "build:themes": "tsx ./scripts/build-themes.ts",
     "lint": "tsx ./scripts/lint.ts",
     "eslint": "eslint scripts",
     "typecheck": "tsc --noEmit",

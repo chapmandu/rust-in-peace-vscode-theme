@@ -40,6 +40,11 @@ check: eslint typecheck lint fallow
 build:
     npm run build
 
+# Generate the downstream terminal/editor themes into themes/
+[group('build')]
+build-themes:
+    npm run build:themes
+
 # Package the extension to ./bin/rust-in-peace.vsix
 [group('build')]
 package:

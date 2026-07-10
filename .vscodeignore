@@ -5,6 +5,7 @@ node_modules/**
 scripts/**
 src/**
 tests/**
+themes/**
 .editorconfig
 .prettierrc.toml
 tsconfig.json

@@ -1,0 +1,132 @@
+// rust-in-peace — generated from src/palette.json. Do not edit by hand.
+// Megadeth "Rust in Peace" cover palette. The active accent is the cover's
+// electric tube blue rather than green, so pane frames and the selected tab
+// stay calm.
+themes {
+    rust-in-peace {
+        text_unselected {
+            base 211 224 240
+            background 28 37 71
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 149 222 115
+            emphasis_3 154 99 222
+        }
+        text_selected {
+            base 211 224 240
+            background 28 37 71
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 149 222 115
+            emphasis_3 154 99 222
+        }
+        ribbon_selected {
+            base 16 21 48
+            background 132 190 245
+            emphasis_0 235 134 103
+            emphasis_1 242 192 116
+            emphasis_2 154 99 222
+            emphasis_3 101 112 168
+        }
+        ribbon_unselected {
+            base 16 21 48
+            background 154 99 222
+            emphasis_0 235 134 103
+            emphasis_1 16 21 48
+            emphasis_2 101 112 168
+            emphasis_3 132 190 245
+        }
+        table_title {
+            base 132 190 245
+            background 0
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 149 222 115
+            emphasis_3 154 99 222
+        }
+        table_cell_selected {
+            base 211 224 240
+            background 28 37 71
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 149 222 115
+            emphasis_3 154 99 222
+        }
+        table_cell_unselected {
+            base 211 224 240
+            background 28 37 71
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 149 222 115
+            emphasis_3 154 99 222
+        }
+        list_selected {
+            base 211 224 240
+            background 28 37 71
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 149 222 115
+            emphasis_3 154 99 222
+        }
+        list_unselected {
+            base 211 224 240
+            background 28 37 71
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 149 222 115
+            emphasis_3 154 99 222
+        }
+        frame_selected {
+            base 132 190 245
+            background 0
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 154 99 222
+            emphasis_3 0
+        }
+        frame_unselected {
+            base 87 98 140
+            background 0
+            emphasis_0 242 192 116
+            emphasis_1 132 190 245
+            emphasis_2 154 99 222
+            emphasis_3 154 99 222
+        }
+        frame_highlight {
+            base 242 192 116
+            background 0
+            emphasis_0 154 99 222
+            emphasis_1 242 192 116
+            emphasis_2 242 192 116
+            emphasis_3 242 192 116
+        }
+        exit_code_success {
+            base 149 222 115
+            background 0
+            emphasis_0 132 190 245
+            emphasis_1 28 37 71
+            emphasis_2 154 99 222
+            emphasis_3 101 112 168
+        }
+        exit_code_error {
+            base 235 134 103
+            background 0
+            emphasis_0 232 226 116
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 154 99 222
+            player_2 132 190 245
+            player_3 0
+            player_4 232 226 116
+            player_5 149 222 115
+            player_6 0
+            player_7 235 134 103
+            player_8 0
+            player_9 0
+            player_10 0
+        }
+    }
+}
