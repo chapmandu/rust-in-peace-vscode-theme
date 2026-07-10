@@ -4,11 +4,19 @@ import { join } from 'path';
 /** Nested palette of semantic colour groups — the single source of truth. */
 export type Palette = { [key: string]: string | Palette };
 
-/** Load and parse src/palette.json. */
-export const loadPalette = async (): Promise<Palette> => {
-    const file = await readFile(join(__dirname, '..', 'src', 'palette.json'), 'utf-8');
-    return JSON.parse(file) as Palette;
+/** Load and parse a palette from src/ (the dark palette by default). */
+export const loadPalette = async (file = 'palette.json'): Promise<Palette> => {
+    const json = await readFile(join(__dirname, '..', 'src', file), 'utf-8');
+    return JSON.parse(json) as Palette;
 };
+
+/** Flatten a palette to its dotted colour paths, e.g. `syntax.keyword`. */
+export const palettePaths = (palette: Palette, prefix = ''): string[] =>
+    Object.entries(palette).flatMap(([key, value]) =>
+        typeof value === 'string'
+            ? [`${prefix}${key}`]
+            : palettePaths(value, `${prefix}${key}.`)
+    );
 
 /** Resolve a dotted path such as `syntax.keyword` to a colour in the palette. */
 export const resolvePalettePath = (palette: Palette, path: string): string => {

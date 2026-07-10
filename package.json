@@ -55,6 +55,11 @@
         "label": "Rust in Peace Polaris",
         "uiTheme": "vs-dark",
         "path": "./theme/rust-in-peace-polaris.json"
+      },
+      {
+        "label": "Rust in Peace Dawn Patrol",
+        "uiTheme": "vs",
+        "path": "./theme/rust-in-peace-dawn-patrol.json"
       }
     ]
   },

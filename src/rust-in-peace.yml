@@ -46,8 +46,8 @@ rustInPeace:
     - &TEMP_PROPERTY_QUOTES '{{fg.muted}}'
   other:
     - &LineHighlight '{{bg.selection}}80'
-    - &NonText       '#FFFFFF1A'                 # structural white overlay, not a palette colour
-    - &WHITE         '#FFFFFF'                   # structural white overlay, not a palette colour
+    - &NonText       '{{fg.ink}}1A'              # structural ink overlay: white on dark, navy on light
+    - &INK           '{{fg.ink}}'                # structural ink overlay: white on dark, navy on light
     - &TAB_DROP_BG   '{{bg.selection}}70'
     # Deep tube blue — a saturated hangar blue dark enough for white button text.
     - &BUTTON_BG     '{{ui.button}}'
@@ -205,7 +205,7 @@ colors:
   editor.wordHighlightStrongBackground: !alpha [ *GREEN, 50 ]                   # Background color of a symbol during write-access, for example when writing to a variable
 
   editor.findMatchBackground: !alpha [ *ORANGE, 80 ]
-  editor.findMatchHighlightBackground: !alpha [ *WHITE, 40 ]                    # Color of the other search matches
+  editor.findMatchHighlightBackground: !alpha [ *INK, 40 ]                    # Color of the other search matches
   editor.findRangeHighlightBackground: *LineHighlight                           # Color the range limiting the search
 
   editor.hoverHighlightBackground: !alpha [*CYAN, 50]                           # Highlight below the word for which a hover is shown
@@ -223,7 +223,7 @@ colors:
 
   editorWhitespace.foreground: *NonText                                         # Color of whitespace characters in the editor
   editorIndentGuide.background: *NonText                                        # Color of the editor indentation guides
-  editorIndentGuide.activeBackground: !alpha [ *WHITE, 45]                      # Color of the active indentation guide
+  editorIndentGuide.activeBackground: !alpha [ *INK, 45]                      # Color of the active indentation guide
   editorRuler.foreground: *NonText                                              # Color of the editor rulers
 
   editorCodeLens.foreground: *COMMENT                                           # Foreground color of an editor CodeLens

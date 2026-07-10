@@ -8,7 +8,7 @@ const THEME_DIR = join(__dirname, '..', 'theme');
 const build = async (): Promise<void> => {
     await mkdir(THEME_DIR, { recursive: true });
 
-    const { base, variants } = await generate();
+    const { base, variants, light } = await generate();
 
     await Promise.all([
         writeFile(
@@ -20,6 +20,10 @@ const build = async (): Promise<void> => {
                 join(THEME_DIR, `${spec.slug}.json`),
                 JSON.stringify(theme, null, 4)
             )
+        ),
+        writeFile(
+            join(THEME_DIR, 'rust-in-peace-dawn-patrol.json'),
+            JSON.stringify(light, null, 4)
         ),
         // writeFile(
         //     join(THEME_DIR, 'rust-in-peace-soft.json'),

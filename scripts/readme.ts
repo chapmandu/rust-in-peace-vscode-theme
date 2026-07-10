@@ -318,26 +318,21 @@ ${badges(palette)}
  * `withSvg: false` renders it without the editor-window swatches.
  */
 const paletteBlock = (themes: ReadmeTheme[], withSvg: boolean): string => {
-    const [base, ...variants] = themes;
     const swatchUrl = (slug: string): string => `${REPO_RAW}/assets/generated/${slug}.svg`;
-    const shortName = (theme: ReadmeTheme): string => theme.label.replace('Rust in Peace ', '');
+    const cell = (theme: ReadmeTheme): string =>
+        `<td align="center" width="50%"><strong>${theme.label.replace('Rust in Peace ', '')}</strong><br/><img src="${swatchUrl(theme.slug)}" alt="${theme.label}" width="400"/></td>`;
 
-    const variantCells = variants
-        .map(
-            v =>
-                `<td align="center"><strong>${shortName(v)}</strong><br/><img src="${swatchUrl(v.slug)}" alt="${v.label}" width="400"/></td>`
-        )
-        .join('\n');
+    // All themes at equal size, reading dark to light.
+    const rows: string[] = [];
+    for (let i = 0; i < themes.length; i += 2) {
+        rows.push(`<tr>\n${themes.slice(i, i + 2).map(cell).join('\n')}\n</tr>`);
+    }
 
     const swatches = withSvg
         ? `
 
-<img src="${swatchUrl(base.slug)}" alt="${base.label}" width="720"/>
-
 <table>
-<tr>
-${variantCells}
-</tr>
+${rows.join('\n')}
 </table>`
         : `
 
@@ -366,7 +361,10 @@ const inject = (source: string, region: string, block: string): string => {
 
 /** Regenerate the banner/swatch SVGs and the READMEs' generated sections. */
 export const buildReadme = async (): Promise<void> => {
-    const palette = await loadPalette();
+    const [palette, lightPalette] = await Promise.all([
+        loadPalette(),
+        loadPalette('palette-light.json'),
+    ]);
     const themes: ReadmeTheme[] = [
         { label: 'Rust in Peace', slug: 'rust-in-peace', palette },
         ...VARIANTS.map(spec => ({
@@ -375,13 +373,18 @@ export const buildReadme = async (): Promise<void> => {
             palette: transformPalette(palette, spec),
         })),
     ];
+    const light: ReadmeTheme = {
+        label: 'Rust in Peace Dawn Patrol',
+        slug: 'rust-in-peace-dawn-patrol',
+        palette: lightPalette,
+    };
 
     const generatedDir = join(__dirname, '..', 'assets', 'generated');
     await rm(generatedDir, { recursive: true, force: true });
     await mkdir(generatedDir, { recursive: true });
     await Promise.all([
         writeFile(join(generatedDir, 'banner.svg'), renderBanner(palette)),
-        ...themes.map(theme =>
+        ...[...themes, light].map(theme =>
             writeFile(join(generatedDir, `${theme.slug}.svg`), renderWindow(theme.palette, theme.label))
         ),
     ]);
@@ -392,8 +395,9 @@ export const buildReadme = async (): Promise<void> => {
     const regions: Record<string, { github: string; marketplace: string }> = {
         HERO: { github: heroBlock(palette, true), marketplace: heroBlock(palette, false) },
         PALETTE: {
-            github: paletteBlock(themes, true),
-            marketplace: paletteBlock(themes, false),
+            // Dark to light: base, Hangar 18, Polaris, Dawn Patrol.
+            github: paletteBlock([...themes, light], true),
+            marketplace: paletteBlock([...themes, light], false),
         },
     };
 

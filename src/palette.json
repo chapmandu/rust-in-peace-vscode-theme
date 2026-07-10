@@ -10,7 +10,8 @@
 	"fg": {
 		"base": "#d3e0f0",
 		"muted": "#aebfda",
-		"comment": "#6570a8"
+		"comment": "#6570a8",
+		"ink": "#ffffff"
 	},
 	"syntax": {
 		"keyword": "#5e9fe0",

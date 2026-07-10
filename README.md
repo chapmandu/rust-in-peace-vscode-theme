@@ -23,12 +23,14 @@ The complete palette, including ANSI terminal colours, lives in [`src/palette.js
 
 _Hand-picked from the record's rusted, cobalt-blue cover art._
 
-<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace.svg" alt="Rust in Peace" width="720"/>
-
 <table>
 <tr>
-<td align="center"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-hangar-18.svg" alt="Rust in Peace Hangar 18" width="400"/></td>
-<td align="center"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-polaris.svg" alt="Rust in Peace Polaris" width="400"/></td>
+<td align="center" width="50%"><strong>Rust in Peace</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace.svg" alt="Rust in Peace" width="400"/></td>
+<td align="center" width="50%"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-hangar-18.svg" alt="Rust in Peace Hangar 18" width="400"/></td>
+</tr>
+<tr>
+<td align="center" width="50%"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-polaris.svg" alt="Rust in Peace Polaris" width="400"/></td>
+<td align="center" width="50%"><strong>Dawn Patrol</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-dawn-patrol.svg" alt="Rust in Peace Dawn Patrol" width="400"/></td>
 </tr>
 </table>
 
@@ -42,7 +44,7 @@ Install straight from the [**Visual Studio Marketplace**](https://marketplace.vi
 1. Open the **Extensions** sidebar in VS Code — `View → Extensions`
 2. Search for `Megadeth` _(curse you, rust-lang!!!)_
 3. Click **Install**
-4. `Code → Preferences → Color Theme → ` **Rust in Peace** — or one of its lighter variants, **Hangar 18** (a subtle lift) and **Polaris** (lighter still)
+4. `Code → Preferences → Color Theme → ` **Rust in Peace** — or one of its lighter variants, **Hangar 18** (a subtle lift) and **Polaris** (lighter still), or **Dawn Patrol**, the light theme
 
 ## Companion themes
 

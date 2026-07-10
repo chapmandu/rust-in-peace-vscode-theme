@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises';
 import { join } from 'path';
 import { defineSequenceTag, CORE_SCHEMA, load } from 'js-yaml';
 import tinycolor from 'tinycolor2';
-import { Palette, loadPalette, resolvePalettePath } from './palette';
+import { Palette, loadPalette, palettePaths, resolvePalettePath } from './palette';
 import { VARIANTS, VariantSpec, transformPalette } from './variants';
 
 /** Textmate token settings. `fontStyle` is a space-separated list of `italic`, `bold`, `underline`. */
@@ -80,6 +80,21 @@ const transformSoft: ThemeTransform = theme => {
     return soft;
 };
 
+/** Fail loudly if the dark and light palettes have drifted structurally. */
+const assertPaletteParity = (dark: Palette, light: Palette): void => {
+    const darkPaths = new Set(palettePaths(dark));
+    const lightPaths = new Set(palettePaths(light));
+    const missingFromLight = [...darkPaths].filter(path => !lightPaths.has(path));
+    const missingFromDark = [...lightPaths].filter(path => !darkPaths.has(path));
+    if (missingFromLight.length > 0 || missingFromDark.length > 0) {
+        const problems = [
+            ...missingFromLight.map(path => `palette-light.json is missing "${path}"`),
+            ...missingFromDark.map(path => `palette.json is missing "${path}"`),
+        ];
+        throw new Error(`palette parity check failed:\n  ${problems.join('\n  ')}`);
+    }
+};
+
 /** Substitute a palette into the YAML source and parse it into a theme. */
 const buildTheme = (yamlFile: string, palette: Palette): Theme => {
     const theme = load(applyPalette(yamlFile, palette), { schema }) as Theme;
@@ -97,12 +112,16 @@ const buildTheme = (yamlFile: string, palette: Palette): Theme => {
 export default async (): Promise<{
     base: Theme;
     variants: Array<{ spec: VariantSpec; theme: Theme }>;
+    light: Theme;
     soft: Theme;
 }> => {
-    const [yamlFile, palette] = await Promise.all([
+    const [yamlFile, palette, lightPalette] = await Promise.all([
         readFile(join(__dirname, '..', 'src', 'rust-in-peace.yml'), 'utf-8'),
         loadPalette(),
+        loadPalette('palette-light.json'),
     ]);
+
+    assertPaletteParity(palette, lightPalette);
 
     const base = buildTheme(yamlFile, palette);
 
@@ -112,9 +131,15 @@ export default async (): Promise<{
         return { spec, theme };
     });
 
+    // The light theme resolves the same YAML mapping against the hand-designed
+    // light palette rather than a formulaic transform of the dark one.
+    const light = buildTheme(yamlFile, lightPalette);
+    light.name = 'Rust in Peace Dawn Patrol';
+
     return {
         base,
         variants,
+        light,
         soft: transformSoft(base),
     };
 };
