@@ -1,55 +1,55 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="Rust in Peace Dawn Patrol palette preview">
 <defs><clipPath id="window"><rect width="640" height="400" rx="12"/></clipPath></defs>
 <g clip-path="url(#window)" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">
-<rect width="640" height="400" fill="#c9d3ea"/>
-<rect y="36" width="640" height="276" fill="#e9edf9"/>
-<rect y="368" width="640" height="32" fill="#533a75"/>
-<circle cx="20" cy="18" r="5" fill="#b34722" opacity="0.75"/>
-<circle cx="38" cy="18" r="5" fill="#8a630c" opacity="0.75"/>
-<circle cx="56" cy="18" r="5" fill="#367721" opacity="0.75"/>
-<rect x="80" y="8" width="170" height="34" rx="6" fill="#e9edf9"/>
+<rect width="640" height="400" fill="#bfcce8"/>
+<rect y="36" width="640" height="276" fill="#d9e1f2"/>
+<rect y="368" width="640" height="32" fill="#8da0cc"/>
+<circle cx="20" cy="18" r="5" fill="#b03911" opacity="0.75"/>
+<circle cx="38" cy="18" r="5" fill="#815a03" opacity="0.75"/>
+<circle cx="56" cy="18" r="5" fill="#297112" opacity="0.75"/>
+<rect x="80" y="8" width="170" height="34" rx="6" fill="#d9e1f2"/>
 <rect x="84" y="6" width="162" height="2" rx="1" fill="#2a5ca8"/>
 <text x="165" y="27" text-anchor="middle" font-size="12" fill="#2f3d5c">rust_in_peace.rs</text>
-<rect y="190" width="640" height="24" fill="#c5d3f2" opacity="0.6"/>
-<text x="44" y="62" text-anchor="end" font-size="11" fill="#67759c">1</text>
-<text y="62" font-size="13" xml:space="preserve"><tspan x="64" textLength="273" lengthAdjust="spacingAndGlyphs" fill="#67759c">//! Megadeth — Rust in Peace (1990)</tspan></text>
-<text x="44" y="86" text-anchor="end" font-size="11" fill="#67759c">2</text>
-<text y="86" font-size="13" xml:space="preserve"><tspan x="64" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#1f63d2">use </tspan><tspan x="95.2" textLength="46.8" lengthAdjust="spacingAndGlyphs" fill="#17699f">hangar</tspan><tspan x="142" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">::</tspan><tspan x="157.6" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#17699f">warhead</tspan><tspan x="212.2" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">::</tspan><tspan x="227.8" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#a45511">Polaris</tspan><tspan x="282.4" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">;</tspan></text>
-<text x="44" y="110" text-anchor="end" font-size="11" fill="#67759c">3</text>
-<path d="M 149.8 114 q 3 3 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="#b34722" stroke-width="1.2"/>
-<text y="110" font-size="13" xml:space="preserve"><tspan x="64" textLength="85.8" lengthAdjust="spacingAndGlyphs" fill="#0c6db1">#[military(</tspan><tspan x="149.8" textLength="93.6" lengthAdjust="spacingAndGlyphs" fill="#0c6db1">intelligence</tspan><tspan x="243.4" textLength="23.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> = </tspan><tspan x="266.8" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#7743cc">false</tspan><tspan x="305.8" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#0c6db1">)]</tspan></text>
-<text x="44" y="134" text-anchor="end" font-size="11" fill="#67759c">4</text>
-<text y="134" font-size="13" xml:space="preserve"><tspan x="64" textLength="85.8" lengthAdjust="spacingAndGlyphs" fill="#1f63d2">pub struct </tspan><tspan x="149.8" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#a45511">Rattlehead</tspan><tspan x="227.8" textLength="117" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> { rust_eaten: </tspan><tspan x="344.8" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#17699f">bool</tspan><tspan x="376" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> }</tspan></text>
-<text x="44" y="158" text-anchor="end" font-size="11" fill="#67759c">5</text>
-<text y="158" font-size="13" xml:space="preserve"><tspan x="64" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#1f63d2">impl </tspan><tspan x="103" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#a45511">Rattlehead</tspan><tspan x="181" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> {</tspan></text>
-<text x="44" y="182" text-anchor="end" font-size="11" fill="#67759c">6</text>
-<text y="182" font-size="13" xml:space="preserve"><tspan x="64" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">    </tspan><tspan x="95.2" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#1f63d2">pub fn </tspan><tspan x="149.8" textLength="70.2" lengthAdjust="spacingAndGlyphs" fill="#367721">holy_wars</tspan><tspan x="220" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">(&amp;</tspan><tspan x="235.6" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#1f63d2">self</tspan><tspan x="266.8" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">) -&gt; </tspan><tspan x="305.8" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#a45511">Punishment</tspan><tspan x="383.8" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> {</tspan></text>
+<rect y="190" width="640" height="24" fill="#b9caee" opacity="0.6"/>
+<text x="44" y="62" text-anchor="end" font-size="11" fill="#606e94">1</text>
+<text y="62" font-size="13" xml:space="preserve"><tspan x="64" textLength="273" lengthAdjust="spacingAndGlyphs" fill="#606e94">//! Megadeth — Rust in Peace (1990)</tspan></text>
+<text x="44" y="86" text-anchor="end" font-size="11" fill="#606e94">2</text>
+<text y="86" font-size="13" xml:space="preserve"><tspan x="64" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#0b5ad9">use </tspan><tspan x="95.2" textLength="46.8" lengthAdjust="spacingAndGlyphs" fill="#0d66a1">hangar</tspan><tspan x="142" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">::</tspan><tspan x="157.6" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#0d66a1">warhead</tspan><tspan x="212.2" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">::</tspan><tspan x="227.8" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#9c4c07">Polaris</tspan><tspan x="282.4" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">;</tspan></text>
+<text x="44" y="110" text-anchor="end" font-size="11" fill="#606e94">3</text>
+<path d="M 149.8 114 q 3 3 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="#b03911" stroke-width="1.2"/>
+<text y="110" font-size="13" xml:space="preserve"><tspan x="64" textLength="85.8" lengthAdjust="spacingAndGlyphs" fill="#0765a6">#[military(</tspan><tspan x="149.8" textLength="93.6" lengthAdjust="spacingAndGlyphs" fill="#0765a6">intelligence</tspan><tspan x="243.4" textLength="23.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> = </tspan><tspan x="266.8" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#712ae5">false</tspan><tspan x="305.8" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#0765a6">)]</tspan></text>
+<text x="44" y="134" text-anchor="end" font-size="11" fill="#606e94">4</text>
+<text y="134" font-size="13" xml:space="preserve"><tspan x="64" textLength="85.8" lengthAdjust="spacingAndGlyphs" fill="#0b5ad9">pub struct </tspan><tspan x="149.8" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#9c4c07">Rattlehead</tspan><tspan x="227.8" textLength="117" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> { rust_eaten: </tspan><tspan x="344.8" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#0d66a1">bool</tspan><tspan x="376" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> }</tspan></text>
+<text x="44" y="158" text-anchor="end" font-size="11" fill="#606e94">5</text>
+<text y="158" font-size="13" xml:space="preserve"><tspan x="64" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#0b5ad9">impl </tspan><tspan x="103" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#9c4c07">Rattlehead</tspan><tspan x="181" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> {</tspan></text>
+<text x="44" y="182" text-anchor="end" font-size="11" fill="#606e94">6</text>
+<text y="182" font-size="13" xml:space="preserve"><tspan x="64" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">    </tspan><tspan x="95.2" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#0b5ad9">pub fn </tspan><tspan x="149.8" textLength="70.2" lengthAdjust="spacingAndGlyphs" fill="#297112">holy_wars</tspan><tspan x="220" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">(&amp;</tspan><tspan x="235.6" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#0b5ad9">self</tspan><tspan x="266.8" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">) -&gt; </tspan><tspan x="305.8" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#9c4c07">Punishment</tspan><tspan x="383.8" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> {</tspan></text>
 <text x="44" y="206" text-anchor="end" font-size="11" fill="#4d5e82">7</text>
-<text y="206" font-size="13" xml:space="preserve"><tspan x="64" textLength="62.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">        </tspan><tspan x="126.4" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#1f63d2">let </tspan><tspan x="157.6" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">dues = </tspan><tspan x="212.2" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#a45511">Verse</tspan><tspan x="251.2" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">::</tspan><tspan x="266.8" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#367721">from</tspan><tspan x="298" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">(</tspan><tspan x="305.8" textLength="156" lengthAdjust="spacingAndGlyphs" fill="#8a630c">&quot;the punishment due&quot;</tspan><tspan x="461.8" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">);</tspan></text>
-<text x="44" y="230" text-anchor="end" font-size="11" fill="#67759c">8</text>
-<text y="230" font-size="13" xml:space="preserve"><tspan x="64" textLength="101.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">        dues.</tspan><tspan x="165.4" textLength="46.8" lengthAdjust="spacingAndGlyphs" fill="#367721">punish</tspan><tspan x="212.2" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">(</tspan><tspan x="220" textLength="93.6" lengthAdjust="spacingAndGlyphs" fill="#7743cc">NUCLEAR_DAWN</tspan><tspan x="313.6" textLength="23.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> * </tspan><tspan x="337" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#7743cc">1990</tspan><tspan x="368.2" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">)</tspan></text>
-<text x="44" y="254" text-anchor="end" font-size="11" fill="#67759c">9</text>
+<text y="206" font-size="13" xml:space="preserve"><tspan x="64" textLength="62.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">        </tspan><tspan x="126.4" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#0b5ad9">let </tspan><tspan x="157.6" textLength="54.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">dues = </tspan><tspan x="212.2" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#9c4c07">Verse</tspan><tspan x="251.2" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">::</tspan><tspan x="266.8" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#297112">from</tspan><tspan x="298" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">(</tspan><tspan x="305.8" textLength="156" lengthAdjust="spacingAndGlyphs" fill="#815a03">&quot;the punishment due&quot;</tspan><tspan x="461.8" textLength="15.6" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">);</tspan></text>
+<text x="44" y="230" text-anchor="end" font-size="11" fill="#606e94">8</text>
+<text y="230" font-size="13" xml:space="preserve"><tspan x="64" textLength="101.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">        dues.</tspan><tspan x="165.4" textLength="46.8" lengthAdjust="spacingAndGlyphs" fill="#297112">punish</tspan><tspan x="212.2" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">(</tspan><tspan x="220" textLength="93.6" lengthAdjust="spacingAndGlyphs" fill="#712ae5">NUCLEAR_DAWN</tspan><tspan x="313.6" textLength="23.4" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c"> * </tspan><tspan x="337" textLength="31.2" lengthAdjust="spacingAndGlyphs" fill="#712ae5">1990</tspan><tspan x="368.2" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">)</tspan></text>
+<text x="44" y="254" text-anchor="end" font-size="11" fill="#606e94">9</text>
 <text y="254" font-size="13" xml:space="preserve"><tspan x="64" textLength="39" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">    }</tspan></text>
-<text x="44" y="278" text-anchor="end" font-size="11" fill="#67759c">10</text>
+<text x="44" y="278" text-anchor="end" font-size="11" fill="#606e94">10</text>
 <text y="278" font-size="13" xml:space="preserve"><tspan x="64" textLength="7.8" lengthAdjust="spacingAndGlyphs" fill="#2f3d5c">}</tspan></text>
-<rect x="12" y="322" width="56" height="18" rx="4" fill="#1f63d2"/>
-<text x="40" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#1f63d2</text>
-<rect x="92" y="322" width="56" height="18" rx="4" fill="#17699f"/>
-<text x="120" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#17699f</text>
-<rect x="172" y="322" width="56" height="18" rx="4" fill="#0c6db1"/>
-<text x="200" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#0c6db1</text>
-<rect x="252" y="322" width="56" height="18" rx="4" fill="#367721"/>
-<text x="280" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#367721</text>
-<rect x="332" y="322" width="56" height="18" rx="4" fill="#8a630c"/>
-<text x="360" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#8a630c</text>
-<rect x="412" y="322" width="56" height="18" rx="4" fill="#a45511"/>
-<text x="440" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#a45511</text>
-<rect x="492" y="322" width="56" height="18" rx="4" fill="#7743cc"/>
-<text x="520" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#7743cc</text>
-<rect x="572" y="322" width="56" height="18" rx="4" fill="#b34722"/>
-<text x="600" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#b34722</text>
-<text x="16" y="388" font-size="11" fill="#f4f7fc">Rust in Peace Dawn Patrol</text>
-<text x="624" y="388" text-anchor="end" font-size="11" fill="#f4f7fc" opacity="0.8" xml:space="preserve">Ln 7, Col 29   UTF-8   Rust</text>
+<rect x="12" y="322" width="56" height="18" rx="4" fill="#0b5ad9"/>
+<text x="40" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#0b5ad9</text>
+<rect x="92" y="322" width="56" height="18" rx="4" fill="#0d66a1"/>
+<text x="120" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#0d66a1</text>
+<rect x="172" y="322" width="56" height="18" rx="4" fill="#0765a6"/>
+<text x="200" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#0765a6</text>
+<rect x="252" y="322" width="56" height="18" rx="4" fill="#297112"/>
+<text x="280" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#297112</text>
+<rect x="332" y="322" width="56" height="18" rx="4" fill="#815a03"/>
+<text x="360" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#815a03</text>
+<rect x="412" y="322" width="56" height="18" rx="4" fill="#9c4c07"/>
+<text x="440" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#9c4c07</text>
+<rect x="492" y="322" width="56" height="18" rx="4" fill="#712ae5"/>
+<text x="520" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#712ae5</text>
+<rect x="572" y="322" width="56" height="18" rx="4" fill="#b03911"/>
+<text x="600" y="358" text-anchor="middle" font-size="9.5" fill="#4d5e82">#b03911</text>
+<text x="16" y="388" font-size="11" fill="#16204a">Rust in Peace Dawn Patrol</text>
+<text x="624" y="388" text-anchor="end" font-size="11" fill="#16204a" opacity="0.8" xml:space="preserve">Ln 7, Col 29   UTF-8   Rust</text>
 </g>
-<rect x="0.5" y="0.5" width="639" height="399" rx="12" fill="none" stroke="#a9b8d8"/>
+<rect x="0.5" y="0.5" width="639" height="399" rx="12" fill="none" stroke="#92a5cf"/>
 </svg>

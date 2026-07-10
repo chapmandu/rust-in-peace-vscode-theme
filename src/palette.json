@@ -5,7 +5,10 @@
 		"overlay": "#202a58",
 		"selection": "#17204a",
 		"sunken": "#0a0e22",
-		"border": "#070a1a"
+		"panel": "#0a0e22",
+		"border": "#070a1a",
+		"chrome": "#070a1a",
+		"rail": "#101530"
 	},
 	"fg": {
 		"base": "#d3e0f0",

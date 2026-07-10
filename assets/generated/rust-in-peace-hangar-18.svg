@@ -48,8 +48,8 @@
 <text x="520" y="358" text-anchor="middle" font-size="9.5" fill="#b0c0db">#9f70d8</text>
 <rect x="572" y="322" width="56" height="18" rx="4" fill="#e2876b"/>
 <text x="600" y="358" text-anchor="middle" font-size="9.5" fill="#b0c0db">#e2876b</text>
-<text x="16" y="388" font-size="11" fill="#eef4fb">Rust in Peace Hangar 18</text>
-<text x="624" y="388" text-anchor="end" font-size="11" fill="#eef4fb" opacity="0.8" xml:space="preserve">Ln 7, Col 29   UTF-8   Rust</text>
+<text x="16" y="388" font-size="11" fill="#ffffff">Rust in Peace Hangar 18</text>
+<text x="624" y="388" text-anchor="end" font-size="11" fill="#ffffff" opacity="0.8" xml:space="preserve">Ln 7, Col 29   UTF-8   Rust</text>
 </g>
 <rect x="0.5" y="0.5" width="639" height="399" rx="12" fill="none" stroke="#0b1028"/>
 </svg>

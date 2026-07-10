@@ -59,6 +59,14 @@ rustInPeace:
     - &BGLight       '{{bg.surface}}'
     - &BGDark        '{{bg.sunken}}'
     - &BGDarker      '{{bg.border}}'
+    # Raised panel surface (side bar, inactive tabs, editor widgets) —
+    # sunken depth on dark, one step below the editor on light.
+    - &PANEL_BG      '{{bg.panel}}'
+    # Deep chrome container (tab strip, inactive title bar) —
+    # border depth on dark, two steps below the editor on light.
+    - &CHROME_BG     '{{bg.chrome}}'
+    # Activity bar rail — editor depth on dark, below the side bar on light.
+    - &RAIL_BG       '{{bg.rail}}'
 
 # User Interface (more info: https://code.visualstudio.com/docs/getstarted/theme-color-reference)
 colors:
@@ -153,7 +161,7 @@ colors:
   list.focusForeground:                                                         # List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not
 
   # Activity Bar
-  activityBar.background: *BG                                                   # Activity Bar background color
+  activityBar.background: *RAIL_BG                                              # Activity Bar background color
   activityBar.inactiveForeground: *COMMENT                                      # Activity bar item foreground color when it is inactive
   activityBar.dropBackground:                                                   # Drag and drop feedback color for the Activity Bar items
   activityBar.foreground: *FG                                                   # Activity bar foreground color (for example used for the icons)
@@ -164,7 +172,7 @@ colors:
   activityBarBadge.foreground: *BG                                              # Activity notification badge foreground color
 
   # Side Bar
-  sideBar.background: *BGDark                                                   # Side Bar background color
+  sideBar.background: *PANEL_BG                                                 # Side Bar background color
   sideBar.foreground:                                                           # Side Bar foreground color. The Side Bar is the container for views like Explorer and Search
   sideBar.border:                                                               # Side Bar border color on the side separating the editor
   sideBarTitle.foreground: *FG                                                  # Side Bar title foreground color
@@ -177,15 +185,15 @@ colors:
   editorGroup.border: *SELECTION                                                   # Color to separate multiple editor groups from each other
   editorGroup.dropBackground: *TAB_DROP_BG                                      # Background color when dragging editors around
   editorGroupHeader.noTabsBackground:                                           # Background color of the editor group title header when Tabs are disabled
-  editorGroupHeader.tabsBackground: *BGDarker                                   # Background color of the Tabs container
+  editorGroupHeader.tabsBackground: *CHROME_BG                                  # Background color of the Tabs container
   editorGroupHeader.tabsBorder:                                                 # Border color of the editor group title header when tabs are enabled. Editor groups are the containers of editors
   tab.activeBackground: *BG                                                     # Active Tab background color
   tab.activeForeground: *FG                                                     # Active Tab foreground color in an active group
-  tab.border: *BGDarker                                                         # Border to separate Tabs from each other
+  tab.border: *CHROME_BG                                                        # Border to separate Tabs from each other
   tab.activeBorderTop: *GREEN                                       # A border drawn to the top of the active tab
   tab.activeBorder:                                                             # A border drawn to the bottom of the active tab
   tab.unfocusedActiveBorder:                                                    # A border drawn to the bottom of the active tab in an editor group that is not focused
-  tab.inactiveBackground: *BGDark                                               # Inactive Tab background color
+  tab.inactiveBackground: *PANEL_BG                                             # Inactive Tab background color
   tab.inactiveForeground: *ORANGE                                              # Inactive Tab foreground color in an active group
   tab.unfocusedActiveForeground:                                                # Active tab foreground color in an inactive editor group
   tab.unfocusedInactiveForeground:                                              # Inactive tab foreground color in an inactive editor group
@@ -285,10 +293,10 @@ colors:
   diffEditor.removedTextBorder:                                                 # Outline color for removed text
 
   # Editor Widget Colors
-  editorWidget.background: *BGDark                                              # Background color of editor widgets, such as Find/Replace
+  editorWidget.background: *PANEL_BG                                            # Background color of editor widgets, such as Find/Replace
   editorWidgetBorder:                                                           # Border color of the editor widget unless the widget does not contain a border or defines its own border color
 
-  editorSuggestWidget.background: *BGDark                                       # Background color of the suggestion widget
+  editorSuggestWidget.background: *PANEL_BG                                     # Background color of the suggestion widget
   editorSuggestWidget.border:                                                   # Border color of the suggestion widget
   editorSuggestWidget.foreground: *FG                                           # Foreground color of the suggestion widget
   editorSuggestWidget.highlightForeground:                                      # Color of the match highlights in the suggestion widget
@@ -351,9 +359,9 @@ colors:
   statusBar.border:
 
   # Title Bar Colors (MacOS Only)
-  titleBar.activeBackground: *BGDark                                            # Title Bar background when the window is active
+  titleBar.activeBackground: *PANEL_BG                                          # Title Bar background when the window is active
   titleBar.activeForeground: *FG                                                # Title Bar foreground when the window is active
-  titleBar.inactiveBackground: *BGDarker                                        # Title Bar background when the window is inactive
+  titleBar.inactiveBackground: *CHROME_BG                                       # Title Bar background when the window is inactive
   titleBar.inactiveForeground: *COMMENT                                         # Title Bar foreground when the window is inactive
 
   # Extensions
@@ -395,7 +403,7 @@ colors:
   breadcrumb.background: *BG
   breadcrumb.focusForeground: *FG                                               # Color of focused breadcrumb items
   breadcrumb.activeSelectionForeground: *FG                                     # Color of selected breadcrumb items
-  breadcrumbPicker.background: *BGDarker                                        # Background color of breadcrumb item picker
+  breadcrumbPicker.background: *CHROME_BG                                       # Background color of breadcrumb item picker
 
   # Misc
   menu.separatorBackground:                                                     # Color of a separator menu item in menus

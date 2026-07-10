@@ -215,10 +215,10 @@ const renderWindow = (palette: Palette, label: string): string => {
         );
     });
 
-    // Status bar text.
+    // Status bar text: ink is white on the dark palettes, navy on light.
     parts.push(
-        `<text x="16" y="${STATUS_Y + 20}" font-size="11" fill="${colour('ansi.brightWhite')}">${escapeXml(label)}</text>`,
-        `<text x="${W - 16}" y="${STATUS_Y + 20}" text-anchor="end" font-size="11" fill="${colour('ansi.brightWhite')}" opacity="0.8" xml:space="preserve">Ln 7, Col 29   UTF-8   Rust</text>`
+        `<text x="16" y="${STATUS_Y + 20}" font-size="11" fill="${colour('fg.ink')}">${escapeXml(label)}</text>`,
+        `<text x="${W - 16}" y="${STATUS_Y + 20}" text-anchor="end" font-size="11" fill="${colour('fg.ink')}" opacity="0.8" xml:space="preserve">Ln 7, Col 29   UTF-8   Rust</text>`
     );
 
     parts.push(
