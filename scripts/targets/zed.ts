@@ -154,7 +154,7 @@ export default (palette: Palette): string => {
         'element.selected': muted,
         'element.disabled': active,
         'drop_target.background': selection,
-        'ghost_element.background': bg,
+        'ghost_element.background': col('bg.base', '00'), // transparent, so status-bar buttons show the bar behind them
         'ghost_element.hover': muted,
         'ghost_element.active': active,
         'ghost_element.selected': muted,

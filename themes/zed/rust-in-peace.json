@@ -32,7 +32,7 @@
         "element.selected": "#6570a8",
         "element.disabled": "#202a58",
         "drop_target.background": "#17204a",
-        "ghost_element.background": "#101530",
+        "ghost_element.background": "#10153000",
         "ghost_element.hover": "#6570a8",
         "ghost_element.active": "#202a58",
         "ghost_element.selected": "#6570a8",
