@@ -13,11 +13,11 @@ interface Token {
  * match the Zellij tuning. Order follows herdr's own struct.
  */
 const TOKENS: Token[] = [
-    { name: 'accent', ref: 'syntax.info', comment: 'primary accent — electric tube blue' },
-    { name: 'panel_bg', ref: 'bg.base', comment: 'main panel background' },
-    { name: 'surface0', ref: 'bg.surface', comment: 'raised surface — selected rows, tabs' },
-    { name: 'surface1', ref: 'bg.overlay', comment: 'higher surface' },
-    { name: 'surface_dim', ref: 'bg.selection', comment: 'base surface — dividers, seams, tracks; sits just above panel_bg so they stay visible' },
+    { name: 'accent', ref: 'syntax.keyword', comment: 'primary accent — tube blue, the theme signature' },
+    { name: 'panel_bg', ref: 'bg.sunken', comment: 'tab + status bar band — sunken below content, as VS Code chrome' },
+    { name: 'surface0', ref: 'bg.overlay', comment: 'raised surface — selected rows, inactive tab chips' },
+    { name: 'surface1', ref: 'ui.button', comment: 'highest surface — VS Code button blue' },
+    { name: 'surface_dim', ref: 'bg.surface', comment: 'base surface — active row, dividers, seams' },
     { name: 'overlay0', ref: 'fg.comment', comment: 'muted UI lines, borders' },
     { name: 'overlay1', ref: 'fg.muted', comment: 'brighter UI lines' },
     { name: 'text', ref: 'fg.base', comment: 'primary text' },

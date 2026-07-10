@@ -8,11 +8,11 @@
 name = "catppuccin"
 
 [theme.custom]
-accent      = "#84bef5" # primary accent — electric tube blue
-panel_bg    = "#101530" # main panel background
-surface0    = "#1c2547" # raised surface — selected rows, tabs
-surface1    = "#202a58" # higher surface
-surface_dim = "#17204a" # base surface — dividers, seams, tracks; sits just above panel_bg so they stay visible
+accent      = "#5e9fe0" # primary accent — tube blue, the theme signature
+panel_bg    = "#0a0e22" # tab + status bar band — sunken below content, as VS Code chrome
+surface0    = "#202a58" # raised surface — selected rows, inactive tab chips
+surface1    = "#2a5ca8" # highest surface — VS Code button blue
+surface_dim = "#1c2547" # base surface — active row, dividers, seams
 overlay0    = "#6570a8" # muted UI lines, borders
 overlay1    = "#aebfda" # brighter UI lines
 text        = "#d3e0f0" # primary text
