@@ -107,6 +107,18 @@ const SNIPPET: Run[][] = [
 /** Zero-based line index that gets the current-line highlight. */
 const CURRENT_LINE = 6;
 
+/** Rail labels for the syntax colours, drawn from the album's world. */
+const RAIL_NAMES: Record<string, string> = {
+    keyword: 'warhead', // Polaris missile steel — the cobalt of the cover art
+    builtin: 'cryogenic', // "suspended state of cryogenics" — Hangar 18
+    info: 'radar', // the airbase radar glow
+    function: 'geiger', // radioactive green, counted in clicks
+    string: 'trefoil', // the yellow radiation symbol on the hangar door
+    type: 'oxide', // rust, resting in peace
+    constant: 'lucretia', // the album's ghost track — ethereal violet
+    error: 'punishment', // "The Punishment Due" — every error gets theirs
+};
+
 // Window geometry (viewBox units; display size is set by the README <img>).
 const W = 640;
 const H = 400;
@@ -206,15 +218,14 @@ const renderWindow = (palette: Palette, label: string): string => {
         );
     });
 
-    // Hex rail: the eight syntax colours as labelled cells.
+    // Colour rail: the eight syntax colours as named cells.
     const syntaxKeys = Object.keys(palette['syntax'] as Palette);
     const cell = W / syntaxKeys.length;
     syntaxKeys.forEach((key, index) => {
         const x = index * cell;
-        const hex = colour(`syntax.${key}`);
         parts.push(
-            `<rect x="${fmt(x + 12)}" y="${RAIL_Y + 10}" width="${fmt(cell - 24)}" height="18" rx="4" fill="${hex}"/>`,
-            `<text x="${fmt(x + cell / 2)}" y="${RAIL_Y + 46}" text-anchor="middle" font-size="9.5" fill="${colour('fg.muted')}">${hex}</text>`
+            `<rect x="${fmt(x + 12)}" y="${RAIL_Y + 10}" width="${fmt(cell - 24)}" height="18" rx="4" fill="${colour(`syntax.${key}`)}"/>`,
+            `<text x="${fmt(x + cell / 2)}" y="${RAIL_Y + 46}" text-anchor="middle" font-size="9.5" fill="${colour('fg.muted')}">${RAIL_NAMES[key] ?? key}</text>`
         );
     });
 
