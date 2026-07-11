@@ -69,11 +69,12 @@
     "lint": "tsx ./scripts/lint.ts",
     "eslint": "eslint scripts",
     "typecheck": "tsc --noEmit",
-    "package": "vsce package --readme-path README.marketplace.md -o ./bin/rust-in-peace.vsix",
+    "package": "vsce package -o ./bin/rust-in-peace.vsix",
     "vscode:prepublish": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^26.1.1",
     "@types/tinycolor2": "^1.4.6",
     "@vscode/vsce": "^3.9.2",

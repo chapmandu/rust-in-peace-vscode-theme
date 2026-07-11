@@ -1,7 +1,7 @@
 <!-- GENERATED HERO START (npm run build — do not edit by hand) -->
 <div align="center">
 
-<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/banner.svg" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
+<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/banner.png" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
 
 <br/>
 
@@ -35,8 +35,8 @@ _Hand-picked from the record's rusted, cobalt-blue cover art._
 
 <table>
 <tr>
-<td align="center" width="50%"><strong>Rust in Peace</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace.svg" alt="Rust in Peace" width="400"/></td>
-<td align="center" width="50%"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-hangar-18.svg" alt="Rust in Peace Hangar 18" width="400"/></td>
+<td align="center" width="50%"><strong>Rust in Peace</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace.png" alt="Rust in Peace" width="400"/></td>
+<td align="center" width="50%"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-hangar-18.png" alt="Rust in Peace Hangar 18" width="400"/></td>
 </tr>
 </table>
 
@@ -44,8 +44,8 @@ _Hand-picked from the record's rusted, cobalt-blue cover art._
 
 <table>
 <tr>
-<td align="center" width="50%"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-polaris.svg" alt="Rust in Peace Polaris" width="400"/></td>
-<td align="center" width="50%"><strong>Dawn Patrol</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-dawn-patrol.svg" alt="Rust in Peace Dawn Patrol" width="400"/></td>
+<td align="center" width="50%"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-polaris.png" alt="Rust in Peace Polaris" width="400"/></td>
+<td align="center" width="50%"><strong>Dawn Patrol</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-dawn-patrol.png" alt="Rust in Peace Dawn Patrol" width="400"/></td>
 </tr>
 </table>
 

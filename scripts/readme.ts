@@ -1,5 +1,6 @@
 import { mkdir, readFile, rm, writeFile } from 'fs/promises';
 import { join } from 'path';
+import { Resvg } from '@resvg/resvg-js';
 import { Palette, loadPalette, resolvePalettePath } from './palette';
 import { VARIANTS, transformPalette } from './variants';
 
@@ -118,7 +119,9 @@ const LINE_H = 24;
 const FONT = 13;
 const CH = FONT * 0.6; // monospace advance; tspans are pinned with textLength
 
-const MONO = "ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace";
+// JetBrains Mono's advance is exactly 0.6em, matching the layout math below,
+// so textLength pinning never stretches glyphs.
+const MONO = "'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace";
 
 const escapeXml = (text: string): string =>
     text
@@ -239,7 +242,7 @@ const BANNER_H = 280;
  * creeping up from below), the radioactive logo at each end, and a thin rule
  * of the eight syntax colours.
  */
-const renderBanner = (palette: Palette, logoDataUri: string): string => {
+const renderBanner = (palette: Palette, logoDataUri: string, themeNames: string[]): string => {
     const colour = (path: string): string => resolvePalettePath(palette, path);
     const cx = BANNER_W / 2;
     const parts: string[] = [];
@@ -282,8 +285,12 @@ const renderBanner = (palette: Palette, logoDataUri: string): string => {
     // tighter than a monospace space would allow. The font size is derived
     // so the title spans exactly the spectrum rule's width.
     const RULE_WIDTH = 640;
-    const TITLE_LS = 8;
-    const TITLE_GAP = 24;
+    const TITLE_LS = 3;
+    const TITLE_GAP = 40;
+    // Measured on the rendered PNG: sidebearings and the decay displacement
+    // leave the title's ink ~7 units right of the advance box's centre, so
+    // the layout is nudged left to optically centre it on the rule.
+    const TITLE_NUDGE = -7;
     const words = ['RUST', 'IN', 'PEACE'];
     const glyphCount = words.join('').length;
     const trackedGaps = glyphCount - words.length;
@@ -291,7 +298,8 @@ const renderBanner = (palette: Palette, logoDataUri: string): string => {
         (RULE_WIDTH - trackedGaps * TITLE_LS - (words.length - 1) * TITLE_GAP) /
         (glyphCount * 0.6);
     const wordWidths = words.map(w => w.length * TITLE_FONT * 0.6 + (w.length - 1) * TITLE_LS);
-    let wordX = cx - (wordWidths.reduce((a, b) => a + b, 0) + TITLE_GAP * (words.length - 1)) / 2;
+    let wordX =
+        cx + TITLE_NUDGE - (wordWidths.reduce((a, b) => a + b, 0) + TITLE_GAP * (words.length - 1)) / 2;
     const titleSpans = words
         .map((word, i) => {
             const span = `<tspan x="${fmt(wordX)}" textLength="${fmt(wordWidths[i])}" lengthAdjust="spacingAndGlyphs">${word}</tspan>`;
@@ -300,13 +308,13 @@ const renderBanner = (palette: Palette, logoDataUri: string): string => {
         })
         .join('');
     parts.push(
-        lockup('DARK THEMES', 96, 12, 6, `fill="${colour('fg.muted')}"`),
+        lockup(themeNames.join(' | ').toUpperCase(), 96, 9, 3, `fill="${colour('fg.comment')}"`),
         `<text y="172" font-size="${fmt(TITLE_FONT)}" font-weight="bold" letter-spacing="${TITLE_LS}" fill="url(#steel)" filter="url(#decay)">${titleSpans}</text>`,
-        lockup("WHAT THEY FOUND IS STILL INSIDE", 232, 13, 4, `fill="${colour('fg.comment')}"`)
+        lockup('DARK THEMES', 232, 12, 6, `fill="${colour('fg.muted')}"`)
     );
 
     // The accent: a contiguous spectrum rule of the eight syntax colours,
-    // exactly as wide as the title above it.
+    // matching the title's visible width above it.
     const syntaxKeys = Object.keys(palette['syntax'] as Palette);
     const segment = RULE_WIDTH / syntaxKeys.length;
     syntaxKeys.forEach((key, index) => {
@@ -339,19 +347,23 @@ const badges = (palette: Palette): string => {
     ].join('\n');
 };
 
-/** GitHub hero: the generated banner. The Marketplace variant keeps the logo and a real screenshot, since it refuses SVG imagery. */
-const heroBlock = (palette: Palette, withSvg: boolean): string => {
-    const masthead = withSvg
-        ? `<img src="${REPO_RAW}/assets/generated/banner.svg" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>`
-        : `<img src="${REPO_RAW}/assets/logo.png" alt="Rust in Peace logo" width="120"/>
+/** Render an SVG string to a PNG at 2x resolution (crisp on hidpi). */
+const renderPng = (svg: string): Buffer =>
+    new Resvg(svg, {
+        fitTo: { mode: 'zoom', value: 2 },
+        font: {
+            loadSystemFonts: true,
+            defaultFontFamily: 'JetBrains Mono',
+            monospaceFamily: 'JetBrains Mono',
+        },
+    })
+        .render()
+        .asPng();
 
-# Rust in Peace
+/** The hero: the generated banner, tagline, and badges. */
+const heroBlock = (palette: Palette): string => `<div align="center">
 
-![Screenshot](${REPO_RAW}/assets/screenshot.png)`;
-
-    return `<div align="center">
-
-${masthead}
+<img src="${REPO_RAW}/assets/generated/banner.png" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
 
 <br/>
 
@@ -362,14 +374,10 @@ ${badges(palette)}
 <br/>
 
 </div>`;
-};
 
-/**
- * The palette section. The Marketplace refuses SVG images in READMEs, so
- * `withSvg: false` renders it without the editor-window swatches.
- */
-const paletteBlock = (themes: ReadmeTheme[], withSvg: boolean): string => {
-    const swatchUrl = (slug: string): string => `${REPO_RAW}/assets/generated/${slug}.svg`;
+/** The palette section: album cover and the theme grid, dark to light. */
+const paletteBlock = (themes: ReadmeTheme[]): string => {
+    const swatchUrl = (slug: string): string => `${REPO_RAW}/assets/generated/${slug}.png`;
     const cell = (theme: ReadmeTheme): string =>
         `<td align="center" width="50%"><strong>${theme.label.replace('Rust in Peace ', '')}</strong><br/><img src="${swatchUrl(theme.slug)}" alt="${theme.label}" width="400"/></td>`;
 
@@ -380,14 +388,6 @@ const paletteBlock = (themes: ReadmeTheme[], withSvg: boolean): string => {
         rows.push(`<table>\n<tr>\n${themes.slice(i, i + 2).map(cell).join('\n')}\n</tr>\n</table>`);
     }
 
-    const swatches = withSvg
-        ? `
-
-${rows.join('\n\n<br/>\n\n')}`
-        : `
-
-![Screenshot](${REPO_RAW}/assets/screenshot.png)`;
-
     return `<div align="center">
 
 <br/>
@@ -396,7 +396,9 @@ ${rows.join('\n\n<br/>\n\n')}`
 
 _Hand-picked from the record's rusted, cobalt-blue cover art._
 
-<br/>${swatches}
+<br/>
+
+${rows.join('\n\n<br/>\n\n')}
 
 <br/>
 
@@ -440,38 +442,44 @@ export const buildReadme = async (): Promise<void> => {
     const logo = await readFile(join(__dirname, '..', 'assets', 'logo.png'));
     const logoDataUri = `data:image/png;base64,${logo.toString('base64')}`;
 
+    // PNG rather than SVG: the Marketplace rejects SVG images in READMEs.
     const generatedDir = join(__dirname, '..', 'assets', 'generated');
     await rm(generatedDir, { recursive: true, force: true });
     await mkdir(generatedDir, { recursive: true });
     await Promise.all([
-        writeFile(join(generatedDir, 'banner.svg'), renderBanner(palette, logoDataUri)),
+        writeFile(
+            join(generatedDir, 'banner.png'),
+            renderPng(
+                renderBanner(
+                    palette,
+                    logoDataUri,
+                    [...themes, light].map(t => t.label.replace('Rust in Peace ', ''))
+                )
+            )
+        ),
         ...[...themes, light].map(theme =>
-            writeFile(join(generatedDir, `${theme.slug}.svg`), renderWindow(theme.palette, theme.label))
+            writeFile(
+                join(generatedDir, `${theme.slug}.png`),
+                renderPng(renderWindow(theme.palette, theme.label))
+            )
         ),
     ]);
 
     const readmePath = join(__dirname, '..', 'README.md');
     const readme = await readFile(readmePath, 'utf-8');
 
-    const regions: Record<string, { github: string; marketplace: string }> = {
-        HERO: { github: heroBlock(palette, true), marketplace: heroBlock(palette, false) },
-        PALETTE: {
-            // Dark to light: base, Hangar 18, Polaris, Dawn Patrol.
-            github: paletteBlock([...themes, light], true),
-            marketplace: paletteBlock([...themes, light], false),
-        },
+    const regions: Record<string, string> = {
+        HERO: heroBlock(palette),
+        // Dark to light: base, Hangar 18, Polaris, Dawn Patrol.
+        PALETTE: paletteBlock([...themes, light]),
     };
 
-    let github = readme;
-    let marketplace = readme;
-    for (const [region, blocks] of Object.entries(regions)) {
-        github = inject(github, region, blocks.github);
-        marketplace = inject(marketplace, region, blocks.marketplace);
+    let updated = readme;
+    for (const [region, block] of Object.entries(regions)) {
+        updated = inject(updated, region, block);
     }
 
-    if (github !== readme) {
-        await writeFile(readmePath, github);
+    if (updated !== readme) {
+        await writeFile(readmePath, updated);
     }
-    // The Marketplace build packages this SVG-free copy via --readme-path.
-    await writeFile(join(__dirname, '..', 'README.marketplace.md'), marketplace);
 };
