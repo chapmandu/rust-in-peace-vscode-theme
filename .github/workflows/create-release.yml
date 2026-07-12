@@ -8,11 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
-        with:
-          node-version: lts/*
-          cache: npm
+      # Installs the toolchain pinned in mise.toml (node for vsce, uv for the build).
+      - uses: jdx/mise-action@v2
       - run: npm install && mkdir -p ./bin
+      - run: uv sync
       - run: npm run build
       - run: npm run package
       - uses: actions/create-release@v1

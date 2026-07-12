@@ -1,4 +1,6 @@
-# rust-in-peace — generated from src/palette.json. Do not edit by hand.
+# rust-in-peace — a Helix theme from the Megadeth "Rust in Peace" cover palette.
+# Generated from src/palette.json by scripts/targets/helix.py (just build-themes).
+# Do not edit by hand: edit the palette and rebuild.
 inherits = "tokyonight"
 
 # Syntax roles mirror the rust-in-peace VSCode theme (original structure):
@@ -6,7 +8,9 @@ inherits = "tokyonight"
 #   functions / decorators = glow green      strings  = logo gold
 #   types / parameters     = logo orange     constants = violet
 #   builtins               = sky cyan        comments  = muted blue
-# UI structure comes from the inherited base theme.
+# UI structure comes from the inherited base theme. Identity colours in
+# [palette] track the shared source of truth; Helix-only shades (diffs,
+# diagnostics, gutter chrome) are local literals.
 
 keyword = { fg = "aqua" }
 "keyword.control" = { fg = "aqua" }

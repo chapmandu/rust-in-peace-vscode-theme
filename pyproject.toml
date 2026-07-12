@@ -1,0 +1,45 @@
+[project]
+name = "rust-in-peace-scripts"
+version = "0.0.0"
+description = "Build scripts for the Rust in Peace theme (not a distributable package)."
+requires-python = ">=3.12"
+dependencies = [
+    "pyyaml>=6",
+    "coloraide>=4",
+    "resvg-py>=0.3",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12",
+    "mypy>=1.14",
+    "types-pyyaml>=6",
+    "pytest>=8",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RET", "C4", "PTH", "D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ruff.lint.per-file-ignores]
+# SVG/markdown templating reads better as whole-tag lines.
+"scripts/readme.py" = ["E501"]
+# Test names document themselves.
+"tests/*" = ["D1"]
+
+[tool.mypy]
+strict = true
+files = ["scripts", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -6,7 +6,7 @@ maintainers:
 semanticClass: theme.rustInPeace
 semanticHighlighting: true
 # Colours resolve from the single source of truth in src/palette.json via
-# double-brace "group.key" placeholders (see scripts/generate.ts). An optional
+# double-brace "group.key" placeholders (see scripts/generate.py). An optional
 # 2-hex suffix appends an alpha channel. Anchors below stay app-agnostic; this
 # file is just the VS Code target's mapping of the palette onto VS Code keys.
 rustInPeace:

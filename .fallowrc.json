@@ -2,9 +2,5 @@
   "$schema": "https://fallow.dev/schema.json",
   "ignorePatterns": [
     "samples/**"
-  ],
-  "ignoreDependencies": [
-    "js-yaml",
-    "tinycolor2"
   ]
 }

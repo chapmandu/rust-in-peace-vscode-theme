@@ -1,7 +1,7 @@
 <!-- GENERATED HERO START (npm run build — do not edit by hand) -->
 <div align="center">
 
-<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/banner.png" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
+<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/banner.png" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
 
 <br/>
 
@@ -83,7 +83,7 @@ Copy the relevant file into your tool's theme directory, then select `rust-in-pe
 
 > Herdr has no standalone theme files — its file is a config fragment to merge into `~/.config/herdr/config.toml`, recolouring the `catppuccin` base theme.
 
-To add another target, drop a generator in `scripts/targets/` and register it in `scripts/build-themes.ts`; it reuses the shared palette loader and resolver in `scripts/palette.ts`.
+To add another target, drop a generator in `scripts/targets/` and register it in `scripts/build_themes.py`; it reuses the shared palette loader and resolver in `scripts/palette.py`.
 
 <br/>
 
@@ -110,7 +110,7 @@ Local tasks run through [`just`](https://github.com/casey/just) — run `just` t
 
 | Recipe               | Purpose                                                      |
 | -------------------- | ------------------------------------------------------------ |
-| `just check`         | Run the full code-quality suite (eslint, typecheck, lint)    |
+| `just check`         | Run the full code-quality suite (ruff, typecheck, test, lint) |
 | `just fallow`        | Audit for unused code and dependencies                       |
 | `just build`         | Regenerate the theme JSON from the YAML source               |
 | `just build-themes`  | Regenerate the companion themes (Helix, Herdr, Zed, Zellij, Ptyxis) |
