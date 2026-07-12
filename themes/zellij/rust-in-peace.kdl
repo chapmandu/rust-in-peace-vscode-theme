@@ -5,8 +5,8 @@
 // Chrome follows VS Code: tabs and mode pills wear the deep skull-violet
 // status bar, the selected one pops in the cover's bright violet, and the
 // focused frame is the keyword tube blue. Colours are `r g b`; 0 means unset,
-// inheriting the terminal default. Identity colours track the shared palette;
-// the lone Zellij-only shade is the muted inactive-frame blue.
+// inheriting the terminal default. Every colour tracks the shared palette;
+// the unfocused frame wears VS Code's muted UI-line comment blue.
 themes {
     rust-in-peace {
         text_unselected {
@@ -90,7 +90,7 @@ themes {
             emphasis_3 0
         }
         frame_unselected {
-            base 87 98 140
+            base 101 112 168
             background 0
             emphasis_0 242 192 116
             emphasis_1 132 190 245

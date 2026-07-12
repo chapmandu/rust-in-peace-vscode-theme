@@ -8,9 +8,10 @@ inherits = "tokyonight"
 #   functions / decorators = glow green      strings  = logo gold
 #   types / parameters     = logo orange     constants = violet
 #   builtins               = sky cyan        comments  = muted blue
-# UI structure comes from the inherited base theme. Identity colours in
-# [palette] track the shared source of truth; Helix-only shades (diffs,
-# diagnostics, gutter chrome) are local literals.
+# UI structure comes from the inherited base theme. Every colour in
+# [palette] derives from the shared source of truth: identity slots map
+# straight to it (diffs and diagnostics follow the VSCode theme's UI
+# elements), Helix-only shades via declared mix/adjust formulas.
 
 keyword = { fg = "aqua" }
 "keyword.control" = { fg = "aqua" }
@@ -62,11 +63,11 @@ red              = "#eb8667" # rust / logo-edge red
 orange           = "#f2c074" # logo orange — types, parameters
 yellow           = "#e8e274" # logo gold — strings
 light-green      = "#95de73" # glowing hand green — functions
-green            = "#9cbee6" # pale tube glow (unused member slot)
+green            = "#9dbfe5" # pale tube glow (unused member slot)
 aqua             = "#5e9fe0" # electric tube blue — keywords, operators
-teal             = "#5f8fc4" # slate blue — markup, hints
-turquoise        = "#9db4d8" # muted hangar blue
-light-cyan       = "#c8e6ff" # ice glow
+teal             = "#638fc2" # slate blue — markup, hints
+turquoise        = "#9cb1d2" # muted hangar blue
+light-cyan       = "#c9e3fc" # ice glow
 cyan             = "#99c5f0" # sky cyan — builtins
 blue             = "#84bef5" # bright tube blue — UI accents, labels
 purple           = "#9a63de" # softened violet — constants, headings
@@ -74,23 +75,23 @@ magenta          = "#eb8db7" # sarcophagus pink — select mode
 comment          = "#6570a8" # muted blue shading
 black            = "#1c2547" # raised surface blue
 
-add              = "#5cb454"
-change           = "#5878c4"
-delete           = "#a04a3a"
+add              = "#95de73" # as VS Code gitDecoration.added
+change           = "#99c5f0" # as VS Code gitDecoration.modified
+delete           = "#eb8667" # as VS Code gitDecoration.deleted
 
-error            = "#e05a3e" # deep rust
-info             = "#55aef5"
-hint             = "#5f8fc4"
+error            = "#eb8667" # as VS Code editorError
+info             = "#99c5f0" # as VS Code editorInfo
+hint             = "#638fc2"
 
 fg               = "#d3e0f0" # pale blue highlight white
 fg-dark          = "#aebfda"
-fg-gutter        = "#33406f" # line numbers, whitespace marks
-fg-linenr        = "#7484b8"
-fg-selected      = "#232d5c" # menu selection bg
+fg-gutter        = "#282c45" # whitespace marks — flattened editorWhitespace
+fg-linenr        = "#6570a8" # as VS Code editorLineNumber
+fg-selected      = "#17204a" # menu selection bg — as VS Code list selection
 border           = "#070a1a"
 border-highlight = "#5e9fe0"
 bg               = "#101530" # hangar deep blue
-bg-inlay         = "#101d40"
+bg-inlay         = "#141a3d" # flattened list.focusBackground
 bg-selection     = "#17204a"
 bg-menu          = "#0a0e22" # statusline, popups
 bg-focus         = "#202a58"
