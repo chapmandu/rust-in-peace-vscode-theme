@@ -2,11 +2,13 @@
 // Generated from the src/ palettes by scripts/targets/zellij.py (just build-themes).
 // Do not edit by hand: edit the palette and rebuild.
 //
-// Chrome follows VS Code: tabs and mode pills wear the deep skull-violet
-// status bar, the selected one pops in the cover's bright violet, and the
-// focused frame is the keyword tube blue. Colours are `r g b`; 0 means unset,
-// inheriting the terminal default. Every colour tracks the shared palette;
-// the unfocused frame wears VS Code's muted UI-line comment blue.
+// Chrome follows VS Code's tab strip: inactive tabs sit flat on the sunken
+// band with muted comment-blue labels, the active tab (and the status bar's
+// mode pill) pops as a glow-green pill — VS Code's green active-tab border —
+// and the focused frame is the keyword tube blue. Colours are `r g b`; 0
+// means unset, inheriting the terminal default. Every colour tracks the
+// shared palette; the unfocused frame wears VS Code's muted UI-line comment
+// blue.
 themes {
     rust-in-peace {
         text_unselected {
@@ -27,19 +29,19 @@ themes {
         }
         ribbon_selected {
             base 16 21 48
-            background 154 99 222
-            emphasis_0 235 134 103
-            emphasis_1 242 192 116
-            emphasis_2 232 226 116
-            emphasis_3 101 112 168
+            background 149 222 115
+            emphasis_0 57 21 101
+            emphasis_1 16 21 48
+            emphasis_2 16 21 48
+            emphasis_3 57 21 101
         }
         ribbon_unselected {
-            base 211 224 240
-            background 57 21 101
+            base 101 112 168
+            background 10 14 34
             emphasis_0 232 226 116
-            emphasis_1 211 224 240
+            emphasis_1 28 37 71
             emphasis_2 174 191 218
-            emphasis_3 132 190 245
+            emphasis_3 235 134 103
         }
         table_title {
             base 132 190 245
