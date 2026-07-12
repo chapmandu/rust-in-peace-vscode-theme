@@ -7,18 +7,16 @@ the selected one pops in the cover's bright violet, and the focused frame is
 the keyword tube blue.
 
 Design: components are pure data — a dict of styles whose slots reference
-palette paths or literal Zellij-only hex — rendered by one small `_render`.
-TEXT/SELECTED are shared bases for every plain-text, table, and list
-component.
+palette paths — rendered by one small `_render`. TEXT/SELECTED are shared
+bases for every plain-text, table, and list component.
 """
 
 from __future__ import annotations
 
 from scripts.palette import Palette, hex_to_rgb, resolve_palette_path
 
-# A Zellij colour value: a palette path (`syntax.info`), a literal `#rrggbb`
-# for a target-specific shade, or 0 — Zellij's sentinel for "unset / inherit
-# the terminal default".
+# A Zellij colour value: a palette path (`syntax.info`), or 0 — Zellij's
+# sentinel for "unset / inherit the terminal default".
 type Ref = str | int
 
 # The six-slot style block Zellij expects for every UI component.
@@ -79,7 +77,7 @@ COMPONENTS: dict[str, Style] = {
         "emphasis_3": 0,
     },
     "frame_unselected": {
-        "base": "#57628c",  # muted inactive-frame blue — Zellij-specific chrome
+        "base": "fg.comment",  # muted UI-line blue, as VS Code's focusBorder family
         "background": 0,
         "emphasis_0": "syntax.type",
         "emphasis_1": "syntax.info",
@@ -134,8 +132,8 @@ HEADER = """\
 // Chrome follows VS Code: tabs and mode pills wear the deep skull-violet
 // status bar, the selected one pops in the cover's bright violet, and the
 // focused frame is the keyword tube blue. Colours are `r g b`; 0 means unset,
-// inheriting the terminal default. Identity colours track the shared palette;
-// the lone Zellij-only shade is the muted inactive-frame blue."""
+// inheriting the terminal default. Every colour tracks the shared palette;
+// the unfocused frame wears VS Code's muted UI-line comment blue."""
 
 
 def _render(palette: Palette, ref: Ref) -> str:
@@ -143,8 +141,7 @@ def _render(palette: Palette, ref: Ref) -> str:
     if ref == 0:
         return "0"
     assert isinstance(ref, str)
-    hex_colour = ref if ref.startswith("#") else resolve_palette_path(palette, ref)
-    return " ".join(str(channel) for channel in hex_to_rgb(hex_colour))
+    return " ".join(str(channel) for channel in hex_to_rgb(resolve_palette_path(palette, ref)))
 
 
 def generate(palette: Palette) -> str:

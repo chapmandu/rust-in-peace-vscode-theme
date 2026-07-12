@@ -5,16 +5,18 @@ palette, mirroring the VS Code theme's token philosophy.
 
 Design: the output has two layers. The ROLES block is static text — syntax
 roles reference palette *names* ("aqua", "orange"), so it never changes with
-the source palette. The [palette] block beneath it defines those names:
-shared identity colours resolve from palette paths and track the source of
-truth, while Helix-only shades (diffs, diagnostics, gutter chrome) stay
-literal hex.
+the source palette. The [palette] block beneath it defines those names, and
+every one derives from the shared palette: identity colours resolve from
+palette paths (diff and diagnostic slots take the VS Code theme's colour for
+the equivalent UI element), while Helix-only shades are declared mix/adjust
+formulas over palette anchors (scripts/color.py).
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 
+from scripts.color import ColorFn, adjusted, mixed
 from scripts.palette import Palette, resolve_palette_path
 
 # Static: roles reference the palette names defined in the [palette] block below.
@@ -69,28 +71,35 @@ namespace = { fg = "fg" }
 class Entry:
     """A [palette] entry.
 
-    A named colour resolved from a palette path, or a literal `#rrggbb` for
-    Helix-specific shades the core palette doesn't carry.
+    A named colour resolved from a palette path, or derived from palette
+    anchors via a ColorFn (scripts/color.py) for Helix-specific shades the
+    core palette doesn't carry directly.
     """
 
     name: str
-    ref: str
+    ref: str | ColorFn
     comment: str | None = None
 
 
 BLANK = None  # a blank line, preserving the grouping in the output
 
+# Diagnostic hints and tokyonight's teal share one slate blue: info sunk
+# toward the selection surface.
+SLATE = mixed("bg.selection", "syntax.info", 0.70)
+
 # Helix's named colours, grouped as in the output (BLANK = blank line).
+# Slots with a VS Code UI equivalent take that element's colour; the rest
+# derive from the semantically-nearest palette anchors.
 PALETTE: list[Entry | None] = [
     Entry("red", "syntax.error", "rust / logo-edge red"),
     Entry("orange", "syntax.type", "logo orange — types, parameters"),
     Entry("yellow", "syntax.string", "logo gold — strings"),
     Entry("light-green", "syntax.function", "glowing hand green — functions"),
-    Entry("green", "#9cbee6", "pale tube glow (unused member slot)"),
+    Entry("green", mixed("fg.muted", "syntax.info", 0.40), "pale tube glow (unused member slot)"),
     Entry("aqua", "syntax.keyword", "electric tube blue — keywords, operators"),
-    Entry("teal", "#5f8fc4", "slate blue — markup, hints"),
-    Entry("turquoise", "#9db4d8", "muted hangar blue"),
-    Entry("light-cyan", "#c8e6ff", "ice glow"),
+    Entry("teal", SLATE, "slate blue — markup, hints"),
+    Entry("turquoise", adjusted("fg.muted", lightness=-5), "muted hangar blue"),
+    Entry("light-cyan", adjusted("syntax.info", saturation=5, lightness=15), "ice glow"),
     Entry("cyan", "syntax.builtin", "sky cyan — builtins"),
     Entry("blue", "syntax.info", "bright tube blue — UI accents, labels"),
     Entry("purple", "syntax.constant", "softened violet — constants, headings"),
@@ -98,23 +107,27 @@ PALETTE: list[Entry | None] = [
     Entry("comment", "fg.comment", "muted blue shading"),
     Entry("black", "bg.surface", "raised surface blue"),
     BLANK,
-    Entry("add", "#5cb454"),
-    Entry("change", "#5878c4"),
-    Entry("delete", "#a04a3a"),
+    Entry("add", "syntax.function", "as VS Code gitDecoration.added"),
+    Entry("change", "syntax.builtin", "as VS Code gitDecoration.modified"),
+    Entry("delete", "syntax.error", "as VS Code gitDecoration.deleted"),
     BLANK,
-    Entry("error", "#e05a3e", "deep rust"),
-    Entry("info", "#55aef5"),
-    Entry("hint", "#5f8fc4"),
+    Entry("error", "syntax.error", "as VS Code editorError"),
+    Entry("info", "syntax.builtin", "as VS Code editorInfo"),
+    Entry("hint", SLATE),
     BLANK,
     Entry("fg", "fg.base", "pale blue highlight white"),
     Entry("fg-dark", "fg.muted"),
-    Entry("fg-gutter", "#33406f", "line numbers, whitespace marks"),
-    Entry("fg-linenr", "#7484b8"),
-    Entry("fg-selected", "#232d5c", "menu selection bg"),
+    Entry(
+        "fg-gutter",
+        mixed("bg.base", "fg.ink", 0.10),
+        "whitespace marks — flattened editorWhitespace",
+    ),
+    Entry("fg-linenr", "fg.comment", "as VS Code editorLineNumber"),
+    Entry("fg-selected", "bg.selection", "menu selection bg — as VS Code list selection"),
     Entry("border", "bg.border"),
     Entry("border-highlight", "syntax.keyword"),
     Entry("bg", "bg.base", "hangar deep blue"),
-    Entry("bg-inlay", "#101d40"),
+    Entry("bg-inlay", mixed("bg.base", "bg.selection", 0.50), "flattened list.focusBackground"),
     Entry("bg-selection", "bg.selection"),
     Entry("bg-menu", "bg.sunken", "statusline, popups"),
     Entry("bg-focus", "bg.overlay"),
@@ -131,9 +144,10 @@ inherits = "tokyonight"
 #   functions / decorators = glow green      strings  = logo gold
 #   types / parameters     = logo orange     constants = violet
 #   builtins               = sky cyan        comments  = muted blue
-# UI structure comes from the inherited base theme. Identity colours in
-# [palette] track the shared source of truth; Helix-only shades (diffs,
-# diagnostics, gutter chrome) are local literals."""
+# UI structure comes from the inherited base theme. Every colour in
+# [palette] derives from the shared source of truth: identity slots map
+# straight to it (diffs and diagnostics follow the VSCode theme's UI
+# elements), Helix-only shades via declared mix/adjust formulas."""
 
 
 def generate(palette: Palette) -> str:
@@ -145,8 +159,8 @@ def generate(palette: Palette) -> str:
         if entry is None:
             palette_lines.append("")
             continue
-        is_literal = entry.ref.startswith("#")
-        hex_colour = entry.ref if is_literal else resolve_palette_path(palette, entry.ref)
+        ref = entry.ref
+        hex_colour = ref(palette) if callable(ref) else resolve_palette_path(palette, ref)
         line = f'{entry.name.ljust(width)} = "{hex_colour}"'
         palette_lines.append(f"{line} # {entry.comment}" if entry.comment else line)
 
