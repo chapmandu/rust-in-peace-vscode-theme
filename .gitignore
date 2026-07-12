@@ -1,4 +1,8 @@
 node_modules/
-/tests/
 bin/
 theme/
+__pycache__/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

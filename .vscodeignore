@@ -1,6 +1,11 @@
 .fallow/**
 .github/**
+.mypy_cache/**
+.pytest_cache/**
+.ruff_cache/**
+.venv/**
 .vscode/**
+assets/banner.png
 assets/generated/**
 assets/Megadeth-RustInPeace.jpg
 bin/**
@@ -10,11 +15,13 @@ scripts/**
 src/**
 tests/**
 themes/**
+**/__pycache__/**
 .editorconfig
 .fallowrc.json
 .gitignore
 .prettierrc.toml
 INSTALL.md
 justfile
-tsconfig.json
-eslint.config.mjs
+mise.toml
+pyproject.toml
+uv.lock

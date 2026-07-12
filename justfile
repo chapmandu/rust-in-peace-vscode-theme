@@ -6,20 +6,28 @@ default:
 c:
     just --choose
 
-# Install the global publishing tool (vsce)
+# Provision the toolchain (mise) and Python dependencies (uv)
 [group('setup')]
 setup:
-    brew install vsce
+    mise install
+    uv sync
+    npm install
 
-# Lint the TypeScript build scripts (ESLint)
+# Lint and format-check the Python build scripts (ruff)
 [group('code quality')]
-eslint:
-    npm run eslint
+ruff:
+    uv run ruff check scripts tests
+    uv run ruff format --check scripts tests
 
 # Type-check the scripts without emitting
 [group('code quality')]
 typecheck:
-    npm run typecheck
+    uv run mypy
+
+# Run the build-script unit tests
+[group('code quality')]
+test:
+    uv run pytest
 
 # Check theme keys against the VS Code reference (network-dependent)
 [group('code quality')]
@@ -33,7 +41,7 @@ fallow:
 
 # Run the full code-quality suite
 [group('code quality')]
-check: eslint typecheck lint fallow
+check: ruff typecheck test lint fallow
 
 # Generate the theme JSONs, README sections, and their SVG artwork
 [group('build')]

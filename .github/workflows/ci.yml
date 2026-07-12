@@ -8,21 +8,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
-        with:
-          node-version: lts/*
-          cache: npm
-      - run: npm ci
-      - run: npm run eslint
-      - run: npm run typecheck
+      # Installs the toolchain pinned in mise.toml (node, uv, just).
+      - uses: jdx/mise-action@v2
+      - run: uv sync
+      - run: uv run ruff check scripts tests
+      - run: uv run ruff format --check scripts tests
+      - run: uv run mypy
+      - run: uv run pytest
       # Checks theme keys against the VS Code reference; fails on network error (network-dependent).
-      - run: npm run lint
-      - run: npm run build
-      # Fail if the committed theme or generated README section is stale
-      # relative to the palette/YAML sources. The PNGs in assets/generated/
-      # are excluded: they rasterize with system fonts, so bytes differ
-      # across machines.
-      - run: git diff --exit-code theme/ README.md
+      - run: uv run python -m scripts.lint
+      - run: uv run python -m scripts.build
+      - run: uv run python -m scripts.build_themes
+      # Fail if the committed downstream themes or generated README sections
+      # are stale relative to the palette/YAML sources. The PNGs in
+      # assets/generated/ are excluded: they rasterize with system fonts, so
+      # bytes differ across machines.
+      - run: git diff --exit-code themes/ README.md
 
   fallow:
     # Fallow audit scopes to changed files against the PR base.

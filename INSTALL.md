@@ -14,8 +14,8 @@ If you are a git user, you can install the theme and keep up to date by cloning 
 ```bash
 git clone https://github.com/chapmandu/rust-in-peace-vscode-theme.git ~/.vscode/extensions/theme-rust-in-peace
 cd ~/.vscode/extensions/theme-rust-in-peace
-npm install
-npm run build
+uv sync
+uv run python -m scripts.build
 ```
 
 #### Activating theme
