@@ -254,7 +254,9 @@ def _style(palette: Palette) -> dict[str, Any]:
         "status_bar.background": col("ui.statusBar"),  # deep skull-violet, matching VS Code
         "title_bar.background": chrome,
         "title_bar.inactive_background": chrome,
-        "toolbar.background": chrome,
+        # Breadcrumb strip below the tabs — continues the active tab's editor
+        # surface; its path text renders in text.muted.
+        "toolbar.background": bg,
         "tab_bar.background": chrome,
         "tab.inactive_background": chrome,
         "tab.active_background": bg,
@@ -276,7 +278,9 @@ def _style(palette: Palette) -> dict[str, Any]:
         "editor.background": bg,
         "editor.gutter.background": bg,
         "editor.subheader.background": bg,
-        "editor.active_line.background": active,
+        # Soft solid bar just above the editor surface, as VS Code's
+        # editor.lineHighlightBackground.
+        "editor.active_line.background": col("bg.selection", "80"),
         "editor.highlighted_line.background": active,
         "editor.line_number": muted,
         "editor.active_line_number": fg,
