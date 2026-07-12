@@ -1,9 +1,10 @@
 """Zed theme JSON.
 
-Maps the palette onto Zed's v0.2.0 theme schema, mirroring the VS Code
+Maps the palettes onto Zed's v0.2.0 theme schema, mirroring the VS Code
 theme: chrome (tabs, panels, terminal) sits on the sunken band, the status
 bar wears the deep skull-violet, green is the active UI accent, and the
-token philosophy matches scope-for-scope.
+token philosophy matches scope-for-scope. Zed themes are families, so one
+file carries all four flavors.
 
 Design: UI surfaces resolve once into named semantic aliases (bg, chrome,
 elevated, active, ...) that the style map reuses, so each VS Code-equivalence
@@ -19,6 +20,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from scripts.palette import Palette, resolve_palette_path
+from scripts.variants import Flavor
 
 
 @dataclass(frozen=True)
@@ -178,8 +180,8 @@ ACCENTS = [
 ]
 
 
-def generate(palette: Palette) -> str:
-    """Generate the Zed theme JSON from the palette."""
+def _style(palette: Palette) -> dict[str, Any]:
+    """Build one flavor's style map from its palette."""
 
     def col(path: str, alpha: str = "") -> str:
         """Resolve a palette path to hex, with an optional 2-hex alpha suffix."""
@@ -351,13 +353,21 @@ def generate(palette: Palette) -> str:
         "syntax": syntax,
     }
 
+    return style
+
+
+def generate(flavors: list[Flavor]) -> str:
+    """Generate the Zed theme-family JSON carrying every flavor."""
     # JSON carries no comments, so the author field doubles as the
     # generated-from notice.
     theme = {
         "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
         "name": "Rust in Peace",
-        "author": "Adam Chapman — generated from src/palette.json; do not edit by hand",
-        "themes": [{"name": "Rust in Peace", "appearance": "dark", "style": style}],
+        "author": "Adam Chapman — generated from the src/ palettes; do not edit by hand",
+        "themes": [
+            {"name": flavor.label, "appearance": flavor.appearance, "style": _style(flavor.palette)}
+            for flavor in flavors
+        ],
     }
 
     return json.dumps(theme, indent=2, ensure_ascii=False) + "\n"

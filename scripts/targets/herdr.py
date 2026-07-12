@@ -1,10 +1,11 @@
 """herdr theme config fragment.
 
-Recolours herdr's catppuccin base theme to the album palette through the
-[theme.custom] override tokens (a Catppuccin-flavoured vocabulary); any token
-not overridden falls through to catppuccin. The primary accent is the cover's
-electric tube blue, matching the Zellij tuning, and panel_bg sits sunken
-below content as VS Code's chrome does.
+Recolours herdr's catppuccin base theme (catppuccin-latte for the light
+flavor) to the album palette through the [theme.custom] override tokens (a
+Catppuccin-flavoured vocabulary); any token not overridden falls through to
+the base. The primary accent is the cover's electric tube blue, matching the
+Zellij tuning, and panel_bg sits sunken below content as VS Code's chrome
+does.
 
 Design: one Token table maps herdr's vocabulary onto palette paths, each with
 an inline note that lands in the generated file as a comment.
@@ -14,7 +15,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from scripts.palette import Palette, resolve_palette_path
+from scripts.palette import resolve_palette_path
+from scripts.variants import Flavor
 
 
 @dataclass(frozen=True)
@@ -49,28 +51,41 @@ TOKENS = [
 ]
 
 HEADER = """\
-# rust-in-peace — a herdr theme from the Megadeth "Rust in Peace" cover palette.
-# Generated from src/palette.json by scripts/targets/herdr.py (just build-themes).
+# {slug} — a herdr theme from the Megadeth "Rust in Peace" cover palette.
+# Generated from the src/ palettes by scripts/targets/herdr.py (just build-themes).
 # Do not edit by hand: edit the palette and rebuild.
 # Merge this into your herdr config: https://herdr.dev/docs/configuration/#theme
 #
-# Recolours the catppuccin base theme via [theme.custom] overrides; any token
-# not set here falls through to catppuccin. The accent is the cover's electric
+# Recolours the {base} base theme via [theme.custom] overrides; any token
+# not set here falls through to {base}. The accent is the cover's electric
 # tube blue (the theme signature); panel_bg sits sunken below content, as VS
 # Code's chrome does.
-# Tip: set panel_bg = "reset" to let panels follow your terminal background."""
+# Tip: set panel_bg = "reset" to let panels follow your terminal background.
+# Note: [theme.custom] is a single global block, so herdr's appearance
+# auto-switch ([theme] dark_name/light_name) can't pair two flavors — merge
+# the overrides of just one."""
 
 
-def generate(palette: Palette) -> str:
-    """Generate the herdr theme config fragment from the palette."""
+def generate(flavor: Flavor) -> str:
+    """Generate the herdr theme config fragment for one flavor."""
+    base = "catppuccin-latte" if flavor.appearance == "light" else "catppuccin"
     width = max(len(token.name) for token in TOKENS)
 
     lines = []
     for token in TOKENS:
-        hex_colour = resolve_palette_path(palette, token.ref)
+        hex_colour = resolve_palette_path(flavor.palette, token.ref)
         line = f'{token.name.ljust(width)} = "{hex_colour}"'
         lines.append(f"{line} # {token.comment}" if token.comment else line)
 
     return "\n".join(
-        [HEADER, "", "[theme]", 'name = "catppuccin"', "", "[theme.custom]", *lines, ""]
+        [
+            HEADER.format(slug=flavor.slug, base=base),
+            "",
+            "[theme]",
+            f'name = "{base}"',
+            "",
+            "[theme.custom]",
+            *lines,
+            "",
+        ]
     )

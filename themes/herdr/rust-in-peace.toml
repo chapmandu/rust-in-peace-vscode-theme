@@ -1,5 +1,5 @@
 # rust-in-peace — a herdr theme from the Megadeth "Rust in Peace" cover palette.
-# Generated from src/palette.json by scripts/targets/herdr.py (just build-themes).
+# Generated from the src/ palettes by scripts/targets/herdr.py (just build-themes).
 # Do not edit by hand: edit the palette and rebuild.
 # Merge this into your herdr config: https://herdr.dev/docs/configuration/#theme
 #
@@ -8,6 +8,9 @@
 # tube blue (the theme signature); panel_bg sits sunken below content, as VS
 # Code's chrome does.
 # Tip: set panel_bg = "reset" to let panels follow your terminal background.
+# Note: [theme.custom] is a single global block, so herdr's appearance
+# auto-switch ([theme] dark_name/light_name) can't pair two flavors — merge
+# the overrides of just one.
 
 [theme]
 name = "catppuccin"

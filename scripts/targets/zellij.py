@@ -14,6 +14,7 @@ bases for every plain-text, table, and list component.
 from __future__ import annotations
 
 from scripts.palette import Palette, hex_to_rgb, resolve_palette_path
+from scripts.variants import Flavor
 
 # A Zellij colour value: a palette path (`syntax.info`), or 0 — Zellij's
 # sentinel for "unset / inherit the terminal default".
@@ -125,8 +126,8 @@ MULTIPLAYER: list[Ref] = [
 ]
 
 HEADER = """\
-// rust-in-peace — a Zellij theme from the Megadeth "Rust in Peace" cover palette.
-// Generated from src/palette.json by scripts/targets/zellij.py (just build-themes).
+// {slug} — a Zellij theme from the Megadeth "Rust in Peace" cover palette.
+// Generated from the src/ palettes by scripts/targets/zellij.py (just build-themes).
 // Do not edit by hand: edit the palette and rebuild.
 //
 // Chrome follows VS Code: tabs and mode pills wear the deep skull-violet
@@ -144,8 +145,9 @@ def _render(palette: Palette, ref: Ref) -> str:
     return " ".join(str(channel) for channel in hex_to_rgb(resolve_palette_path(palette, ref)))
 
 
-def generate(palette: Palette) -> str:
-    """Generate the Zellij KDL theme from the palette."""
+def generate(flavor: Flavor) -> str:
+    """Generate the Zellij KDL theme for one flavor."""
+    palette = flavor.palette
     indent = "    "
 
     component_lines = []
@@ -167,9 +169,9 @@ def generate(palette: Palette) -> str:
 
     return "\n".join(
         [
-            HEADER,
+            HEADER.format(slug=flavor.slug),
             "themes {",
-            f"{indent}rust-in-peace {{",
+            f"{indent}{flavor.slug} {{",
             *component_lines,
             *multiplayer_lines,
             f"{indent}}}",

@@ -15,6 +15,10 @@ neutral ANSI), accent mute (syntax and coloured ANSI), chrome lift+desat (ui)
 accent ends up with less contrast against the new background than it had
 originally, capped at the WCAG 4.5:1 target. All colour maths runs through
 coloraide in HSL.
+
+`flavors()` is the canonical list of the four themes — core, the lighter
+variants, and the Dawn Patrol light theme — each as a Flavor binding a name
+to its resolved palette, from the same sources as the VS Code build.
 """
 
 from __future__ import annotations
@@ -22,10 +26,11 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from functools import partial
+from typing import Literal, NamedTuple
 
 from coloraide import Color
 
-from scripts.palette import Palette, resolve_palette_path
+from scripts.palette import Palette, load_palette, resolve_palette_path
 
 
 @dataclass(frozen=True)
@@ -64,6 +69,32 @@ VARIANTS = [
         darken=4,
     ),
 ]
+
+
+class Flavor(NamedTuple):
+    """A theme flavor: a display name and appearance bound to a resolved palette."""
+
+    label: str
+    """Theme display name, e.g. "Rust in Peace Hangar 18"."""
+    slug: str
+    """Filename / theme-key slug, e.g. "rust-in-peace-hangar-18"."""
+    appearance: Literal["dark", "light"]
+    palette: Palette
+
+
+def flavors() -> list[Flavor]:
+    """Build the four theme flavors from the same palettes as the VS Code build."""
+    palette = load_palette()
+    light_palette = load_palette("palette-light.json")
+    return [
+        Flavor("Rust in Peace", "rust-in-peace", "dark", palette),
+        *(
+            Flavor(spec.label, spec.slug, "dark", transform_palette(palette, spec))
+            for spec in VARIANTS
+        ),
+        Flavor("Rust in Peace Dawn Patrol", "rust-in-peace-dawn-patrol", "light", light_palette),
+    ]
+
 
 # ANSI keys that belong to the neutral ladder rather than the accent set.
 _NEUTRAL_ANSI_KEYS = frozenset({"black", "brightBlack", "white", "brightWhite"})
