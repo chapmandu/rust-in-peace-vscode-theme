@@ -2,13 +2,18 @@
 
 Emits the six-slot style block Zellij expects for every UI component, in its
 `r g b` colour notation (0 = unset, inherit the terminal default). Chrome
-follows VS Code: tabs and mode pills wear the deep skull-violet status bar,
-the selected one pops in the cover's bright violet, and the focused frame is
-the keyword tube blue.
+follows VS Code's tab strip: inactive tabs sit flat on the sunken band with
+muted comment-blue labels, the active one pops as a glow-green pill (the
+green active-tab border), and the focused frame is the keyword tube blue.
+Ribbons double as the status bar's mode and key-hint pills, so those wear
+the same treatment.
 
 Design: components are pure data — a dict of styles whose slots reference
 palette paths — rendered by one small `_render`. TEXT/SELECTED are shared
-bases for every plain-text, table, and list component.
+bases for every plain-text, table, and list component. Ribbon slot semantics
+come from zellij's tab-bar/status-bar plugin source: ribbon background/base
+are the pill, unselected emphasis_1 is the hover/alternate-tab *background*,
+emphasis_0 the shortcut character, emphasis_3 the bell-flash foreground.
 """
 
 from __future__ import annotations
@@ -41,21 +46,23 @@ SELECTED: Style = {**TEXT, "background": "bg.selection"}
 COMPONENTS: dict[str, Style] = {
     "text_unselected": TEXT,
     "text_selected": SELECTED,
+    # Active tab / active mode pill: VS Code's green active-tab accent.
     "ribbon_selected": {
-        "base": "bg.base",
-        "background": "syntax.constant",
-        "emphasis_0": "syntax.error",
-        "emphasis_1": "syntax.type",
-        "emphasis_2": "syntax.string",
-        "emphasis_3": "fg.comment",
+        "base": "bg.base",  # navy text on the green pill
+        "background": "syntax.function",  # glow green — as VS Code tab.activeBorderTop
+        "emphasis_0": "ui.statusBar",  # shortcut char in the selected pill
+        "emphasis_1": "bg.base",
+        "emphasis_2": "bg.base",
+        "emphasis_3": "ui.statusBar",  # bell-flash fg — must read on green
     },
+    # Inactive tabs / key-hint pills: flat on the bar band, as VS Code's tab strip.
     "ribbon_unselected": {
-        "base": "fg.base",
-        "background": "ui.statusBar",
-        "emphasis_0": "syntax.string",
-        "emphasis_1": "fg.base",
+        "base": "fg.comment",  # muted comment blue — quiet inactive labels
+        "background": "bg.panel",  # as VS Code tab.inactiveBackground
+        "emphasis_0": "syntax.string",  # gold shortcut chars
+        "emphasis_1": "bg.surface",  # hover / alternate-tab background — a subtle lift
         "emphasis_2": "fg.muted",
-        "emphasis_3": "syntax.info",
+        "emphasis_3": "syntax.error",  # bell-flash fg
     },
     "table_title": {
         "base": "syntax.info",
@@ -130,11 +137,13 @@ HEADER = """\
 // Generated from the src/ palettes by scripts/targets/zellij.py (just build-themes).
 // Do not edit by hand: edit the palette and rebuild.
 //
-// Chrome follows VS Code: tabs and mode pills wear the deep skull-violet
-// status bar, the selected one pops in the cover's bright violet, and the
-// focused frame is the keyword tube blue. Colours are `r g b`; 0 means unset,
-// inheriting the terminal default. Every colour tracks the shared palette;
-// the unfocused frame wears VS Code's muted UI-line comment blue."""
+// Chrome follows VS Code's tab strip: inactive tabs sit flat on the sunken
+// band with muted comment-blue labels, the active tab (and the status bar's
+// mode pill) pops as a glow-green pill — VS Code's green active-tab border —
+// and the focused frame is the keyword tube blue. Colours are `r g b`; 0
+// means unset, inheriting the terminal default. Every colour tracks the
+// shared palette; the unfocused frame wears VS Code's muted UI-line comment
+// blue."""
 
 
 def _render(palette: Palette, ref: Ref) -> str:

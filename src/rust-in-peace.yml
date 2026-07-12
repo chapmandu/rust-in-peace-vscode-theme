@@ -194,7 +194,7 @@ colors:
   tab.activeBorder:                                                             # A border drawn to the bottom of the active tab
   tab.unfocusedActiveBorder:                                                    # A border drawn to the bottom of the active tab in an editor group that is not focused
   tab.inactiveBackground: *PANEL_BG                                             # Inactive Tab background color
-  tab.inactiveForeground: *ORANGE                                              # Inactive Tab foreground color in an active group
+  tab.inactiveForeground: *COMMENT                                             # Inactive Tab foreground color in an active group
   tab.unfocusedActiveForeground:                                                # Active tab foreground color in an inactive editor group
   tab.unfocusedInactiveForeground:                                              # Inactive tab foreground color in an inactive editor group
 
