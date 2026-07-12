@@ -1,4 +1,4 @@
-# rust-in-peace — a Helix theme from the Megadeth "Rust in Peace" cover palette.
+# rust-in-peace-polaris — a Helix theme from the Megadeth "Rust in Peace" cover palette.
 # Generated from the src/ palettes by scripts/targets/helix.py (just build-themes).
 # Do not edit by hand: edit the palette and rebuild.
 inherits = "tokyonight"
@@ -59,39 +59,39 @@ namespace = { fg = "fg" }
 "diff.delta" = { fg = "orange" }
 
 [palette]
-red              = "#eb8667" # rust / logo-edge red
-orange           = "#f2c074" # logo orange — types, parameters
-yellow           = "#e8e274" # logo gold — strings
-light-green      = "#95de73" # glowing hand green — functions
-green            = "#9dbfe5" # pale tube glow (unused member slot)
-aqua             = "#5e9fe0" # electric tube blue — keywords, operators
-teal             = "#638fc2" # slate blue — markup, hints
-turquoise        = "#9cb1d2" # muted hangar blue
-light-cyan       = "#c9e3fc" # ice glow
-cyan             = "#99c5f0" # sky cyan — builtins
-blue             = "#84bef5" # bright tube blue — UI accents, labels
-purple           = "#9a63de" # softened violet — constants, headings
-magenta          = "#eb8db7" # sarcophagus pink — select mode
-comment          = "#6570a8" # muted blue shading
-black            = "#1c2547" # raised surface blue
+red              = "#d98970" # rust / logo-edge red
+orange           = "#e1b87a" # logo orange — types, parameters
+yellow           = "#d8d37a" # logo gold — strings
+light-green      = "#95cf79" # glowing hand green — functions
+green            = "#9fbcdf" # pale tube glow (unused member slot)
+aqua             = "#699ccf" # electric tube blue — keywords, operators
+teal             = "#688dbf" # slate blue — markup, hints
+turquoise        = "#9db2d3" # muted hangar blue
+light-cyan       = "#c4ddf4" # ice glow
+cyan             = "#98bee2" # sky cyan — builtins
+blue             = "#87b7e5" # bright tube blue — UI accents, labels
+purple           = "#a179d0" # softened violet — constants, headings
+magenta          = "#dd8fb1" # sarcophagus pink — select mode
+comment          = "#707aae" # muted blue shading
+black            = "#263361" # raised surface blue
 
-add              = "#95de73" # as VS Code gitDecoration.added
-change           = "#99c5f0" # as VS Code gitDecoration.modified
-delete           = "#eb8667" # as VS Code gitDecoration.deleted
+add              = "#95cf79" # as VS Code gitDecoration.added
+change           = "#98bee2" # as VS Code gitDecoration.modified
+delete           = "#d98970" # as VS Code gitDecoration.deleted
 
-error            = "#eb8667" # as VS Code editorError
-info             = "#99c5f0" # as VS Code editorInfo
-hint             = "#638fc2"
+error            = "#d98970" # as VS Code editorError
+info             = "#98bee2" # as VS Code editorInfo
+hint             = "#688dbf"
 
 fg               = "#d3e0f0" # pale blue highlight white
-fg-dark          = "#aebfda"
-fg-gutter        = "#282c45" # whitespace marks — flattened editorWhitespace
-fg-linenr        = "#6570a8" # as VS Code editorLineNumber
-fg-selected      = "#17204a" # menu selection bg — as VS Code list selection
-border           = "#070a1a"
-border-highlight = "#5e9fe0"
-bg               = "#101530" # hangar deep blue
-bg-inlay         = "#141a3d" # flattened list.focusBackground
-bg-selection     = "#17204a"
-bg-menu          = "#0a0e22" # statusline, popups
-bg-focus         = "#202a58"
+fg-dark          = "#afc0db"
+fg-gutter        = "#313860" # whitespace marks — flattened editorWhitespace
+fg-linenr        = "#707aae" # as VS Code editorLineNumber
+fg-selected      = "#202c66" # menu selection bg — as VS Code list selection
+border           = "#10173d"
+border-highlight = "#699ccf"
+bg               = "#1a224e" # hangar deep blue
+bg-inlay         = "#1d275a" # flattened list.focusBackground
+bg-selection     = "#202c66"
+bg-menu          = "#141c43" # statusline, popups
+bg-focus         = "#293671"

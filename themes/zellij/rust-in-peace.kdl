@@ -1,5 +1,5 @@
 // rust-in-peace — a Zellij theme from the Megadeth "Rust in Peace" cover palette.
-// Generated from src/palette.json by scripts/targets/zellij.py (just build-themes).
+// Generated from the src/ palettes by scripts/targets/zellij.py (just build-themes).
 // Do not edit by hand: edit the palette and rebuild.
 //
 // Chrome follows VS Code: tabs and mode pills wear the deep skull-violet

@@ -2,12 +2,13 @@
 
 The 16 ANSI slots plus background/foreground/cursor in Ptyxis's palette INI
 format. Ptyxis expects both [Light] and [Dark] sections, so the same colour
-block is emitted twice — this is a dark theme under either appearance.
+block is emitted twice — each flavor keeps its own appearance under either.
 """
 
 from __future__ import annotations
 
 from scripts.palette import Palette, resolve_palette_path
+from scripts.variants import Flavor
 
 # The 16 ANSI slots, in Color0..Color15 order.
 ANSI_SLOTS = [
@@ -44,17 +45,29 @@ def _scheme(palette: Palette) -> list[str]:
 
 
 HEADER = """\
-# rust-in-peace — a Ptyxis palette from the Megadeth "Rust in Peace" cover palette.
-# Generated from src/palette.json by scripts/targets/ptyxis.py (just build-themes).
+# {slug} — a Ptyxis palette from the Megadeth "Rust in Peace" cover palette.
+# Generated from the src/ palettes by scripts/targets/ptyxis.py (just build-themes).
 # Do not edit by hand: edit the palette and rebuild.
 #
 # The 16 ANSI slots plus background/foreground/cursor. [Light] and [Dark]
-# share one block — this is a dark theme under either appearance."""
+# share one block — this is a {appearance} theme under either appearance."""
 
 
-def generate(palette: Palette) -> str:
-    """Generate the Ptyxis `.palette` file from the palette."""
-    block = _scheme(palette)
+def generate(flavor: Flavor) -> str:
+    """Generate the Ptyxis `.palette` file for one flavor."""
+    block = _scheme(flavor.palette)
+    header = HEADER.format(slug=flavor.slug, appearance=flavor.appearance)
     return "\n".join(
-        [HEADER, "[Palette]", "Name=Rust in Peace", "", "[Light]", *block, "", "[Dark]", *block, ""]
+        [
+            header,
+            "[Palette]",
+            f"Name={flavor.label}",
+            "",
+            "[Light]",
+            *block,
+            "",
+            "[Dark]",
+            *block,
+            "",
+        ]
     )

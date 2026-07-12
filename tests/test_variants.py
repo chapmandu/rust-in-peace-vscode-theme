@@ -1,7 +1,7 @@
 from coloraide import Color
 
 from scripts.palette import Palette, palette_paths, resolve_palette_path
-from scripts.variants import VARIANTS, contrast, transform_palette
+from scripts.variants import VARIANTS, contrast, flavors, transform_palette
 
 PALETTE: Palette = {
     "bg": {"base": "#101530", "sunken": "#0a0e22"},
@@ -61,3 +61,15 @@ def test_neutral_ansi_keys_follow_the_neutral_ladder() -> None:
 def test_contrast_is_symmetric_and_matches_wcag_extremes() -> None:
     assert round(contrast("#ffffff", "#000000"), 6) == round(contrast("#000000", "#ffffff"), 6)
     assert round(contrast("#ffffff", "#000000")) == 21
+
+
+def test_flavors_mirror_the_vscode_themes() -> None:
+    """Core first, light last, one flavor per VS Code theme, unique slugs."""
+    all_flavors = flavors()
+    assert len(all_flavors) == len(VARIANTS) + 2
+    assert len({flavor.slug for flavor in all_flavors}) == len(all_flavors)
+    assert all_flavors[0].slug == "rust-in-peace"
+    assert [flavor.appearance for flavor in all_flavors] == ["dark"] * (len(VARIANTS) + 1) + [
+        "light"
+    ]
+    assert all_flavors[-1].slug == "rust-in-peace-dawn-patrol"

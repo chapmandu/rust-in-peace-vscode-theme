@@ -1,0 +1,34 @@
+# rust-in-peace-polaris — a herdr theme from the Megadeth "Rust in Peace" cover palette.
+# Generated from the src/ palettes by scripts/targets/herdr.py (just build-themes).
+# Do not edit by hand: edit the palette and rebuild.
+# Merge this into your herdr config: https://herdr.dev/docs/configuration/#theme
+#
+# Recolours the catppuccin base theme via [theme.custom] overrides; any token
+# not set here falls through to catppuccin. The accent is the cover's electric
+# tube blue (the theme signature); panel_bg sits sunken below content, as VS
+# Code's chrome does.
+# Tip: set panel_bg = "reset" to let panels follow your terminal background.
+# Note: [theme.custom] is a single global block, so herdr's appearance
+# auto-switch ([theme] dark_name/light_name) can't pair two flavors — merge
+# the overrides of just one.
+
+[theme]
+name = "catppuccin"
+
+[theme.custom]
+accent      = "#699ccf" # primary accent — tube blue, the theme signature
+panel_bg    = "#141c43" # tab + status bar band — sunken below content, as VS Code chrome
+surface0    = "#293671" # raised surface — selected rows, inactive tab chips
+surface1    = "#3f6aaa" # highest surface — VS Code button blue
+surface_dim = "#263361" # base surface — active row, dividers, seams
+overlay0    = "#707aae" # muted UI lines, borders
+overlay1    = "#afc0db" # brighter UI lines
+text        = "#d3e0f0" # primary text
+subtext0    = "#afc0db" # secondary text
+mauve       = "#a179d0" # softened violet — constants
+green       = "#95cf79" # glowing hand green
+yellow      = "#d8d37a" # logo gold
+red         = "#d98970" # rust / logo-edge red
+blue        = "#87b7e5" # bright tube blue
+teal        = "#98bee2" # sky cyan
+peach       = "#e1b87a" # logo orange

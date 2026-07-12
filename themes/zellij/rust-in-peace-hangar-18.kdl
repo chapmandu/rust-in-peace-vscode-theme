@@ -1,0 +1,137 @@
+// rust-in-peace-hangar-18 — a Zellij theme from the Megadeth "Rust in Peace" cover palette.
+// Generated from the src/ palettes by scripts/targets/zellij.py (just build-themes).
+// Do not edit by hand: edit the palette and rebuild.
+//
+// Chrome follows VS Code: tabs and mode pills wear the deep skull-violet
+// status bar, the selected one pops in the cover's bright violet, and the
+// focused frame is the keyword tube blue. Colours are `r g b`; 0 means unset,
+// inheriting the terminal default. Every colour tracks the shared palette;
+// the unfocused frame wears VS Code's muted UI-line comment blue.
+themes {
+    rust-in-peace-hangar-18 {
+        text_unselected {
+            base 211 224 240
+            background 14 20 48
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 149 215 118
+            emphasis_3 159 112 216
+        }
+        text_selected {
+            base 211 224 240
+            background 27 37 86
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 149 215 118
+            emphasis_3 159 112 216
+        }
+        ribbon_selected {
+            base 20 27 61
+            background 159 112 216
+            emphasis_0 226 135 107
+            emphasis_1 234 188 119
+            emphasis_2 224 219 119
+            emphasis_3 106 117 171
+        }
+        ribbon_unselected {
+            base 211 224 240
+            background 64 29 108
+            emphasis_0 224 219 119
+            emphasis_1 211 224 240
+            emphasis_2 176 192 219
+            emphasis_3 133 187 237
+        }
+        table_title {
+            base 133 187 237
+            background 0
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 149 215 118
+            emphasis_3 159 112 216
+        }
+        table_cell_selected {
+            base 211 224 240
+            background 27 37 86
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 149 215 118
+            emphasis_3 159 112 216
+        }
+        table_cell_unselected {
+            base 211 224 240
+            background 14 20 48
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 149 215 118
+            emphasis_3 159 112 216
+        }
+        list_selected {
+            base 211 224 240
+            background 27 37 86
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 149 215 118
+            emphasis_3 159 112 216
+        }
+        list_unselected {
+            base 211 224 240
+            background 14 20 48
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 149 215 118
+            emphasis_3 159 112 216
+        }
+        frame_selected {
+            base 99 157 216
+            background 0
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 159 112 216
+            emphasis_3 0
+        }
+        frame_unselected {
+            base 106 117 171
+            background 0
+            emphasis_0 234 188 119
+            emphasis_1 133 187 237
+            emphasis_2 159 112 216
+            emphasis_3 159 112 216
+        }
+        frame_highlight {
+            base 234 188 119
+            background 0
+            emphasis_0 159 112 216
+            emphasis_1 234 188 119
+            emphasis_2 234 188 119
+            emphasis_3 234 188 119
+        }
+        exit_code_success {
+            base 149 215 118
+            background 0
+            emphasis_0 133 187 237
+            emphasis_1 32 43 82
+            emphasis_2 159 112 216
+            emphasis_3 106 117 171
+        }
+        exit_code_error {
+            base 226 135 107
+            background 0
+            emphasis_0 224 219 119
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 159 112 216
+            player_2 133 187 237
+            player_3 0
+            player_4 224 219 119
+            player_5 149 215 118
+            player_6 0
+            player_7 226 135 107
+            player_8 0
+            player_9 0
+            player_10 0
+        }
+    }
+}

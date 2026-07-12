@@ -1,7 +1,8 @@
 """Helix TOML theme.
 
-Inherits tokyonight for UI structure and recolours syntax to the album
-palette, mirroring the VS Code theme's token philosophy.
+Inherits tokyonight (tokyonight_day for the light flavor) for UI structure
+and recolours syntax to the album palette, mirroring the VS Code theme's
+token philosophy.
 
 Design: the output has two layers. The ROLES block is static text — syntax
 roles reference palette *names* ("aqua", "orange"), so it never changes with
@@ -17,7 +18,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from scripts.color import ColorFn, adjusted, mixed
-from scripts.palette import Palette, resolve_palette_path
+from scripts.palette import resolve_palette_path
+from scripts.variants import Flavor
 
 # Static: roles reference the palette names defined in the [palette] block below.
 ROLES = """\
@@ -134,10 +136,10 @@ PALETTE: list[Entry | None] = [
 ]
 
 HEADER = """\
-# rust-in-peace — a Helix theme from the Megadeth "Rust in Peace" cover palette.
-# Generated from src/palette.json by scripts/targets/helix.py (just build-themes).
+# {slug} — a Helix theme from the Megadeth "Rust in Peace" cover palette.
+# Generated from the src/ palettes by scripts/targets/helix.py (just build-themes).
 # Do not edit by hand: edit the palette and rebuild.
-inherits = "tokyonight"
+inherits = "{inherits}"
 
 # Syntax roles mirror the rust-in-peace VSCode theme (original structure):
 #   keywords / operators / delimiters / tags = electric tube blue
@@ -150,8 +152,9 @@ inherits = "tokyonight"
 # elements), Helix-only shades via declared mix/adjust formulas."""
 
 
-def generate(palette: Palette) -> str:
-    """Generate the Helix TOML theme from the palette."""
+def generate(flavor: Flavor) -> str:
+    """Generate the Helix TOML theme for one flavor."""
+    palette = flavor.palette
     width = max(len(entry.name) for entry in PALETTE if entry is not None)
 
     palette_lines = []
@@ -164,4 +167,6 @@ def generate(palette: Palette) -> str:
         line = f'{entry.name.ljust(width)} = "{hex_colour}"'
         palette_lines.append(f"{line} # {entry.comment}" if entry.comment else line)
 
-    return "\n".join([HEADER, "", ROLES, "", "[palette]", *palette_lines, ""])
+    inherits = "tokyonight_day" if flavor.appearance == "light" else "tokyonight"
+    header = HEADER.format(slug=flavor.slug, inherits=inherits)
+    return "\n".join([header, "", ROLES, "", "[palette]", *palette_lines, ""])
