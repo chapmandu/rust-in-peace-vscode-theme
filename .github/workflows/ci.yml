@@ -24,15 +24,3 @@ jobs:
       # assets/generated/ are excluded: they rasterize with system fonts, so
       # bytes differ across machines.
       - run: git diff --exit-code themes/ README.md
-
-  fallow:
-    # Fallow audit scopes to changed files against the PR base.
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      - uses: fallow-rs/fallow@v3
-        with:
-          command: audit

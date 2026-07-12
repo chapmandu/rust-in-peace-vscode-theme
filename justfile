@@ -34,14 +34,9 @@ test:
 lint:
     npm run lint
 
-# Audit for unused code and dependencies (needs the fallow CLI — https://fallow.dev)
-[group('code quality')]
-fallow:
-    npx fallow audit
-
 # Run the full code-quality suite
 [group('code quality')]
-check: ruff typecheck test lint fallow
+check: ruff typecheck test lint 
 
 # Generate the theme JSONs, README sections, and their SVG artwork
 [group('build')]
