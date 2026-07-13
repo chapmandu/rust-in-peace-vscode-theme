@@ -71,7 +71,9 @@ def scrape_theme_available_keys() -> set[str]:
 def main() -> None:
     """Report unset and unsupported theme keys; exit 1 if any are unsupported."""
     supported_keys = scrape_theme_available_keys()
-    theme_keys = set(generate().base["colors"])
+    # Every flavor resolves the same YAML mapping, so any one carries the keys.
+    _, base_theme = generate()[0]
+    theme_keys = set(base_theme["colors"])
 
     # Keys the theme leaves to VS Code's defaults — informational only.
     for key in sorted(supported_keys - theme_keys):

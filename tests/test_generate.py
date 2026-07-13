@@ -1,7 +1,7 @@
 import pytest
 
-from scripts.generate import apply_palette, assert_palette_parity, build_theme
-from scripts.palette import Palette
+from scripts.generate import apply_palette, build_theme
+from scripts.palette import Palette, assert_palette_parity
 
 PALETTE: Palette = {"bg": {"base": "#101530"}, "fg": {"base": "#d3e0f0"}}
 

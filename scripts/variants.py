@@ -17,7 +17,8 @@ coloraide in HSL.
 
 `flavors()` is the canonical list of the four themes — core, the lighter
 variants, and the Dawn Patrol light theme — each as a Flavor binding a name
-to its resolved palette, from the same sources as the VS Code build.
+to its resolved palette. Every build (VS Code, downstream targets, README)
+enumerates it, and it runs the palette parity check on the way.
 """
 
 from __future__ import annotations
@@ -29,7 +30,12 @@ from typing import Literal, NamedTuple
 
 from coloraide import Color
 
-from scripts.palette import Palette, load_palette, resolve_palette_path
+from scripts.palette import (
+    Palette,
+    assert_palette_parity,
+    load_palette,
+    resolve_palette_path,
+)
 
 
 @dataclass(frozen=True)
@@ -82,9 +88,10 @@ class Flavor(NamedTuple):
 
 
 def flavors() -> list[Flavor]:
-    """Build the four theme flavors from the same palettes as the VS Code build."""
+    """Build the four theme flavors, dark to light, from the two hand-designed palettes."""
     palette = load_palette()
     light_palette = load_palette("palette-light.json")
+    assert_palette_parity(palette, light_palette)
     return [
         Flavor("Rust in Peace", "rust-in-peace", "dark", palette),
         *(
@@ -148,7 +155,10 @@ def _mute(spec: VariantSpec, orig_bg: str, new_bg: str, hex_colour: str) -> str:
     floor = min(contrast(hex_colour, orig_bg), _ACCENT_MIN_CONTRAST)
     result = _with_hsl(hex_colour, mutate)
     while contrast(result, new_bg) < floor:
-        result = _with_hsl(result, lighten)
+        lightened = _with_hsl(result, lighten)
+        if lightened == result:  # lightness clamped at 1.0 — the floor is unreachable
+            break
+        result = lightened
     return result
 
 

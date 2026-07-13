@@ -20,20 +20,12 @@ from typing import NamedTuple
 
 import resvg_py
 
-from scripts.palette import REPO_ROOT, Palette, load_palette, resolve_palette_path
-from scripts.variants import VARIANTS, transform_palette
+from scripts.palette import REPO_ROOT, Palette, resolve_palette_path
+from scripts.variants import Flavor, flavors
 
 REPO = "https://github.com/chapmandu/rust-in-peace-vscode-theme"
 REPO_RAW = f"{REPO}/raw/main"
 MARKETPLACE_URL = "https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace"
-
-
-class ReadmeTheme(NamedTuple):
-    """A theme rendered into the README: the base palette or a variant of it."""
-
-    label: str
-    slug: str
-    palette: Palette
 
 
 # Short palette-role keys used by the snippet's token runs.
@@ -321,10 +313,10 @@ def hero_block(palette: Palette) -> str:
 </div>"""
 
 
-def palette_block(themes: list[ReadmeTheme]) -> str:
+def palette_block(themes: list[Flavor]) -> str:
     """Render the palette section: album cover and the theme grid, dark to light."""
 
-    def cell(theme: ReadmeTheme) -> str:
+    def cell(theme: Flavor) -> str:
         """One grid cell: the theme's short name above its swatch image."""
         swatch_url = f"{REPO_RAW}/assets/generated/{theme.slug}.png"
         label = theme.label.removeprefix("Rust in Peace ")
@@ -373,17 +365,8 @@ def inject(source: str, region: str, block: str) -> str:
 
 def build_readme() -> None:
     """Regenerate the swatch PNGs and the README's generated sections."""
-    palette = load_palette()
-    light_palette = load_palette("palette-light.json")
     # Dark to light: base, Hangar 18, Polaris, Dawn Patrol.
-    themes = [
-        ReadmeTheme("Rust in Peace", "rust-in-peace", palette),
-        *(
-            ReadmeTheme(spec.label, spec.slug, transform_palette(palette, spec))
-            for spec in VARIANTS
-        ),
-        ReadmeTheme("Rust in Peace Dawn Patrol", "rust-in-peace-dawn-patrol", light_palette),
-    ]
+    themes = flavors()
 
     generated_dir = REPO_ROOT / "assets" / "generated"
     shutil.rmtree(generated_dir, ignore_errors=True)
@@ -393,10 +376,10 @@ def build_readme() -> None:
         (generated_dir / f"{theme.slug}.png").write_bytes(png)
 
     readme_path = REPO_ROOT / "README.md"
-    readme = readme_path.read_text()
+    readme = readme_path.read_text(encoding="utf-8")
 
     regions = {
-        "HERO": hero_block(palette),
+        "HERO": hero_block(themes[0].palette),  # badges tinted from the dark base
         "PALETTE": palette_block(themes),
     }
 
@@ -405,7 +388,7 @@ def build_readme() -> None:
         updated = inject(updated, region, block)
 
     if updated != readme:
-        readme_path.write_text(updated)
+        readme_path.write_text(updated, encoding="utf-8")
 
 
 if __name__ == "__main__":

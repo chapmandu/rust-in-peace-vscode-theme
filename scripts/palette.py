@@ -4,7 +4,8 @@ src/palette.json is the single source of truth: nested groups of semantic
 colours (bg, fg, ui, syntax, ansi) holding #rrggbb values. Generators resolve
 colours through dotted paths like `syntax.keyword`, so a palette edit
 propagates to every target on the next build. palette-light.json carries the
-same structure for the light theme; generate.py enforces the parity.
+same structure for the light theme; `assert_palette_parity` (run by
+variants.flavors(), so every build path hits it) enforces the parity.
 
 Design: a palette stays a plain nested dict (the recursive `Palette` alias)
 rather than a class — consumers only read paths from it, and
@@ -28,7 +29,7 @@ _HEX_RE = re.compile(r"#?([0-9a-fA-F]{6})")
 
 def load_palette(file: str = "palette.json") -> Palette:
     """Load and parse a palette from src/ (the dark palette by default)."""
-    palette: Palette = json.loads((SRC_DIR / file).read_text())
+    palette: Palette = json.loads((SRC_DIR / file).read_text(encoding="utf-8"))
     return palette
 
 
@@ -41,6 +42,18 @@ def palette_paths(palette: Palette, prefix: str = "") -> list[str]:
         else:
             paths.extend(palette_paths(value, f"{prefix}{key}."))
     return paths
+
+
+def assert_palette_parity(dark: Palette, light: Palette) -> None:
+    """Fail loudly if the dark and light palettes have drifted structurally."""
+    dark_paths = set(palette_paths(dark))
+    light_paths = set(palette_paths(light))
+    problems = [
+        f'palette-light.json is missing "{path}"' for path in sorted(dark_paths - light_paths)
+    ]
+    problems += [f'palette.json is missing "{path}"' for path in sorted(light_paths - dark_paths)]
+    if problems:
+        raise ValueError("palette parity check failed:\n  " + "\n  ".join(problems))
 
 
 def resolve_palette_path(palette: Palette, path: str) -> str:

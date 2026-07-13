@@ -9,7 +9,7 @@ roles reference palette *names* ("aqua", "orange"), so it never changes with
 the source palette. The [palette] block beneath it defines those names, and
 every one derives from the shared palette: identity colours resolve from
 palette paths (diff and diagnostic slots take the VS Code theme's colour for
-the equivalent UI element), while Helix-only shades are declared mix/adjust
+the equivalent UI element), while Helix-only shades are declared mix
 formulas over palette anchors (scripts/color.py).
 """
 
