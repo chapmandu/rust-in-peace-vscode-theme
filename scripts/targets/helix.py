@@ -22,7 +22,8 @@ from scripts.palette import resolve_palette_path
 from scripts.variants import Flavor
 
 # Static: roles reference the palette names defined in the [palette] block below.
-ROLES = """\
+ROLES = (
+    """\
 keyword = { fg = "aqua" }
 "keyword.control" = { fg = "aqua" }
 "keyword.control.import" = { fg = "aqua" }
@@ -89,11 +90,11 @@ comment = { fg = "comment", modifiers = ["italic"] }
 "diff.delta.moved" = { fg = "blue" }
 
 error = { fg = "error" }
-warning = { fg = "yellow" }
+warning = { fg = "orange" }
 info = { fg = "info" }
 hint = { fg = "hint" }
 "diagnostic.error" = { underline = { style = "curl", color = "error" } }
-"diagnostic.warning" = { underline = { style = "curl", color = "yellow" } }
+"diagnostic.warning" = { underline = { style = "curl", color = "orange" } }
 "diagnostic.info" = { underline = { style = "curl", color = "info" } }
 "diagnostic.hint" = { underline = { style = "curl", color = "hint" } }
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
@@ -108,15 +109,15 @@ hint = { fg = "hint" }
 "ui.cursor.match" = { fg = "orange", modifiers = ["bold"] }
 "ui.cursorline.primary" = { bg = "bg-inlay" }
 "ui.help" = { bg = "bg-menu", fg = "fg" }
-"ui.linenr" = { fg = "fg-gutter" }
-"ui.linenr.selected" = { fg = "fg-linenr" }
+"ui.linenr" = { fg = "fg-linenr" }
+"ui.linenr.selected" = { fg = "fg-dark" }
 "ui.menu" = { bg = "bg-menu", fg = "fg" }
 "ui.menu.selected" = { bg = "fg-selected" }
 "ui.popup" = { bg = "bg-menu", fg = "border-highlight" }
 "ui.selection" = { bg = "bg-selection" }
 "ui.selection.primary" = { bg = "bg-selection" }
 "ui.statusline" = { bg = "bg-menu", fg = "fg-dark" }
-"ui.statusline.inactive" = { bg = "bg-menu", fg = "fg-gutter" }
+"ui.statusline.inactive" = { bg = "bg-menu", fg = "comment" }
 "ui.statusline.normal" = { bg = "blue", fg = "bg", modifiers = ["bold"] }
 "ui.statusline.insert" = { bg = "light-green", fg = "bg", modifiers = ["bold"] }
 "ui.statusline.select" = { bg = "magenta", fg = "bg", modifiers = ["bold"] }
@@ -127,9 +128,19 @@ hint = { fg = "hint" }
 "ui.text.directory" = { fg = "cyan" }
 "ui.virtual.ruler" = { bg = "fg-gutter" }
 "ui.virtual.whitespace" = { fg = "fg-gutter" }
+"ui.virtual.indent-guide" = { fg = "fg-gutter" }
 "ui.virtual.inlay-hint" = { bg = "bg-inlay", fg = "teal" }
 "ui.virtual.jump-label" = { fg = "orange", modifiers = ["bold"] }
-"ui.window" = { fg = "border", modifiers = ["bold"] }"""
+"ui.window" = { fg = "border", modifiers = ["bold"] }
+
+"ui.bufferline.background" = { bg = "bg-menu" }
+"ui.bufferline" = { fg = "comment", bg = "bg-menu" }
+"""
+    + (  # the active-tab underline key alone would overrun the line limit
+        '"ui.bufferline.active" = '
+        '{ fg = "fg", bg = "bg", underline = { color = "light-green", style = "line" } }'
+    )
+)
 
 
 @dataclass(frozen=True)
