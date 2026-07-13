@@ -1,10 +1,10 @@
 """Helix TOML theme.
 
-Inherits tokyonight (tokyonight_day for the light flavor) for UI structure
-and recolours syntax to the album palette, mirroring the VS Code theme's
-token philosophy.
+A standalone theme (no `inherits`): syntax, markup, diagnostics, and the
+full UI layer are all defined here, recoloured to the album palette and
+mirroring the VS Code theme's token philosophy.
 
-Design: the output has two layers. The ROLES block is static text — syntax
+Design: the output has two layers. The ROLES block is static text — theme
 roles reference palette *names* ("aqua", "orange"), so it never changes with
 the source palette. The [palette] block beneath it defines those names, and
 every one derives from the shared palette: identity colours resolve from
@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from scripts.color import ColorFn, adjusted, mixed
+from scripts.color import ColorFn, mixed
 from scripts.palette import resolve_palette_path
 from scripts.variants import Flavor
 
@@ -34,39 +34,102 @@ operator = { fg = "aqua" }
 punctuation = { fg = "fg" }
 "punctuation.delimiter" = { fg = "aqua" }
 tag = { fg = "aqua" }
+special = { fg = "aqua" }
 "constant.character.escape" = { fg = "aqua" }
 
 function = { fg = "light-green" }
 "function.builtin" = { fg = "cyan" }
 "function.macro" = { fg = "light-green" }
+"function.special" = { fg = "cyan" }
 attribute = { fg = "light-green", modifiers = ["italic"] }
 
 string = { fg = "yellow" }
 "string.regexp" = { fg = "yellow" }
+"string.special" = { fg = "aqua" }
+"constant.character" = { fg = "yellow" }
 
 type = { fg = "orange", modifiers = ["italic"] }
 "type.builtin" = { fg = "orange", modifiers = ["italic"] }
+"type.enum.variant" = { fg = "orange" }
 constructor = { fg = "orange" }
 "variable.parameter" = { fg = "orange", modifiers = ["italic"] }
 
 constant = { fg = "purple" }
 "constant.builtin" = { fg = "purple" }
+variable = { fg = "fg" }
 "variable.builtin" = { fg = "cyan", modifiers = ["italic"] }
 "variable.other.member" = { fg = "fg" }
+label = { fg = "blue" }
 namespace = { fg = "fg" }
 
+comment = { fg = "comment", modifiers = ["italic"] }
 "comment.block.documentation" = { fg = "comment", modifiers = ["italic"] }
 "comment.line.documentation" = { fg = "comment", modifiers = ["italic"] }
 
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
 "markup.heading" = { fg = "purple", modifiers = ["bold"] }
+"markup.heading.completion" = { bg = "bg-menu", fg = "fg" }
+"markup.heading.hover" = { bg = "fg-selected" }
 "markup.link" = { fg = "cyan", underline = { style = "line" } }
+"markup.link.label" = { fg = "teal" }
+"markup.link.text" = { fg = "teal" }
+"markup.link.url" = { underline = { style = "line" } }
 "markup.list" = { fg = "cyan" }
+"markup.normal.completion" = { fg = "comment" }
+"markup.normal.hover" = { fg = "fg-dark" }
 "markup.raw" = { fg = "light-green" }
+"markup.raw.inline" = { bg = "black", fg = "blue" }
 "markup.quote" = { fg = "yellow", modifiers = ["italic"] }
 
-"diff.plus" = { fg = "light-green" }
-"diff.minus" = { fg = "red" }
-"diff.delta" = { fg = "orange" }"""
+"diff.plus" = { fg = "add" }
+"diff.minus" = { fg = "delete" }
+"diff.delta" = { fg = "change" }
+"diff.delta.moved" = { fg = "blue" }
+
+error = { fg = "error" }
+warning = { fg = "yellow" }
+info = { fg = "info" }
+hint = { fg = "hint" }
+"diagnostic.error" = { underline = { style = "curl", color = "error" } }
+"diagnostic.warning" = { underline = { style = "curl", color = "yellow" } }
+"diagnostic.info" = { underline = { style = "curl", color = "info" } }
+"diagnostic.hint" = { underline = { style = "curl", color = "hint" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+"ui.background" = { bg = "bg", fg = "fg" }
+"ui.cursor" = { fg = "bg", bg = "fg-linenr" }
+"ui.cursor.primary" = { fg = "bg", bg = "fg" }
+"ui.cursor.primary.normal" = { fg = "bg", bg = "blue" }
+"ui.cursor.primary.insert" = { fg = "bg", bg = "light-green" }
+"ui.cursor.primary.select" = { fg = "bg", bg = "magenta" }
+"ui.cursor.match" = { fg = "orange", modifiers = ["bold"] }
+"ui.cursorline.primary" = { bg = "bg-inlay" }
+"ui.help" = { bg = "bg-menu", fg = "fg" }
+"ui.linenr" = { fg = "fg-gutter" }
+"ui.linenr.selected" = { fg = "fg-linenr" }
+"ui.menu" = { bg = "bg-menu", fg = "fg" }
+"ui.menu.selected" = { bg = "fg-selected" }
+"ui.popup" = { bg = "bg-menu", fg = "border-highlight" }
+"ui.selection" = { bg = "bg-selection" }
+"ui.selection.primary" = { bg = "bg-selection" }
+"ui.statusline" = { bg = "bg-menu", fg = "fg-dark" }
+"ui.statusline.inactive" = { bg = "bg-menu", fg = "fg-gutter" }
+"ui.statusline.normal" = { bg = "blue", fg = "bg", modifiers = ["bold"] }
+"ui.statusline.insert" = { bg = "light-green", fg = "bg", modifiers = ["bold"] }
+"ui.statusline.select" = { bg = "magenta", fg = "bg", modifiers = ["bold"] }
+"ui.text" = { fg = "fg" }
+"ui.text.focus" = { bg = "bg-focus" }
+"ui.text.inactive" = { fg = "comment", modifiers = ["italic"] }
+"ui.text.info" = { bg = "bg-menu", fg = "fg" }
+"ui.text.directory" = { fg = "cyan" }
+"ui.virtual.ruler" = { bg = "fg-gutter" }
+"ui.virtual.whitespace" = { fg = "fg-gutter" }
+"ui.virtual.inlay-hint" = { bg = "bg-inlay", fg = "teal" }
+"ui.virtual.jump-label" = { fg = "orange", modifiers = ["bold"] }
+"ui.window" = { fg = "border", modifiers = ["bold"] }"""
 
 
 @dataclass(frozen=True)
@@ -85,23 +148,19 @@ class Entry:
 
 BLANK = None  # a blank line, preserving the grouping in the output
 
-# Diagnostic hints and tokyonight's teal share one slate blue: info sunk
-# toward the selection surface.
+# Diagnostic hints and the teal slot share one slate blue: info sunk toward
+# the selection surface.
 SLATE = mixed("bg.selection", "syntax.info", 0.70)
 
 # Helix's named colours, grouped as in the output (BLANK = blank line).
 # Slots with a VS Code UI equivalent take that element's colour; the rest
 # derive from the semantically-nearest palette anchors.
 PALETTE: list[Entry | None] = [
-    Entry("red", "syntax.error", "rust / logo-edge red"),
     Entry("orange", "syntax.type", "logo orange — types, parameters"),
     Entry("yellow", "syntax.string", "logo gold — strings"),
     Entry("light-green", "syntax.function", "glowing hand green — functions"),
-    Entry("green", mixed("fg.muted", "syntax.info", 0.40), "pale tube glow (unused member slot)"),
     Entry("aqua", "syntax.keyword", "electric tube blue — keywords, operators"),
     Entry("teal", SLATE, "slate blue — markup, hints"),
-    Entry("turquoise", adjusted("fg.muted", lightness=-5), "muted hangar blue"),
-    Entry("light-cyan", adjusted("syntax.info", saturation=5, lightness=15), "ice glow"),
     Entry("cyan", "syntax.builtin", "sky cyan — builtins"),
     Entry("blue", "syntax.info", "bright tube blue — UI accents, labels"),
     Entry("purple", "syntax.constant", "softened violet — constants, headings"),
@@ -139,17 +198,16 @@ HEADER = """\
 # {slug} — a Helix theme from the Megadeth "Rust in Peace" cover palette.
 # Generated from the src/ palettes by scripts/targets/helix.py (just build-themes).
 # Do not edit by hand: edit the palette and rebuild.
-inherits = "{inherits}"
 
 # Syntax roles mirror the rust-in-peace VSCode theme (original structure):
 #   keywords / operators / delimiters / tags = electric tube blue
 #   functions / decorators = glow green      strings  = logo gold
 #   types / parameters     = logo orange     constants = violet
 #   builtins               = sky cyan        comments  = muted blue
-# UI structure comes from the inherited base theme. Every colour in
-# [palette] derives from the shared source of truth: identity slots map
-# straight to it (diffs and diagnostics follow the VSCode theme's UI
-# elements), Helix-only shades via declared mix/adjust formulas."""
+# The theme is standalone — markup, diagnostics, and the full UI layer are
+# defined below. Every colour in [palette] derives from the shared source of
+# truth: identity slots map straight to it (diffs and diagnostics follow the
+# VSCode theme's UI elements), Helix-only shades via declared mix formulas."""
 
 
 def generate(flavor: Flavor) -> str:
@@ -167,6 +225,5 @@ def generate(flavor: Flavor) -> str:
         line = f'{entry.name.ljust(width)} = "{hex_colour}"'
         palette_lines.append(f"{line} # {entry.comment}" if entry.comment else line)
 
-    inherits = "tokyonight_day" if flavor.appearance == "light" else "tokyonight"
-    header = HEADER.format(slug=flavor.slug, inherits=inherits)
+    header = HEADER.format(slug=flavor.slug)
     return "\n".join([header, "", ROLES, "", "[palette]", *palette_lines, ""])

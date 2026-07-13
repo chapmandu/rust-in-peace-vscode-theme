@@ -81,7 +81,7 @@ The VS Code theme isn't the only target. [`src/palette.json`](https://github.com
 
 Copy the relevant file into your tool's theme directory, then select `rust-in-peace` (or a variant slug). Run `just build-themes` (or `npm run build:themes`) to regenerate them all after a palette change.
 
-> Herdr has no standalone theme files — its files are config fragments to merge into `~/.config/herdr/config.toml`, recolouring the `catppuccin` base theme (`catppuccin-latte` for Dawn Patrol).
+> Herdr has no standalone theme files — its files are config fragments to merge into `~/.config/herdr/config.toml`, recolouring the `tokyo-night` base theme (`tokyo-night-day` for Dawn Patrol).
 
 To add another target, drop a generator in `scripts/targets/` and register it in `scripts/build_themes.py`; it reuses the shared palette loader and resolver in `scripts/palette.py`.
 
