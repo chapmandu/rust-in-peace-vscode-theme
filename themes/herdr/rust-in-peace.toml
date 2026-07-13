@@ -3,8 +3,8 @@
 # Do not edit by hand: edit the palette and rebuild.
 # Merge this into your herdr config: https://herdr.dev/docs/configuration/#theme
 #
-# Recolours the catppuccin base theme via [theme.custom] overrides; any token
-# not set here falls through to catppuccin. The accent is the cover's electric
+# Recolours the tokyo-night base theme via [theme.custom] overrides; any token
+# not set here falls through to tokyo-night. The accent is the cover's electric
 # tube blue (the theme signature); panel_bg sits sunken below content, as VS
 # Code's chrome does.
 # Tip: set panel_bg = "reset" to let panels follow your terminal background.
@@ -13,7 +13,7 @@
 # the overrides of just one.
 
 [theme]
-name = "catppuccin"
+name = "tokyo-night"
 
 [theme.custom]
 accent      = "#5e9fe0" # primary accent — tube blue, the theme signature

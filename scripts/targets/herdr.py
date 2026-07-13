@@ -1,11 +1,11 @@
 """herdr theme config fragment.
 
-Recolours herdr's catppuccin base theme (catppuccin-latte for the light
-flavor) to the album palette through the [theme.custom] override tokens (a
-Catppuccin-flavoured vocabulary); any token not overridden falls through to
-the base. The primary accent is the cover's electric tube blue, matching the
-Zellij tuning, and panel_bg sits sunken below content as VS Code's chrome
-does.
+Recolours herdr's tokyo-night base theme (tokyo-night-day for the light
+flavor) to the album palette through the [theme.custom] override tokens —
+herdr requires a base theme name, and every token it exposes is overridden
+here; any it later adds falls through to the base. The primary accent is the
+cover's electric tube blue, matching the Zellij tuning, and panel_bg sits
+sunken below content as VS Code's chrome does.
 
 Design: one Token table maps herdr's vocabulary onto palette paths, each with
 an inline note that lands in the generated file as a comment.
@@ -68,7 +68,7 @@ HEADER = """\
 
 def generate(flavor: Flavor) -> str:
     """Generate the herdr theme config fragment for one flavor."""
-    base = "catppuccin-latte" if flavor.appearance == "light" else "catppuccin"
+    base = "tokyo-night-day" if flavor.appearance == "light" else "tokyo-night"
     width = max(len(token.name) for token in TOKENS)
 
     lines = []

@@ -1,7 +1,6 @@
 """Lighter variants of the base palette.
 
-The formula is modelled on the lightness/saturation deltas between Catppuccin's
-Mocha and its Macchiato and Frappe variants:
+The formula lifts a dark palette toward a lighter sibling in two moves:
 
 - Neutrals get a lightness lift that tapers to zero as base lightness rises,
   so dark surfaces rise the most and text barely moves.
