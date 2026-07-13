@@ -1,7 +1,7 @@
 import pytest
 
 from scripts.generate import apply_palette, build_theme
-from scripts.palette import Palette, assert_palette_parity
+from scripts.palette import Palette
 
 PALETTE: Palette = {"bg": {"base": "#101530"}, "fg": {"base": "#d3e0f0"}}
 
@@ -29,15 +29,3 @@ def test_build_theme_strips_unset_colours() -> None:
     source = "name: t\ncolors:\n  keep: '#101530'\n  drop: null\ntokenColors: []"
     theme = build_theme(source, {})
     assert theme["colors"] == {"keep": "#101530"}
-
-
-def test_palette_parity_passes_on_identical_structure() -> None:
-    assert_palette_parity(PALETTE, {"bg": {"base": "#fffefc"}, "fg": {"base": "#0d166c"}})
-
-
-def test_palette_parity_reports_both_directions() -> None:
-    light: Palette = {"bg": {"base": "#fffefc"}, "extra": "#000000"}
-    with pytest.raises(ValueError) as excinfo:
-        assert_palette_parity(PALETTE, light)
-    assert 'palette-light.json is missing "fg.base"' in str(excinfo.value)
-    assert 'palette.json is missing "extra"' in str(excinfo.value)

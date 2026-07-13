@@ -18,7 +18,7 @@ coloraide in HSL.
 `flavors()` is the canonical list of the four themes — core, the lighter
 variants, and the Dawn Patrol light theme — each as a Flavor binding a name
 to its resolved palette. Every build (VS Code, downstream targets, README)
-enumerates it, and it runs the palette parity check on the way.
+enumerates it.
 """
 
 from __future__ import annotations
@@ -30,12 +30,7 @@ from typing import Literal, NamedTuple
 
 from coloraide import Color
 
-from scripts.palette import (
-    Palette,
-    assert_palette_parity,
-    load_palette,
-    resolve_palette_path,
-)
+from scripts.palette import Palette, load_palette, resolve_palette_path
 
 
 @dataclass(frozen=True)
@@ -91,7 +86,6 @@ def flavors() -> list[Flavor]:
     """Build the four theme flavors, dark to light, from the two hand-designed palettes."""
     palette = load_palette()
     light_palette = load_palette("palette-light.json")
-    assert_palette_parity(palette, light_palette)
     return [
         Flavor("Rust in Peace", "rust-in-peace", "dark", palette),
         *(

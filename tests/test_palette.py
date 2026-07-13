@@ -1,6 +1,6 @@
 import pytest
 
-from scripts.palette import Palette, hex_to_rgb, palette_paths, resolve_palette_path
+from scripts.palette import Palette, hex_to_rgb, load_palette, palette_paths, resolve_palette_path
 
 PALETTE: Palette = {
     "bg": {"base": "#101530", "surface": "#1c2547"},
@@ -24,6 +24,16 @@ def test_resolve_palette_path_missing_raises() -> None:
 def test_resolve_palette_path_rejects_group_path() -> None:
     with pytest.raises(ValueError, match='"bg"'):
         resolve_palette_path(PALETTE, "bg")
+
+
+def test_src_palettes_have_structural_parity() -> None:
+    # The two hand-edited sources must stay in sync, including paths nothing
+    # references yet — the builds only fail loudly on paths they actually use.
+    dark_paths = set(palette_paths(load_palette()))
+    light_paths = set(palette_paths(load_palette("palette-light.json")))
+    missing_from_light = sorted(dark_paths - light_paths)
+    missing_from_dark = sorted(light_paths - dark_paths)
+    assert (missing_from_light, missing_from_dark) == ([], [])
 
 
 def test_hex_to_rgb() -> None:

@@ -9,9 +9,9 @@ Design: `{{group.key}}` placeholders are substituted textually *before* YAML
 parsing, so the source stays plain YAML and a 2-hex alpha suffix can ride
 directly on a placeholder. The custom `!alpha [colour, aa]` tag covers the
 anchor-aliased cases. Colours mapped to null are stripped after parsing —
-they fall through to VS Code's defaults. The structural parity check between
-the two palettes (palette.py, run by flavors()) fails the build before
-anything is written.
+they fall through to VS Code's defaults. Missing palette paths fail the
+build loudly; structural parity between the two palettes is asserted by
+tests/test_palette.py.
 """
 
 from __future__ import annotations
