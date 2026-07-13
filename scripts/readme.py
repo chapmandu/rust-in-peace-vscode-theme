@@ -242,7 +242,7 @@ def render_window(palette: Palette, label: str) -> str:
 
     # Colour rail: the eight syntax colours as named cells.
     syntax_group = palette["syntax"]
-    assert isinstance(syntax_group, dict)
+    assert isinstance(syntax_group, dict)  # noqa: S101 — narrows the palette union for mypy
     cell = W / len(syntax_group)
     for index, key in enumerate(syntax_group):
         x = index * cell

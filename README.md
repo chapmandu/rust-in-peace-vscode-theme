@@ -110,7 +110,7 @@ Local tasks run through [`just`](https://github.com/casey/just) — run `just` t
 
 | Recipe               | Purpose                                                      |
 | -------------------- | ------------------------------------------------------------ |
-| `just check`         | Run the full code-quality suite (ruff, typecheck, test, lint) |
+| `just check`         | Run the full code-quality suite (lint, types, tests + coverage, dead code, duplication, secrets) |
 | `just build`         | Regenerate the theme JSON from the YAML source               |
 | `just build-themes`  | Regenerate the companion themes (Helix, Herdr, Zed, Zellij, Ptyxis) |
 | `just install`       | Build, package, and install the extension into local VS Code |

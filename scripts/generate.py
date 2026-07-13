@@ -72,7 +72,10 @@ def assert_palette_parity(dark: Palette, light: Palette) -> None:
 
 def build_theme(theme_yaml: str, palette: Palette) -> Theme:
     """Substitute a palette into the YAML source and parse it into a theme."""
-    theme: Theme = yaml.load(apply_palette(theme_yaml, palette), Loader=ThemeLoader)
+    theme: Theme = yaml.load(
+        apply_palette(theme_yaml, palette),
+        Loader=ThemeLoader,  # noqa: S506 — ThemeLoader subclasses SafeLoader
+    )
     # Colours mapped to null (or empty) fall through to VS Code's defaults.
     theme["colors"] = {key: value for key, value in theme["colors"].items() if value}
     return theme

@@ -21,6 +21,9 @@ from scripts.generate import generate
 
 THEME_COLOR_REFERENCE_URL = "https://code.visualstudio.com/api/references/theme-color"
 
+# <code> spans shorter than this are stray fragments, not theme keys.
+MIN_KEY_LENGTH = 5
+
 # <code> spans on the reference page that aren't theme keys.
 NOT_THEME_KEYS = frozenset(
     {
@@ -45,7 +48,7 @@ def log(level: str, message: str) -> None:
 
 def scrape_theme_available_keys() -> set[str]:
     """Scrape the supported colour keys from the reference page's <code> spans."""
-    with urllib.request.urlopen(THEME_COLOR_REFERENCE_URL) as response:
+    with urllib.request.urlopen(THEME_COLOR_REFERENCE_URL) as response:  # noqa: S310 — fixed https URL
         page = response.read().decode("utf-8")
 
     matches = re.findall(r"<code>(.+?)</code>", page)
@@ -60,7 +63,7 @@ def scrape_theme_available_keys() -> set[str]:
         if " " not in key  # prose, not a key
         and not key.startswith("#")  # hex colour examples
         and "&quot;" not in key  # quoted setting values
-        and len(key) > 4  # stray fragments
+        and len(key) >= MIN_KEY_LENGTH
         and key not in NOT_THEME_KEYS
     }
 

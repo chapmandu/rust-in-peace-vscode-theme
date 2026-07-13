@@ -15,6 +15,8 @@ dev = [
     "mypy>=1.14",
     "types-pyyaml>=6",
     "pytest>=8",
+    "pytest-cov>=6",
+    "vulture>=2",
 ]
 
 [tool.uv]
@@ -25,7 +27,10 @@ line-length = 100
 target-version = "py312"
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "UP", "B", "SIM", "RET", "C4", "PTH", "D"]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RET", "C4", "PTH", "D", "C90", "PL", "S"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
 
 [tool.ruff.lint.pydocstyle]
 convention = "pep257"
@@ -33,8 +38,9 @@ convention = "pep257"
 [tool.ruff.lint.per-file-ignores]
 # SVG/markdown templating reads better as whole-tag lines.
 "scripts/readme.py" = ["E501"]
-# Test names document themselves.
-"tests/*" = ["D1"]
+# Test names document themselves; asserts are the pytest idiom and literal
+# expected values in assertions are self-documenting.
+"tests/*" = ["D1", "S101", "PLR2004"]
 
 [tool.mypy]
 strict = true
@@ -43,3 +49,8 @@ files = ["scripts", "tests"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+addopts = "--cov=scripts --cov-report=term-missing --cov-fail-under=40"
+
+[tool.vulture]
+paths = ["scripts", "tests"]
+min_confidence = 80

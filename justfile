@@ -34,9 +34,24 @@ test:
 lint:
     npm run lint
 
+# Find dead code in the build scripts (vulture; config in pyproject.toml)
+[group('code quality')]
+deadcode:
+    uv run vulture
+
+# Fail on copy-pasted code (jscpd)
+[group('code quality')]
+dupes:
+    npm run dupes
+
+# Scan the git history for leaked secrets (gitleaks)
+[group('code quality')]
+secrets:
+    gitleaks git --redact --no-banner
+
 # Run the full code-quality suite
 [group('code quality')]
-check: ruff typecheck test lint 
+check: ruff typecheck test lint deadcode dupes secrets
 
 # Generate the theme JSONs, README sections, and their SVG artwork
 [group('build')]

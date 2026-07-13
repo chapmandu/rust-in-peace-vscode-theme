@@ -150,7 +150,7 @@ def _render(palette: Palette, ref: Ref) -> str:
     """Render a Ref to a Zellij colour token: `r g b`, or `0` for the sentinel."""
     if ref == 0:
         return "0"
-    assert isinstance(ref, str)
+    assert isinstance(ref, str)  # noqa: S101 — narrows the Ref union for mypy
     return " ".join(str(channel) for channel in hex_to_rgb(resolve_palette_path(palette, ref)))
 
 
