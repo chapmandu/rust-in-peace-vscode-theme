@@ -7,7 +7,7 @@ variants, Dawn Patrol) so every target ships the same four themes as the VS
 Code build. Zed is the one exception: its format is a theme family, so all
 four flavors land in a single JSON.
 
-Unlike theme/, the themes/ outputs are committed — users copy them straight
+Unlike dist/, the themes/ outputs are committed — users copy them straight
 from the repo — so CI rebuilds them and fails if they've gone stale relative
 to the palettes.
 """

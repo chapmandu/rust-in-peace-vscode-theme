@@ -44,22 +44,22 @@
       {
         "label": "Rust in Peace",
         "uiTheme": "vs-dark",
-        "path": "./theme/rust-in-peace.json"
+        "path": "./dist/rust-in-peace.json"
       },
       {
         "label": "Rust in Peace Hangar 18",
         "uiTheme": "vs-dark",
-        "path": "./theme/rust-in-peace-hangar-18.json"
+        "path": "./dist/rust-in-peace-hangar-18.json"
       },
       {
         "label": "Rust in Peace Polaris",
         "uiTheme": "vs-dark",
-        "path": "./theme/rust-in-peace-polaris.json"
+        "path": "./dist/rust-in-peace-polaris.json"
       },
       {
         "label": "Rust in Peace Dawn Patrol",
         "uiTheme": "vs",
-        "path": "./theme/rust-in-peace-dawn-patrol.json"
+        "path": "./dist/rust-in-peace-dawn-patrol.json"
       }
     ]
   },

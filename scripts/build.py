@@ -1,10 +1,10 @@
-"""Entry point: build the VS Code theme JSONs into theme/.
+"""Entry point: build the VS Code theme JSONs into dist/.
 
 Run as `python -m scripts.build` (wrapped by `npm run build` / `just build`,
 and by vsce's vscode:prepublish hook). Writes one JSON per flavor, then
 refreshes the README's swatch art and generated sections (readme.py).
 
-theme/ is gitignored but packaged wholesale into the vsix from the working
+dist/ is gitignored but packaged wholesale into the vsix from the working
 tree, so the directory is cleared first — a renamed or removed flavor must
 not leave a stale JSON behind to ship.
 """
@@ -19,7 +19,7 @@ from scripts.generate import Theme, generate
 from scripts.palette import REPO_ROOT
 from scripts.readme import build_readme
 
-THEME_DIR = REPO_ROOT / "theme"
+DIST_DIR = REPO_ROOT / "dist"
 
 
 def write_theme(path: Path, theme: Theme) -> None:
@@ -29,11 +29,11 @@ def write_theme(path: Path, theme: Theme) -> None:
 
 def main() -> None:
     """Build the VS Code theme JSONs, then refresh the README's art and sections."""
-    shutil.rmtree(THEME_DIR, ignore_errors=True)
-    THEME_DIR.mkdir()
+    shutil.rmtree(DIST_DIR, ignore_errors=True)
+    DIST_DIR.mkdir()
 
     for flavor, theme in generate():
-        write_theme(THEME_DIR / f"{flavor.slug}.json", theme)
+        write_theme(DIST_DIR / f"{flavor.slug}.json", theme)
 
     build_readme()
 

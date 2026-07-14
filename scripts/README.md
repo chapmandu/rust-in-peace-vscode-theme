@@ -2,7 +2,7 @@
 
 Everything shipped by this repo — the VS Code themes, the downstream editor/terminal
 themes, and the README's swatch art — is generated from two small palette files by
-the Python package in this directory. Nothing in `theme/` or `themes/` is edited by
+the Python package in this directory. Nothing in `dist/` or `themes/` is edited by
 hand; you change a palette (or a mapping) and rebuild.
 
 ## Running the build
@@ -15,7 +15,7 @@ go through the wrappers:
 
 ```sh
 just setup          # one-time: toolchain (mise), Python deps (uv), npm deps
-just build          # everything: theme/, themes/, README art and sections
+just build          # everything: dist/, themes/, README art and sections
 just build-themes   # just the downstream themes into themes/
 just check          # the full quality suite (ruff, mypy, pytest, lint, ...)
 ```
@@ -28,7 +28,7 @@ hook — a packaged extension can never ship stale JSON.
 
 ```
 src/palette.json ─────┐  (dark, hand-designed)
-                      ├─ variants.flavors() ── 4 flavors ─┬─ build.py ──────── theme/*.json (VS Code)
+                      ├─ variants.flavors() ── 4 flavors ─┬─ build.py ──────── dist/*.json (VS Code)
 src/palette-light.json┘  (light, hand-designed)           ├─ build_themes.py ─ themes/**   (Helix, Herdr, ...)
                                                           └─ readme.py ─────── assets/generated/*.png + README sections
 ```
@@ -67,8 +67,8 @@ parsed — that keeps the source plain YAML and lets a 2-hex alpha suffix ride
 directly on a placeholder (`'{{bg.selection}}80'`). A custom `!alpha` tag covers
 the cases where the colour comes through a YAML anchor instead. Keys mapped to
 `null` are stripped after parsing and fall through to VS Code's defaults.
-`build.py` clears `theme/` and writes one JSON per flavor, then refreshes the
-README. `theme/` is gitignored but packaged wholesale into the `.vsix`, hence the
+`build.py` clears `dist/` and writes one JSON per flavor, then refreshes the
+README. `dist/` is gitignored but packaged wholesale into the `.vsix`, hence the
 clear-first: a renamed flavor must not leave a stale JSON behind to ship.
 
 **Downstream targets** (`build_themes.py` + `targets/`). Each module in
@@ -83,7 +83,7 @@ clear-first: a renamed flavor must not leave a stale JSON behind to ship.
   themes are families — all four flavors land in a single JSON
 
 `build_themes.py` renders every target for every flavor into `themes/`. Unlike
-`theme/`, these outputs **are committed** — users copy them straight from the
+`dist/`, these outputs **are committed** — users copy them straight from the
 repo — so CI rebuilds them and fails if they've drifted from the palettes.
 If you edit a palette or a target module, rerun the build and commit the
 regenerated files.
