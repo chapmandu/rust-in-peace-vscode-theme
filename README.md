@@ -1,13 +1,13 @@
 <!-- GENERATED HERO START (npm run build — do not edit by hand) -->
 <div align="center">
 
-<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/banner.png" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
+<img src="https://github.com/chapmandu/rust-in-peace/raw/main/assets/banner.png" alt="Rust in Peace — a dark theme for VS Code" width="1280"/>
 
 <br/>
 
 **A dark theme for VS Code, inspired by the album art of Megadeth's 1990 metal masterpiece, _Rust in Peace_.**
 
-[![CI](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/chapmandu/rust-in-peace-vscode-theme/actions/workflows/ci.yml)
+[![CI](https://github.com/chapmandu/rust-in-peace/actions/workflows/ci.yml/badge.svg)](https://github.com/chapmandu/rust-in-peace/actions/workflows/ci.yml)
 [![Marketplace](https://flat.badgen.net/vs-marketplace/v/chapmandu.rust-in-peace?label=marketplace&labelColor=0a0e22&color=2a5ca8)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
 [![Installs](https://flat.badgen.net/vs-marketplace/i/chapmandu.rust-in-peace?label=installs&labelColor=0a0e22&color=391565)](https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace)
 
@@ -20,14 +20,14 @@
 
 ## Colour Palette
 
-The complete palette, including ANSI terminal colours, lives in [`src/palette.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/src/palette.json) — the single source of truth the VS Code theme, its lighter variants, and everything below are generated from at build time.
+The complete palette, including ANSI terminal colours, lives in [`src/palette.json`](https://github.com/chapmandu/rust-in-peace/blob/main/src/palette.json) — the single source of truth the VS Code theme, its lighter variants, and everything below are generated from at build time.
 
 <!-- GENERATED PALETTE START (npm run build — do not edit by hand) -->
 <div align="center">
 
 <br/>
 
-<img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/Megadeth-RustInPeace.jpg" alt="Rust in Peace album cover" width="260"/>
+<img src="https://github.com/chapmandu/rust-in-peace/raw/main/assets/Megadeth-RustInPeace.jpg" alt="Rust in Peace album cover" width="260"/>
 
 _Hand-picked from the record's rusted, cobalt-blue cover art._
 
@@ -35,8 +35,8 @@ _Hand-picked from the record's rusted, cobalt-blue cover art._
 
 <table>
 <tr>
-<td align="center" width="50%"><strong>Rust in Peace</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace.png" alt="Rust in Peace" width="400"/></td>
-<td align="center" width="50%"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-hangar-18.png" alt="Rust in Peace Hangar 18" width="400"/></td>
+<td align="center" width="50%"><strong>Rust in Peace</strong><br/><img src="https://github.com/chapmandu/rust-in-peace/raw/main/assets/generated/rust-in-peace.png" alt="Rust in Peace" width="400"/></td>
+<td align="center" width="50%"><strong>Hangar 18</strong><br/><img src="https://github.com/chapmandu/rust-in-peace/raw/main/assets/generated/rust-in-peace-hangar-18.png" alt="Rust in Peace Hangar 18" width="400"/></td>
 </tr>
 </table>
 
@@ -44,8 +44,8 @@ _Hand-picked from the record's rusted, cobalt-blue cover art._
 
 <table>
 <tr>
-<td align="center" width="50%"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-polaris.png" alt="Rust in Peace Polaris" width="400"/></td>
-<td align="center" width="50%"><strong>Dawn Patrol</strong><br/><img src="https://github.com/chapmandu/rust-in-peace-vscode-theme/raw/main/assets/generated/rust-in-peace-dawn-patrol.png" alt="Rust in Peace Dawn Patrol" width="400"/></td>
+<td align="center" width="50%"><strong>Polaris</strong><br/><img src="https://github.com/chapmandu/rust-in-peace/raw/main/assets/generated/rust-in-peace-polaris.png" alt="Rust in Peace Polaris" width="400"/></td>
+<td align="center" width="50%"><strong>Dawn Patrol</strong><br/><img src="https://github.com/chapmandu/rust-in-peace/raw/main/assets/generated/rust-in-peace-dawn-patrol.png" alt="Rust in Peace Dawn Patrol" width="400"/></td>
 </tr>
 </table>
 
@@ -69,15 +69,15 @@ Install straight from the [**Visual Studio Marketplace**](https://marketplace.vi
 
 ## Companion themes
 
-The VS Code theme isn't the only target. [`src/palette.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/src/palette.json) is the single source of truth, and matching themes for other tools are generated from it into [`ports/`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports). Every target ships all four variants — core, Hangar 18, Polaris, and Dawn Patrol (light) — as separate files, except Zed, whose single file is a theme family carrying all four:
+The VS Code theme isn't the only target. [`src/palette.json`](https://github.com/chapmandu/rust-in-peace/blob/main/src/palette.json) is the single source of truth, and matching themes for other tools are generated from it into [`ports/`](https://github.com/chapmandu/rust-in-peace/tree/main/ports). Every target ships all four variants — core, Hangar 18, Polaris, and Dawn Patrol (light) — as separate files, except Zed, whose single file is a theme family carrying all four:
 
 | Tool                                               | Generated files                                                                                                          |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [Helix](https://helix-editor.com/)                 | [`ports/helix/*.toml`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/helix)                   |
-| [Herdr](https://herdr.dev/)                        | [`ports/herdr/*.toml`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/herdr)                   |
-| [Zed](https://zed.dev/)                            | [`ports/zed/rust-in-peace.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/ports/zed/rust-in-peace.json) |
-| [Zellij](https://zellij.dev/)                      | [`ports/zellij/*.kdl`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/zellij)                  |
-| [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) | [`ports/ptyxis/*.palette`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/ptyxis)              |
+| [Helix](https://helix-editor.com/)                 | [`ports/helix/*.toml`](https://github.com/chapmandu/rust-in-peace/tree/main/ports/helix)                   |
+| [Herdr](https://herdr.dev/)                        | [`ports/herdr/*.toml`](https://github.com/chapmandu/rust-in-peace/tree/main/ports/herdr)                   |
+| [Zed](https://zed.dev/)                            | [`ports/zed/rust-in-peace.json`](https://github.com/chapmandu/rust-in-peace/blob/main/ports/zed/rust-in-peace.json) |
+| [Zellij](https://zellij.dev/)                      | [`ports/zellij/*.kdl`](https://github.com/chapmandu/rust-in-peace/tree/main/ports/zellij)                  |
+| [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) | [`ports/ptyxis/*.palette`](https://github.com/chapmandu/rust-in-peace/tree/main/ports/ptyxis)              |
 
 Copy the relevant file into your tool's theme directory, then select `rust-in-peace` (or a variant slug). Run `just build-ports` to regenerate them all after a palette change.
 
@@ -126,7 +126,7 @@ Local tasks run through [`just`](https://github.com/casey/just) — run `just` t
 3. `git tag v2.0.666` — tag the commit with the version number
 4. `git push origin --tags` — push the tag
 5. `git push` — push the changes
-6. Create a [release](https://github.com/chapmandu/rust-in-peace-vscode-theme/releases) on GitHub with the same version number
+6. Create a [release](https://github.com/chapmandu/rust-in-peace/releases) on GitHub with the same version number
 7. GitHub Actions publishes the extension to the marketplace
 8. Profit!
 

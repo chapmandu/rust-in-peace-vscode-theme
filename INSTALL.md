@@ -12,7 +12,7 @@
 If you are a git user, you can install the theme and keep up to date by cloning the repo:
 
 ```bash
-git clone https://github.com/chapmandu/rust-in-peace-vscode-theme.git ~/.vscode/extensions/theme-rust-in-peace
+git clone https://github.com/chapmandu/rust-in-peace.git ~/.vscode/extensions/theme-rust-in-peace
 cd ~/.vscode/extensions/theme-rust-in-peace
 uv sync
 uv run python -m scripts.build

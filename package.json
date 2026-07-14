@@ -1,7 +1,7 @@
 {
   "name": "rust-in-peace",
   "displayName": "Rust in Peace",
-  "homepage": "https://github.com/chapmandu/rust-in-peace-vscode-theme",
+  "homepage": "https://github.com/chapmandu/rust-in-peace",
   "description": "A dark theme inspired by the album art of Megadeth's 1990 metal masterpiece, Rust in Peace.",
   "version": "3.2.0",
   "engines": {
@@ -14,11 +14,11 @@
   ],
   "repository": {
     "type": "git",
-    "name": "https://github.com/chapmandu/rust-in-peace-vscode-theme"
+    "name": "https://github.com/chapmandu/rust-in-peace"
   },
   "bugs": {
     "type": "git",
-    "name": "https://github.com/chapmandu/rust-in-peace-vscode-theme/issues"
+    "name": "https://github.com/chapmandu/rust-in-peace/issues"
   },
   "galleryBanner": {
     "color": "#0D166C",

@@ -23,7 +23,7 @@ import resvg_py
 from scripts.palette import REPO_ROOT, Palette, resolve_palette_path
 from scripts.variants import Flavor, flavors
 
-REPO = "https://github.com/chapmandu/rust-in-peace-vscode-theme"
+REPO = "https://github.com/chapmandu/rust-in-peace"
 REPO_RAW = f"{REPO}/raw/main"
 MARKETPLACE_URL = "https://marketplace.visualstudio.com/items?itemName=chapmandu.rust-in-peace"
 
