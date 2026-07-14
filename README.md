@@ -69,21 +69,21 @@ Install straight from the [**Visual Studio Marketplace**](https://marketplace.vi
 
 ## Companion themes
 
-The VS Code theme isn't the only target. [`src/palette.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/src/palette.json) is the single source of truth, and matching themes for other tools are generated from it into [`themes/`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/themes). Every target ships all four variants — core, Hangar 18, Polaris, and Dawn Patrol (light) — as separate files, except Zed, whose single file is a theme family carrying all four:
+The VS Code theme isn't the only target. [`src/palette.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/src/palette.json) is the single source of truth, and matching themes for other tools are generated from it into [`ports/`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports). Every target ships all four variants — core, Hangar 18, Polaris, and Dawn Patrol (light) — as separate files, except Zed, whose single file is a theme family carrying all four:
 
 | Tool                                               | Generated files                                                                                                          |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [Helix](https://helix-editor.com/)                 | [`themes/helix/*.toml`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/themes/helix)                   |
-| [Herdr](https://herdr.dev/)                        | [`themes/herdr/*.toml`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/themes/herdr)                   |
-| [Zed](https://zed.dev/)                            | [`themes/zed/rust-in-peace.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/themes/zed/rust-in-peace.json) |
-| [Zellij](https://zellij.dev/)                      | [`themes/zellij/*.kdl`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/themes/zellij)                  |
-| [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) | [`themes/ptyxis/*.palette`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/themes/ptyxis)              |
+| [Helix](https://helix-editor.com/)                 | [`ports/helix/*.toml`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/helix)                   |
+| [Herdr](https://herdr.dev/)                        | [`ports/herdr/*.toml`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/herdr)                   |
+| [Zed](https://zed.dev/)                            | [`ports/zed/rust-in-peace.json`](https://github.com/chapmandu/rust-in-peace-vscode-theme/blob/main/ports/zed/rust-in-peace.json) |
+| [Zellij](https://zellij.dev/)                      | [`ports/zellij/*.kdl`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/zellij)                  |
+| [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) | [`ports/ptyxis/*.palette`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/ports/ptyxis)              |
 
-Copy the relevant file into your tool's theme directory, then select `rust-in-peace` (or a variant slug). Run `just build-themes` to regenerate them all after a palette change.
+Copy the relevant file into your tool's theme directory, then select `rust-in-peace` (or a variant slug). Run `just build-ports` to regenerate them all after a palette change.
 
 > Herdr has no standalone theme files — its files are config fragments to merge into `~/.config/herdr/config.toml`, recolouring the `tokyo-night` base theme (`tokyo-night-day` for Dawn Patrol).
 
-To add another target, drop a generator in `scripts/targets/` and register it in `scripts/build_themes.py`; it reuses the shared palette loader and resolver in `scripts/palette.py`.
+To add another target, drop a generator in `scripts/targets/` and register it in `scripts/build_ports.py`; it reuses the shared palette loader and resolver in `scripts/palette.py`.
 
 <br/>
 
@@ -112,7 +112,7 @@ Local tasks run through [`just`](https://github.com/casey/just) — run `just` t
 | -------------------- | ------------------------------------------------------------ |
 | `just check`         | Run the full code-quality suite (lint, types, tests + coverage, dead code, duplication, secrets) |
 | `just build`         | Regenerate the theme JSON from the YAML source               |
-| `just build-themes`  | Regenerate the companion themes (Helix, Herdr, Zed, Zellij, Ptyxis) |
+| `just build-ports`  | Regenerate the companion themes (Helix, Herdr, Zed, Zellij, Ptyxis) |
 | `just install`       | Build, package, and install the extension into local VS Code |
 | `just publish-patch` | Bump the patch version, tag, and push to publish             |
 | `just publish-minor` | Bump the minor version, tag, and push to publish             |

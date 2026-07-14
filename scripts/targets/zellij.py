@@ -134,7 +134,7 @@ MULTIPLAYER: list[Ref] = [
 
 HEADER = """\
 // {slug} — a Zellij theme from the Megadeth "Rust in Peace" cover palette.
-// Generated from the src/ palettes by scripts/targets/zellij.py (just build-themes).
+// Generated from the src/ palettes by scripts/targets/zellij.py (just build-ports).
 // Do not edit by hand: edit the palette and rebuild.
 //
 // Chrome follows VS Code's tab strip: inactive tabs sit flat on the sunken

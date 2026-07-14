@@ -46,7 +46,7 @@ def _scheme(palette: Palette) -> list[str]:
 
 HEADER = """\
 # {slug} — a Ptyxis palette from the Megadeth "Rust in Peace" cover palette.
-# Generated from the src/ palettes by scripts/targets/ptyxis.py (just build-themes).
+# Generated from the src/ palettes by scripts/targets/ptyxis.py (just build-ports).
 # Do not edit by hand: edit the palette and rebuild.
 #
 # The 16 ANSI slots plus background/foreground/cursor. [Light] and [Dark]

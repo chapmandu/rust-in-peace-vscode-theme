@@ -1,5 +1,5 @@
-# rust-in-peace-dawn-patrol — a Helix theme from the Megadeth "Rust in Peace" cover palette.
-# Generated from the src/ palettes by scripts/targets/helix.py (just build-themes).
+# rust-in-peace — a Helix theme from the Megadeth "Rust in Peace" cover palette.
+# Generated from the src/ palettes by scripts/targets/helix.py (just build-ports).
 # Do not edit by hand: edit the palette and rebuild.
 
 # Syntax roles mirror the rust-in-peace VSCode theme (original structure):
@@ -126,35 +126,35 @@ hint = { fg = "hint" }
 "ui.bufferline.active" = { fg = "fg", bg = "bg", underline = { color = "light-green", style = "line" } }
 
 [palette]
-orange           = "#9c4c07" # logo orange — types, parameters
-yellow           = "#815a03" # logo gold — strings
-light-green      = "#297112" # glowing hand green — functions
-aqua             = "#0b5ad9" # electric tube blue — keywords, operators
-teal             = "#3c83bc" # slate blue — markup, hints
-cyan             = "#0d66a1" # sky cyan — builtins
-blue             = "#0765a6" # bright tube blue — UI accents, labels
-purple           = "#712ae5" # softened violet — constants, headings
-magenta          = "#b83d78" # sarcophagus pink — select mode
-comment          = "#606e94" # muted blue shading
-black            = "#ced8ee" # raised surface blue
+orange           = "#f2c074" # logo orange — types, parameters
+yellow           = "#e8e274" # logo gold — strings
+light-green      = "#95de73" # glowing hand green — functions
+aqua             = "#5e9fe0" # electric tube blue — keywords, operators
+teal             = "#638fc2" # slate blue — markup, hints
+cyan             = "#99c5f0" # sky cyan — builtins
+blue             = "#84bef5" # bright tube blue — UI accents, labels
+purple           = "#9a63de" # softened violet — constants, headings
+magenta          = "#eb8db7" # sarcophagus pink — select mode
+comment          = "#6570a8" # muted blue shading
+black            = "#1c2547" # raised surface blue
 
-add              = "#297112" # as VS Code gitDecoration.added
-change           = "#0d66a1" # as VS Code gitDecoration.modified
-delete           = "#b03911" # as VS Code gitDecoration.deleted
+add              = "#95de73" # as VS Code gitDecoration.added
+change           = "#99c5f0" # as VS Code gitDecoration.modified
+delete           = "#eb8667" # as VS Code gitDecoration.deleted
 
-error            = "#b03911" # as VS Code editorError
-info             = "#0d66a1" # as VS Code editorInfo
-hint             = "#3c83bc"
+error            = "#eb8667" # as VS Code editorError
+info             = "#99c5f0" # as VS Code editorInfo
+hint             = "#638fc2"
 
-fg               = "#2f3d5c" # pale blue highlight white
-fg-dark          = "#4d5e82"
-fg-gutter        = "#c5cee1" # whitespace marks — flattened editorWhitespace
-fg-linenr        = "#606e94" # as VS Code editorLineNumber
-fg-selected      = "#b9caee" # menu selection bg — as VS Code list selection
-border           = "#92a5cf"
-border-highlight = "#0b5ad9"
-bg               = "#d9e1f2" # hangar deep blue
-bg-inlay         = "#c9d5f0" # flattened list.focusBackground
-bg-selection     = "#b9caee"
-bg-menu          = "#bfcce8" # statusline, popups
-bg-focus         = "#bbc9e8"
+fg               = "#d3e0f0" # pale blue highlight white
+fg-dark          = "#aebfda"
+fg-gutter        = "#282c45" # whitespace marks — flattened editorWhitespace
+fg-linenr        = "#6570a8" # as VS Code editorLineNumber
+fg-selected      = "#17204a" # menu selection bg — as VS Code list selection
+border           = "#070a1a"
+border-highlight = "#5e9fe0"
+bg               = "#101530" # hangar deep blue
+bg-inlay         = "#141a3d" # flattened list.focusBackground
+bg-selection     = "#17204a"
+bg-menu          = "#0a0e22" # statusline, popups
+bg-focus         = "#202a58"

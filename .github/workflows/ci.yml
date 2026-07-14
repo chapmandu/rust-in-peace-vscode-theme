@@ -26,9 +26,9 @@ jobs:
       # Checks theme keys against the VS Code reference; fails on network error (network-dependent).
       - run: uv run python -m scripts.lint
       - run: uv run python -m scripts.build
-      - run: uv run python -m scripts.build_themes
+      - run: uv run python -m scripts.build_ports
       # Fail if the committed downstream themes or generated README sections
       # are stale relative to the palette/YAML sources. The PNGs in
       # assets/generated/ are excluded: they rasterize with system fonts, so
       # bytes differ across machines.
-      - run: git diff --exit-code themes/ README.md
+      - run: git diff --exit-code ports/ README.md

@@ -207,7 +207,7 @@ PALETTE: list[Entry | None] = [
 
 HEADER = """\
 # {slug} — a Helix theme from the Megadeth "Rust in Peace" cover palette.
-# Generated from the src/ palettes by scripts/targets/helix.py (just build-themes).
+# Generated from the src/ palettes by scripts/targets/helix.py (just build-ports).
 # Do not edit by hand: edit the palette and rebuild.
 
 # Syntax roles mirror the rust-in-peace VSCode theme (original structure):

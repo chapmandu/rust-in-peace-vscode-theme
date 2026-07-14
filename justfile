@@ -53,15 +53,15 @@ secrets:
 [group('code quality')]
 check: ruff typecheck test lint deadcode dupes secrets
 
-# Generate the theme JSONs, README sections and artwork, and downstream themes
+# Generate the theme JSONs, README sections and artwork, and downstream ports
 [group('build')]
-build: && build-themes
+build: && build-ports
     npm run build
 
-# Generate the downstream terminal/editor themes into themes/
+# Generate the downstream terminal/editor themes into ports/
 [group('build')]
-build-themes:
-    uv run python -m scripts.build_themes
+build-ports:
+    uv run python -m scripts.build_ports
 
 # Package the extension to ./bin/rust-in-peace.vsix
 [group('build')]
