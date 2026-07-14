@@ -4,8 +4,8 @@ Recolours herdr's tokyo-night base theme (tokyo-night-day for the light
 flavor) to the album palette through the [theme.custom] override tokens —
 herdr requires a base theme name, and every token it exposes is overridden
 here; any it later adds falls through to the base. The primary accent is the
-cover's electric tube blue, matching the Zellij tuning, and panel_bg sits
-sunken below content as VS Code's chrome does.
+cover's electric tube blue, matching the Zellij tuning, and panel_bg takes
+VS Code's tab-strip chrome, sitting sunken below content.
 
 Design: one Token table maps herdr's vocabulary onto palette paths, each with
 an inline note that lands in the generated file as a comment.
@@ -32,8 +32,8 @@ class Token:
 TOKENS = [
     Token("accent", "syntax.keyword", "primary accent — tube blue, the theme signature"),
     Token(
-        "panel_bg", "bg.sunken", "tab + status bar band — sunken below content, as VS Code chrome"
-    ),  # noqa: E501
+        "panel_bg", "bg.chrome", "tab + status bar band — VS Code's tab-strip chrome"
+    ),
     Token("surface0", "bg.overlay", "raised surface — selected rows, inactive tab chips"),
     Token("surface1", "ui.button", "highest surface — VS Code button blue"),
     Token("surface_dim", "bg.surface", "base surface — active row, dividers, seams"),
@@ -58,8 +58,8 @@ HEADER = """\
 #
 # Recolours the {base} base theme via [theme.custom] overrides; any token
 # not set here falls through to {base}. The accent is the cover's electric
-# tube blue (the theme signature); panel_bg sits sunken below content, as VS
-# Code's chrome does.
+# tube blue (the theme signature); panel_bg takes VS Code's tab-strip
+# chrome, sitting sunken below content.
 # Tip: set panel_bg = "reset" to let panels follow your terminal background.
 # Note: [theme.custom] is a single global block, so herdr's appearance
 # auto-switch ([theme] dark_name/light_name) can't pair two flavors — merge

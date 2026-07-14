@@ -5,8 +5,8 @@
 #
 # Recolours the tokyo-night-day base theme via [theme.custom] overrides; any token
 # not set here falls through to tokyo-night-day. The accent is the cover's electric
-# tube blue (the theme signature); panel_bg sits sunken below content, as VS
-# Code's chrome does.
+# tube blue (the theme signature); panel_bg takes VS Code's tab-strip
+# chrome, sitting sunken below content.
 # Tip: set panel_bg = "reset" to let panels follow your terminal background.
 # Note: [theme.custom] is a single global block, so herdr's appearance
 # auto-switch ([theme] dark_name/light_name) can't pair two flavors — merge
@@ -17,7 +17,7 @@ name = "tokyo-night-day"
 
 [theme.custom]
 accent      = "#0b5ad9" # primary accent — tube blue, the theme signature
-panel_bg    = "#bfcce8" # tab + status bar band — sunken below content, as VS Code chrome
+panel_bg    = "#bfcce8" # tab + status bar band — VS Code's tab-strip chrome
 surface0    = "#bbc9e8" # raised surface — selected rows, inactive tab chips
 surface1    = "#2a5ca8" # highest surface — VS Code button blue
 surface_dim = "#ced8ee" # base surface — active row, dividers, seams
