@@ -13,6 +13,12 @@ setup:
     uv sync
     npm install
 
+# Auto-fix lint issues and reformat the Python build scripts (ruff)
+[group('code quality')]
+fix:
+    uv run ruff check --fix scripts tests
+    uv run ruff format scripts tests
+
 # Lint and format-check the Python build scripts (ruff)
 [group('code quality')]
 ruff:
@@ -51,7 +57,7 @@ secrets:
 
 # Run the full code-quality suite
 [group('code quality')]
-check: ruff typecheck test lint deadcode dupes secrets
+check: fix ruff typecheck test lint deadcode dupes secrets
 
 # Generate the theme JSONs, README sections and artwork, and downstream ports
 [group('build')]
