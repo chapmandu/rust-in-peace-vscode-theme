@@ -49,7 +49,11 @@ class Hangar:
 
 if __name__ == "__main__":
     hangar: Hangar = Hangar()
-    stock: list[tuple[str, float]] = [("Holy Wars", 4.2), ("Tornado of Souls", 1.5), ("Lucretia", 0.9)]
+    stock: list[tuple[str, float]] = [
+        ("Holy Wars", 4.2),
+        ("Tornado of Souls", 1.5),
+        ("Lucretia", 0.9),
+    ]
     for name, megatons in stock:
         hangar.store(Warhead(name, megatons))
         print(f"stored {name}")

@@ -31,9 +31,7 @@ class Token:
 # Order follows herdr's own struct.
 TOKENS = [
     Token("accent", "syntax.keyword", "primary accent — tube blue, the theme signature"),
-    Token(
-        "panel_bg", "bg.chrome", "tab + status bar band — VS Code's tab-strip chrome"
-    ),
+    Token("panel_bg", "bg.chrome", "tab + status bar band — VS Code's tab-strip chrome"),
     Token("surface0", "bg.overlay", "raised surface — selected rows, inactive tab chips"),
     Token("surface1", "ui.button", "highest surface — VS Code button blue"),
     Token("surface_dim", "bg.surface", "base surface — active row, dividers, seams"),
