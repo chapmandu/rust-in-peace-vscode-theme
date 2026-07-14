@@ -1,6 +1,6 @@
 """Entry point: check the theme's colour keys against VS Code's theme-color reference.
 
-Run as `python -m scripts.lint` (wrapped by `npm run lint` / `just lint`;
+Run as `python -m scripts.lint` (wrapped by `just lint`;
 network-dependent). Keys the theme sets that the reference no longer lists
 are warnings and fail the run; keys the theme leaves to VS Code's defaults
 are informational only.

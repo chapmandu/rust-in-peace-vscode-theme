@@ -32,7 +32,7 @@ test:
 # Check theme keys against the VS Code reference (network-dependent)
 [group('code quality')]
 lint:
-    npm run lint
+    uv run python -m scripts.lint
 
 # Find dead code in the build scripts (vulture; config in pyproject.toml)
 [group('code quality')]
@@ -53,15 +53,15 @@ secrets:
 [group('code quality')]
 check: ruff typecheck test lint deadcode dupes secrets
 
-# Generate the theme JSONs, README sections, and their SVG artwork
+# Generate the theme JSONs, README sections and artwork, and downstream themes
 [group('build')]
-build:
+build: && build-themes
     npm run build
 
 # Generate the downstream terminal/editor themes into themes/
 [group('build')]
 build-themes:
-    npm run build:themes
+    uv run python -m scripts.build_themes
 
 # Package the extension to ./bin/rust-in-peace.vsix
 [group('build')]

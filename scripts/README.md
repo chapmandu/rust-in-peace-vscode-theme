@@ -15,14 +15,14 @@ go through the wrappers:
 
 ```sh
 just setup          # one-time: toolchain (mise), Python deps (uv), npm deps
-just build          # VS Code themes into theme/ + README art and sections
-just build-themes   # downstream themes into themes/
+just build          # everything: theme/, themes/, README art and sections
+just build-themes   # just the downstream themes into themes/
 just check          # the full quality suite (ruff, mypy, pytest, lint, ...)
 ```
 
-Each `just` recipe wraps the matching npm script (`npm run build`, etc.), which in
-turn runs `uv run python -m scripts.<module>`. `vsce` also runs the build via the
-`vscode:prepublish` hook, so a packaged extension can never ship stale JSON.
+Each recipe runs `uv run python -m scripts.<module>`. The VS Code build is also
+exposed as `npm run build`, because `vsce` runs it via the `vscode:prepublish`
+hook — a packaged extension can never ship stale JSON.
 
 ## How a theme gets built
 
@@ -85,8 +85,8 @@ clear-first: a renamed flavor must not leave a stale JSON behind to ship.
 `build_themes.py` renders every target for every flavor into `themes/`. Unlike
 `theme/`, these outputs **are committed** — users copy them straight from the
 repo — so CI rebuilds them and fails if they've drifted from the palettes.
-If you edit a palette or a target module, rerun `just build-themes` and commit
-the regenerated files.
+If you edit a palette or a target module, rerun the build and commit the
+regenerated files.
 
 Targets reference colours as palette paths wherever possible. The few
 tool-specific shades with no palette slot are declared as mix formulas over
@@ -109,8 +109,7 @@ the run; keys left to VS Code's defaults are reported as informational.
 ## Common changes
 
 **Tweak a colour** — edit `src/palette.json` (and usually its counterpart in
-`palette-light.json`), then `just build build-themes`. Everything downstream
-follows.
+`palette-light.json`), then `just build`. Everything downstream follows.
 
 **Map a colour to a new VS Code key** — add the key to `src/rust-in-peace.yml`
 with a `{{group.key}}` placeholder and rebuild.

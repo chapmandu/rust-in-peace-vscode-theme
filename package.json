@@ -65,10 +65,6 @@
   },
   "scripts": {
     "build": "uv run python -m scripts.build",
-    "build:themes": "uv run python -m scripts.build_themes",
-    "lint": "uv run python -m scripts.lint",
-    "test": "uv run pytest",
-    "check": "uv run ruff check scripts tests && uv run ruff format --check scripts tests && uv run mypy && uv run vulture && npm run dupes && gitleaks git --redact --no-banner",
     "dupes": "jscpd scripts tests --threshold 3",
     "package": "vsce package -o ./bin/rust-in-peace.vsix",
     "vscode:prepublish": "npm run build"

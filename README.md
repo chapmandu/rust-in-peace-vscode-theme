@@ -79,7 +79,7 @@ The VS Code theme isn't the only target. [`src/palette.json`](https://github.com
 | [Zellij](https://zellij.dev/)                      | [`themes/zellij/*.kdl`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/themes/zellij)                  |
 | [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) | [`themes/ptyxis/*.palette`](https://github.com/chapmandu/rust-in-peace-vscode-theme/tree/main/themes/ptyxis)              |
 
-Copy the relevant file into your tool's theme directory, then select `rust-in-peace` (or a variant slug). Run `just build-themes` (or `npm run build:themes`) to regenerate them all after a palette change.
+Copy the relevant file into your tool's theme directory, then select `rust-in-peace` (or a variant slug). Run `just build-themes` to regenerate them all after a palette change.
 
 > Herdr has no standalone theme files — its files are config fragments to merge into `~/.config/herdr/config.toml`, recolouring the `tokyo-night` base theme (`tokyo-night-day` for Dawn Patrol).
 

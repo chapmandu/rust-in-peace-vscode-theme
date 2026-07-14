@@ -1,7 +1,8 @@
 """Build scripts for the Rust in Peace theme.
 
 Entry points, run from the repo root with `uv run python -m scripts.<name>`
-(wrapped by the npm scripts and just recipes):
+(wrapped by the just recipes; `build` also by `npm run build` for vsce's
+prepublish hook):
 
 - build         VS Code theme JSONs + README art and generated sections
 - build_themes  downstream editor/terminal themes (Helix, Herdr, Ptyxis, Zed, Zellij)

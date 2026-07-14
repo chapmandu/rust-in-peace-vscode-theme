@@ -1,7 +1,7 @@
 """Entry point: build the downstream editor/terminal themes into themes/.
 
-Run as `python -m scripts.build_themes` (wrapped by `npm run build:themes` /
-`just build-themes`). Each Target pairs an output directory/extension with a
+Run as `python -m scripts.build_themes` (wrapped by `just build-themes`,
+and run by `just build`). Each Target pairs an output directory/extension with a
 generator from scripts/targets/, rendered once per flavor (core, the lighter
 variants, Dawn Patrol) so every target ships the same four themes as the VS
 Code build. Zed is the one exception: its format is a theme family, so all
