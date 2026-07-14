@@ -1,8 +1,9 @@
 """Ptyxis `.palette` file.
 
-The 16 ANSI slots plus background/foreground/cursor in Ptyxis's palette INI
-format. Ptyxis expects both [Light] and [Dark] sections, so the same colour
-block is emitted twice — each flavor keeps its own appearance under either.
+The 16 ANSI slots plus background/foreground/cursor and the titlebar pair in
+Ptyxis's palette INI format. Ptyxis expects both [Light] and [Dark] sections,
+so the same colour block is emitted twice — each flavor keeps its own
+appearance under either.
 """
 
 from __future__ import annotations
@@ -37,6 +38,10 @@ def _scheme(palette: Palette) -> list[str]:
         f"Background={resolve_palette_path(palette, 'bg.base')}",
         f"Foreground={resolve_palette_path(palette, 'fg.base')}",
         f"Cursor={resolve_palette_path(palette, 'fg.base')}",
+        # Without these Ptyxis derives its own headerbar shade from the
+        # background; pin the tab strip to the shared chrome band instead.
+        f"TitlebarBackground={resolve_palette_path(palette, 'bg.chrome')}",
+        f"TitlebarForeground={resolve_palette_path(palette, 'fg.base')}",
         *(
             f"Color{i}={resolve_palette_path(palette, f'ansi.{slot}')}"
             for i, slot in enumerate(ANSI_SLOTS)
@@ -49,8 +54,9 @@ HEADER = """\
 # Generated from the src/ palettes by scripts/targets/ptyxis.py (just build-ports).
 # Do not edit by hand: edit the palette and rebuild.
 #
-# The 16 ANSI slots plus background/foreground/cursor. [Light] and [Dark]
-# share one block — this is a {appearance} theme under either appearance."""
+# The 16 ANSI slots plus background/foreground/cursor and the titlebar
+# pair. [Light] and [Dark] share one block — this is a {appearance} theme
+# under either appearance."""
 
 
 def generate(flavor: Flavor) -> str:
