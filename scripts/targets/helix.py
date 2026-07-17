@@ -200,7 +200,11 @@ PALETTE: list[Entry | None] = [
     Entry("border-highlight", "syntax.keyword"),
     Entry("bg", "bg.base", "hangar deep blue"),
     Entry("bg-inlay", mixed("bg.base", "bg.selection", 0.50), "flattened list.focusBackground"),
-    Entry("bg-selection", "bg.selection"),
+    Entry(
+        "bg-selection",
+        mixed("bg.selection", "syntax.keyword", 0.20),
+        "selection lifted toward tube blue for visibility",
+    ),
     Entry("bg-menu", "bg.sunken", "statusline, popups"),
     Entry("bg-focus", "bg.overlay"),
 ]
@@ -226,13 +230,13 @@ def generate(flavor: Flavor) -> str:
     palette = flavor.palette
     width = max(len(entry.name) for entry in PALETTE if entry is not None)
 
-    palette_lines = []
+    palette_lines: list[str] = []
     for entry in PALETTE:
         if entry is None:
             palette_lines.append("")
             continue
         ref = entry.ref
-        hex_colour = ref(palette) if callable(ref) else resolve_palette_path(palette, ref)
+        hex_colour = resolve_palette_path(palette, ref) if isinstance(ref, str) else ref(palette)
         line = f'{entry.name.ljust(width)} = "{hex_colour}"'
         palette_lines.append(f"{line} # {entry.comment}" if entry.comment else line)
 

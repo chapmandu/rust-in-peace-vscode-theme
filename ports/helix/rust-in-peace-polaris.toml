@@ -155,6 +155,6 @@ border           = "#10173d"
 border-highlight = "#699ccf"
 bg               = "#1a224e" # hangar deep blue
 bg-inlay         = "#1d275a" # flattened list.focusBackground
-bg-selection     = "#202c66"
+bg-selection     = "#2f427b" # selection lifted toward tube blue for visibility
 bg-menu          = "#141c43" # statusline, popups
 bg-focus         = "#293671"
